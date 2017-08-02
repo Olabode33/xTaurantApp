@@ -1,0 +1,1 @@
+console.log("The Empty Service-Worker");
