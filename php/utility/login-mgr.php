@@ -16,7 +16,7 @@
 			require_once 'utility.php';
 			//require_once 'cls-restaurant.php';
 			//require_once 'cls-table.php';
-			require_once '/../app/cls-users.php';
+			require_once '../app/cls-users.php';
 			
 			$this->db_obj = new DBConfig();
 			$this->util_obj = new Utility();
