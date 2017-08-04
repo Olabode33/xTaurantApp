@@ -162,7 +162,7 @@
 				
 			}
 			else {
-				printf("Errormessage: %s\n", $mysqli->error);
+				printf("Errormessage: %s\n", $stmt->error);
 			}
 			
 			return array_filter($data);
@@ -248,7 +248,7 @@
 							SELECT restaurant_id, order_key, max(served_date), max(order_date) as order_date, max(estimated_d_time) as 'etime', 
 										cast((time_to_sec(timediff(max(served_date), max(order_date)))/60) as decimal(5,0)) as 'atime',  
 										timediff(max(served_date), max(order_date))
-							FROM restaurants.tbl_orders
+							FROM tbl_orders
 							WHERE order_status_id > 2 AND estimated_d_time IS NOT NULL
 							GROUP BY order_key 
 						 ) x
@@ -297,7 +297,7 @@
 										cast((time_to_sec(timediff(max(served_date), max(order_date)))/60) as decimal(5,0)) as 'atime',  
 										timediff(max(served_date), max(order_date)),
 										cast((time_to_sec(timediff(now(), max(order_date)))/60) as decimal(5,0))/60 as 'last_hours'
-							FROM restaurants.tbl_orders
+							FROM tbl_orders
 							WHERE order_status_id > 2 AND estimated_d_time IS NOT NULL
 							GROUP BY order_key 
 						 ) x
