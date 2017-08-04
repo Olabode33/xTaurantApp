@@ -69,6 +69,7 @@
 								echo '<a href="index.php?a=bill&ok='.$order['order_key'].'" class="btn btn-flat btn-primary btn-block "  style="text-align:left;">
 												<h2>
 												'.$utility_obj->getObjectFromID('tbl_tables', 'table_name', 'table_id', $order['table_id']).'
+												<small>'.$order['order_key'].'</small>
 												<i class="fa fa-chevron-circle-right"></i>
 												</h2>
 											</a>';
