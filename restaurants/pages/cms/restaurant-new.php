@@ -54,8 +54,8 @@
 
 ?>
 <h3><?php echo (($rid > 0)? '<span class="fa fa-pencil"></span> Edit Restaurant\'s Information': '<span class="fa fa-plus"></span> Add New Restaurant'); ?></h3>
-<div class="<?php echo $theme_color; ?> line"></div>	
-<a class="btn btn-sm btn-primary pull-right <?php echo $theme_color; ?>" href="index.php?a=cms&s=restaurants"><span class="fa fa-reply"></span> Go Back</a>
+<div class="<?php echo isset($theme_color)?$theme_color:''; ?> line"></div>	
+<a class="btn btn-sm btn-primary pull-right <?php echo isset($theme_color)?$theme_color:'' ; ?>" href="index.php?a=cms&s=restaurants"><span class="fa fa-reply"></span> Go Back</a>
 <div class="col-lg-10">
 <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'].'?a=cms&s=restaurant-new'.((isset($_GET['rid']))?'&rid='.$rid:''); ?>" method="post" enctype="multipart/form-data" name="form_menu" id="form_menu">
 	<fieldset>		
@@ -167,7 +167,7 @@
 		
 		<div class="form-group">
 		   	<div class="col-lg-10 col-lg-offset-2">
-				<button type="submit" class="btn btn-primary btn-sm <?php echo $theme_color; ?>" name="r" id="r" value="<?php echo ((isset($_GET['rid']) || isset($_POST['r']))?'edit':'new'); ?>">
+				<button type="submit" class="btn btn-primary btn-sm <?php echo isset($theme_color)?$theme_color:'' ; ?>" name="r" id="r" value="<?php echo ((isset($_GET['rid']) || isset($_POST['r']))?'edit':'new'); ?>">
 					<?php echo ((isset($_GET['rid']) || isset($_POST['r']))?'Save':'Add'); ?> <i class="fa fa-send"></i>
 				</button>
 			</div>
