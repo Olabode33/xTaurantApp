@@ -21,7 +21,7 @@
 							<button class="menu-icon">
 								<?php		
 									if($action != "login")
-										<a href="index.php?a=actions"><i class="mdi-action-home" style="color: #fff;"></i></a>
+										echo '<a href="index.php?a=actions"><i class="mdi-action-home" style="color: #fff;"></i></a>';
 									if(isset($_SESSION['user']))
 										echo '<a href="index.php?a=login&s=exit"><i class="fa fa-sign-out" style="color: #fff;" data-toggle="tooltip" title="Sign Out"></i></a>&nbsp;';
 									if($action == "menu")
