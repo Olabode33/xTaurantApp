@@ -47,7 +47,7 @@
 		function getPlate() {
 			$plate = array();
 			
-			if(isset($_SESSION['order'])
+			if(isset($_SESSION['order']))
 				foreach($_SESSION['order'] as $id=>$value){
 					$tmp = array();
 
