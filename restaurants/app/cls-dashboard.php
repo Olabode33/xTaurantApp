@@ -162,7 +162,7 @@
 				
 			}
 			else {
-				printf("Errormessage: %s\n", $stmt->error);
+				printf("Errormessage: %s\n", $conn->error);
 			}
 			
 			return array_filter($data);
