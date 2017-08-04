@@ -1,9 +1,9 @@
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="yourOrder" aria-labelledby="yourOrderLabel">
-	<div class="modal-dialog modal-sm" role="document">
+	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title <?php echo $theme_text; ?>">Your Order</h4>
+				<h4 class="modal-title <?php echo isset($theme_text)?$theme_text:''; ?>">Your Order</h4>
 			</div>
 			<div class="modal-body">
 				<form action="index.php?a=<?php echo $_GET['a'].((isset($_GET['m']))?'&m='.$_GET['m']:''); ?>" method="POST" class="form-horizontal" id="plate">
@@ -30,7 +30,7 @@
 						<div class="form-group">
 							<div class="col-lg-12">
 								<button type="reset" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-primary pull-right <?php echo $theme_color; ?>" name="menu" id="menu" value="order">Select <span class="fa fa-check"></span></button>
+								<button type="submit" class="btn btn-primary pull-right <?php echo isset($theme_color)?$theme_color:'' ; ?>" name="menu" id="menu" value="order">Select <span class="fa fa-check"></span></button>
 							</div>
 						</div>
 					</fieldset>
@@ -41,11 +41,11 @@
 </div>
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="removeOrder" aria-labelledby="yourOrderLabel">
-	<div class="modal-dialog modal-sm" role="document">
+	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title <?php echo $theme_text; ?>">Remove Order</h4>
+				<h4 class="modal-title <?php echo isset($theme_text)?$theme_text:''; ?>">Remove Order</h4>
 			</div>
 			<div class="modal-body">
 				<form action="index.php?a=<?php echo $_GET['a'].((isset($_GET['m']))?'&m='.$_GET['m']:''); ?>" method="post" class="form-horizontal" id="plate">
@@ -61,7 +61,7 @@
 								<button type="reset" class="btn btn-default" data-dismiss="modal">Close</button>
 							</div>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-primary <?php echo $theme_color; ?>" name="menu" id="menu" value="remove"><span class="fa fa-times-circle"></span> Remove</button>							
+								<button type="submit" class="btn btn-primary <?php echo isset($theme_color)?$theme_color:'' ; ?>" name="menu" id="menu" value="remove"><span class="fa fa-times-circle"></span> Remove</button>							
 							</div>
 						</div>
 					</fieldset>
@@ -73,18 +73,18 @@
 
 <!-- Delete Item Modal -->
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="deleteItem" aria-labelledby="yourItemLabel">
-	<div class="modal-dialog modal-sm" role="document">
+	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title <?php echo $theme_text; ?>"  id="del_title">Remove Order</h4>
+				<h4 class="modal-title <?php echo isset($theme_text)?$theme_text:'' ; ?>"  id="del_title">Remove Order</h4>
 			</div>
 			<div class="modal-body">
 				<p id="del_msg">Are you sure you want to delete?</p>
 			</div>
 			<div class="modal-footer">
 				<a class="btn btn-default pull-left" data-dismiss="modal"><span class="fa fa-times"></span> Cancel</a>
-				<a href="" class="btn btn-primary pull-right <?php echo $theme_color; ?>" id="del_link" ><span class="fa fa-trash"></span> Continue</a>			
+				<a href="" class="btn btn-primary pull-right <?php echo isset($theme_color)?$theme_color:'' ; ?>" id="del_link" ><span class="fa fa-trash"></span> Continue</a>			
 			</div>
 		</div>
 	</div>
@@ -96,7 +96,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title <?php echo $theme_text; ?>"  id="del_title">Change Password</h4>
+				<h4 class="modal-title <?php echo isset($theme_text)?$theme_text:'' ; ?>"  id="del_title">Change Password</h4>
 			</div>
 			<div class="modal-body">
 				<form action="index.php?a=login&s=pass" method="post" class="form-horizontal" id="change_password">
@@ -128,7 +128,7 @@
 					<div class="form-group">
 						<div class="col-lg-12">
 							<button type="reset" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary pull-right <?php echo $theme_color; ?>" name="change_pass" id="change_pass" value="change">Change Password <span class="fa fa-chevron-right"></span></button>
+							<button type="submit" class="btn btn-primary pull-right <?php echo isset($theme_color)?$theme_color:'' ; ?>" name="change_pass" id="change_pass" value="change">Change Password <span class="fa fa-chevron-right"></span></button>
 						</div>
 					</div>
 				</form>
