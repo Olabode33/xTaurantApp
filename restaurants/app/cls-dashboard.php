@@ -75,12 +75,13 @@
 								LEFT OUTER JOIN tbl_responses r ON q.question_id = r.question_id and oc.option_value = r.option_id and r.restaurant_id = ?
 								".($age_filter != 'none'?' and r.age_group_id = ? ': ' ')." 
 								".($gender_filter != 'none'? ' and r.gender = ? ': ' ')."
+								".($time_filter != 'none'? $time_filter_query : ' ')."
 							 WHERE q.question_id = ? 
 							 GROUP BY option_value
 							 ORDER BY option_value";
 						 
 			$conn = $this->db_obj->db_connect();
-			$stmt = $conn->prepare($sql);
+			if($stmt = $conn->prepare($sql)){
 			
 			// if($_SESSION['role_id'] == 5){
 				// if($age_filter != 'none' && $gender_filter == 'none')
@@ -158,6 +159,11 @@
 			$data['avg'] = round($avg);
 			
 			$stmt->close();
+				
+			}
+			else {
+				printf("Errormessage: %s\n", $mysqli->error);
+			}
 			
 			return array_filter($data);
 		}
