@@ -19,8 +19,9 @@
 						</div>
 						<div class="navbar-right">
 							<button class="menu-icon">
-								<a href="index.php?a=actions"><i class="mdi-action-home" style="color: #fff;"></i></a>
-								<?php						
+								<?php		
+									if($action != "login")
+										<a href="index.php?a=actions"><i class="mdi-action-home" style="color: #fff;"></i></a>
 									if(isset($_SESSION['user']))
 										echo '<a href="index.php?a=login&s=exit"><i class="fa fa-sign-out" style="color: #fff;" data-toggle="tooltip" title="Sign Out"></i></a>&nbsp;';
 									if($action == "menu")
@@ -31,7 +32,7 @@
 							<!--button class="menu-icon"  id="open-button">
 								<?php
 									if($action == "menu")
-										echo '<i class="mdi-maps-local-restaurant" id="btn-menu-list"></i><span class="badge badge-primary orders-count">'.(count($_SESSION['order']) > 0? count($_SESSION['order']): 0).'</span>';
+										echo '<i class="mdi-maps-local-restaurant" id="btn-menu-list"></i><span class="badge badge-primary orders-count">'.(isset($_SESSION['order']) && count($_SESSION['order']) > 0? count($_SESSION['order']): 0).'</span>';
 									else {}
 									//	echo '<i class="mdi-navigation-menu"></i>';
 								?>
