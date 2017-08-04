@@ -47,16 +47,18 @@
 		function getPlate() {
 			$plate = array();
 			
-			foreach($_SESSION['order'] as $id=>$value){
-				$tmp = array();
-				
-				$tmp["id"] = $id;
-				$tmp["name"] = $_SESSION['order'][$id]['name'];
-				$tmp["qty"] = $_SESSION['order'][$id]['quantity'];
-				$tmp["price"] = $_SESSION['order'][$id]['price'];
-				$tmp["time"] = $_SESSION['order'][$id]['time'];
-				
-				array_push($plate, $tmp);
+			if(isset($_SESSION['order'])
+				foreach($_SESSION['order'] as $id=>$value){
+					$tmp = array();
+
+					$tmp["id"] = $id;
+					$tmp["name"] = $_SESSION['order'][$id]['name'];
+					$tmp["qty"] = $_SESSION['order'][$id]['quantity'];
+					$tmp["price"] = $_SESSION['order'][$id]['price'];
+					$tmp["time"] = $_SESSION['order'][$id]['time'];
+
+					array_push($plate, $tmp);
+				}
 			}
 				
 			return json_encode($plate);
