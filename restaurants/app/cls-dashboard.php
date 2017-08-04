@@ -39,7 +39,7 @@
 			return array_filter($random_data_points);
 		}
 		
-		function getDataForQuestion($question_id, $age_filter='none', $gender_filter='none', $time_filter='none') {
+		function getDataForQuestion($question_id = 0, $age_filter='none', $gender_filter='none', $time_filter='none') {
 			$restaurant_id = 0;
 			
 			if(isset($_SESSION['restaurant_id']))
