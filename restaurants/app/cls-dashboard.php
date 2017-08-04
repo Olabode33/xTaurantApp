@@ -158,7 +158,7 @@
 			$data['max_point'] = $max_point;
 			$data['avg'] = round($avg);
 			
-			$stmt->close();
+			//$stmt->close();
 				
 			}
 			else {
