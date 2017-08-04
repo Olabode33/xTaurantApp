@@ -69,7 +69,7 @@
 			}
 			
 				$sql = "SELECT option_choice, count(r.option_id) as 'freq', sum(r.option_id) as 'sum'
-							 FROM restaurants.tbl_option_choices oc
+							 FROM tbl_option_choices oc
 								LEFT JOIN tbl_option_groups og ON oc.option_group_id = og.option_group_id
 								LEFT JOIN tbl_questions q ON og.option_group_id = q.option_group_id 
 								LEFT OUTER JOIN tbl_responses r ON q.question_id = r.question_id and oc.option_value = r.option_id and r.restaurant_id = ?
