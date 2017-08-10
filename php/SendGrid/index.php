@@ -24,7 +24,7 @@
 														  ]
 														}');
 	
-	$apiKey = getenv('');
+	$apiKey = getenv('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');
 	$sg = new \SendGrid($apiKey);
 	
 	$response = $sg->client->mail()->send()->post($request_body);
