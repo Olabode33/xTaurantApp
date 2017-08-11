@@ -11,9 +11,9 @@
 	
 	$apiKey = getenv('SENDGRID_API_KEY');
 	if(isset($apiKey))
-		echo $apiKey;
+		echo $apiKey.'<br>';
 	else
-		echo 'No Api Key';
+		echo 'No Api Key<br>';
 	
 	$sg = new \SendGrid($apiKey);
 	
