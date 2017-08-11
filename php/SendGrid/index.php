@@ -1,4 +1,5 @@
 <?php
+	echo 'Curl: ', function_exists('curl_version') ? 'Enabled' : 'Disabled';
 
 	require("sendgrid-php/sendgrid-php.php");
 	
@@ -24,7 +25,7 @@
 														  ]
 														}');
 	
-	$apiKey = getenv('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');
+	$apiKey = getenv('');
 	$sg = new \SendGrid($apiKey);
 	
 	$response = $sg->client->mail()->send()->post($request_body);
