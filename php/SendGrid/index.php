@@ -10,6 +10,11 @@
 	$mail = new SendGrid\Mail($from, $subject, $to, $content);
 	
 	$apiKey = getenv('SENDGRID_API_KEY');
+	if(isset($apiKey))
+		echo $apiKey;
+	else
+		echo 'No Api Key';
+	
 	$sg = new \SendGrid($apiKey);
 	
 	$response = $sg->client->mail()->send()->post($mail);
