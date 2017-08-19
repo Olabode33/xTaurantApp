@@ -178,7 +178,7 @@
     <script src="js/bootstrap.min.js"></script>	
 	<script>
 		$(document).ready( function() {
-			$.get('api/user/loggedin/', function(data) {
+			$.get('api/Users_RestController.php?view=loggedin', function(data) {
 				data = $.parseJSON(data);
 				console.log(data);
 				$("#lbl_role").html(data.role);
@@ -186,7 +186,7 @@
 			});
 			
 			$("#btn_logout").click(function() {
-				$.get('api/user/logout/', function(data) {
+				$.get('api/Users_RestController.php?view=logout', function(data) {
 					data = $.parseJSON(data);
 					console.log(data);
 					window.location.href = "index.html";
@@ -195,7 +195,7 @@
 			
 			var t = $('#tbl_customers').DataTable();
 			
-			$.get('api/customer/list/', function(data) {
+			$.get('api/Customers_RestController.php?view=all', function(data) {
 				data = $.parseJSON(data);
 				console.log(data);
 					
@@ -218,7 +218,7 @@
 			$("#summary-list").addClass("hidden");
 			$("#details").removeClass("hidden");
 			
-			$.get('api/customer/list/'+id+'/', function(data) {
+			$.get('api/Customers_RestController.php?view=single&id='+id, function(data) {
 				data = $.parseJSON(data);
 				console.log(data);
 				
