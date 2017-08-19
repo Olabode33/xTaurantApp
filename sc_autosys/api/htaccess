@@ -1,0 +1,16 @@
+# Turn rewrite engine on
+Options +FollowSymlinks
+RewriteEngine on
+
+# map neat URL to internal URL
+RewriteRule ^mobile/list/$   Controllers/RestController.php?view=all [nc,qsa]
+RewriteRule ^mobile/list/([0-9]+)/$   Controllers/RestController.php?view=single&id=$1 [nc,qsa]
+RewriteRule ^user/list/$   Users_RestController.php?view=all [nc,qsa]
+RewriteRule ^user/list/([0-9]+)/$   Users_RestController.php?view=single&id=$1 [nc,qsa]
+RewriteRule ^user/add/$   Users_RestController.php?view=add [nc,qsa]
+RewriteRule ^user/update/([0-9]+)/$   Users_RestController.php?view=update&id=$1 [nc,qsa]
+RewriteRule ^user/login/$   Users_RestController.php?view=login [nc,qsa]
+RewriteRule ^user/logout/$   Users_RestController.php?view=logout [nc,qsa]
+RewriteRule ^user/loggedin/$   Users_RestController.php?view=loggedin [nc,qsa]
+RewriteRule ^customer/list/$   Customers_RestController.php?view=all [nc,qsa]
+RewriteRule ^customer/list/([0-9]+)/$   Customers_RestController.php?view=single&id=$1 [nc,qsa]
