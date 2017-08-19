@@ -166,8 +166,8 @@
 			
 			$users = $this->get_user();
 			
-			//print_r($users);
-			//echo $uname;
+			print_r($users);
+			echo $uname;
 			
 			foreach($users as $user){
 				if($uname != '' && strtolower($uname) == strtolower($user['uname']) ){
