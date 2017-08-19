@@ -4,6 +4,7 @@
 
 		function db_connect($user='bvuser', $password='bvUserP@ss', $db='sc_autosys_2')
 		{
+			//root P@ssw0rd
 			$conn = mysqli_connect('127.0.0.1', $user, $password);
 			if(!$conn) {
 				return 'Error connecting to database'; 
