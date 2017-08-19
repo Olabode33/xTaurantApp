@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>SC Autosys Test</h1>
+	<form id="myform" method="post" action="api/user/add/">
+		<div class="form-group">
+			<label for="title">Title</label>
+			<input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" placeholder="Enter Title">
+		</div>
+		<div class="form-group">
+			<label for="fname">First name</label>
+			<input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp" placeholder="Enter fname">
+		</div>
+		<div class="form-group">
+			<label for="lname">lname name</label>
+			<input type="text" class="form-control" id="lname" name="lname" aria-describedby="emailHelp" placeholder="Enter lname">
+		</div>
+		<div class="form-group">
+			<label for="role">role</label>
+			<input type="text" class="form-control" id="role" name="role" aria-describedby="emailHelp" placeholder="Enter role">
+		</div>
+		<div class="form-group">
+			<label for="uname">uname</label>
+			<input type="uname" class="form-control" id="uname" name="uname" aria-describedby="emailHelp" placeholder="Enter uname">
+		</div>
+		<div class="form-group">
+			<label for="role">pword</label>
+			<input type="text" class="form-control" id="pword" name="pword" aria-describedby="emailHelp" placeholder="Enter pword">
+		</div>
+		<div class="form-group">
+			<label for="role">branch</label>
+			<input type="text" class="form-control" id="branch" name="branch" aria-describedby="emailHelp" placeholder="Enter branch">
+		</div>
+		<div class="form-group">
+			<label for="role">status</label>
+			<input type="text" class="form-control" id="status" name="status" aria-describedby="emailHelp" placeholder="Enter status">
+		</div>
+		
+		
+		<button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+	</form>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	
+	<script>
+		$("#myform").submit(function(e) {
+			e.preventDefault();
+			alert("Submit button clikced");
+			$.ajax({
+				//url: $('#myform').attr('action'),
+				url: 'api/user/update/36/',
+				type: 'post',
+				//dataType: 'application/json',
+				//data: $('#myForm').serialize(),
+				data : {
+					'fname' : $('#fname').val(),
+					'lname' : "Mulan",
+					'role' : "Warrior",
+					'uname' : "mulan",
+					'pword' : 'pass',
+					'branch' : 'China',
+					'status' : 'Animated Character'
+				},
+				success: function(data) {
+				   alert (data);
+				   data = $.parseJSON(data);
+				   if(data.status == 1){
+						alert(data.msg);
+				   }
+				   else {
+						alert(data.msg);
+				   }
+				}
+			});
+		});
+	</script>
+  </body>
+</html>

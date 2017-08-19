@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SC AutoSys</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/sctheme.css" rel="stylesheet">
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  
+  <body style="background-color:cornsilk;">
+  <!--  <h1>Hello, world!</h1> -->
+
+  <div class="container" style="background-color:white; min-height:740px;">  
+	<nav class="navbar navbar-default" style="border-width:0px">
+		<div class="container-fluid"; style="background-color:white" >
+			<div class="navbar-header">
+				<a class="navbar-brand" style="font-family:georgia; color:blue;" >Sight<span style="color:cornflowerblue">City</span></a> 
+			</div>	
+			<p class="navbar-text navbar-right" style="font-style:italic;  color:black; margin-right:20px">
+				Welcome <a href="#" class="navbar-link" style="color:black; margin-right:20px"><span id="lbl_role">Dr</span> <span id="lbl_fullname">Elochukwu</span></a>
+				<a href="#" class="navbar-link" style="margin-left:5px; font-style:normal; color:black" id="btn_logout">Logout</a>
+			</p>
+		</div>
+	</nav>
+  
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="#">Home</a></li>
+		<li role="presentation" class="active"><a href="#">Customer</a></li>
+		<li role="presentation"><a href="#">Partner</a></li>
+		<li role="presentation"><a href="#">Billing</a></li>
+		<li role="presentation"><a href="#">Case List</a></li>
+		<li role="presentation"><a href="#">Report</a></li>
+	</ul>
+
+	<div>
+		<ul class="nav nav-pills" style="margin-top:1%">
+			<li role="presentation"><a href="#">New</a></li>
+			<li role="presentation" class="active"><a href="#">Existing</a></li>
+		<ul>
+	</div>
+
+	<div class="row" style="margin-top:4%">
+		<div class="col-xs-12" id="summary-list">
+			<div class="table-responsive" width="100%">
+				<table class="table table-hover" id="tbl_customers" >
+					<thead class="thead-inverse">	
+						<th class="col-xs-2" >Card No.</th>						
+						<th class="col-xs-2">Surname</th>
+						<th class="col-xs-2">First Name</th>
+						<th class="col-xs-2">Phone No.</th>	
+						<th class="col-xs-1">Relationship</th>
+						<th class="col-xs-2">Email</th>			
+						<th class="col-xs-1">Actions</th>			
+					</thead>
+					
+					<tbody>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-xs-12 hidden" id="details">
+			<div class="row" style="margin-bottom: 10px;">
+				<div class="col-sm-2">
+					<button class="btn btn-default" onclick="view_summary()">Go Back To Summary List</button>
+				</div>
+			</div>
+			<div class="row">
+				<label for="cardno" class="col-sm-2 control-label">Card No.</label>
+				<div class="col-sm-4">
+					<span id="cardno"> _____________</span>
+				</div>
+									
+				<label for="enroleeno" class="col-sm-2 control-label">Enrolee ID</label>
+				<div class="col-sm-4">
+					<span id="enroleeno"> _____________</span>
+				</div>
+			</div>
+								
+			<div class="row">
+				<label for="fullname" class="col-sm-2 control-label">Fullname</label>
+				<div class="col-sm-4">
+					<span id="fullname"> _____________</span>
+				</div>
+				
+				<label for="gender" class="col-sm-2 control-label">Gender</label>
+				<div class="col-sm-4">
+					<span id="gender"> _____________</span>
+				</div>
+			</div>
+							
+			<div class="row">
+				<label for="address" class="col-sm-2 control-label">Address</label>
+				<div class="col-sm-10">
+					<span id="fulladdress"> _____________</span>
+				</div>
+			</div>
+								
+			<div class="row">	
+				<label for="dob" class="col-sm-2 control-label">Date of Birth</label>
+				<div class="col-sm-4">
+					<span id="dob"> _____________</span>
+				</div>
+						
+				<label for="age" class="col-sm-2 control-label">Age</label>
+				<div class="col-sm-4">
+					<span id="age"> _____________</span>
+				</div>
+			</div>
+								
+			<div class="row">	
+				<label for="occupation" class="col-sm-2 control-label">Occupation</label>
+				<div class="col-sm-4">
+					<span id="occupation"> _____________</span>
+				</div>
+
+				<label for="nok" class="col-sm-2 control-label">Next of Kin</label>
+				<div class="col-sm-4">
+					<span id="nok"> _____________</span>
+				</div>
+			</div>
+						
+			<div class="row">	
+				<label for="mobile" class="col-sm-2 control-label">Mobile</label>
+				<div class="col-sm-4">
+					<span id="mobile"> _____________</span>
+				</div>
+
+				<label for="email" class="col-sm-2 control-label">Email</label>
+				<div class="col-sm-4">
+					<span id="email"> _____________</span>
+				</div>
+			</div>
+							
+			<div class="row">	
+				<label for="rship_type" class="col-sm-2 control-label">Relationship</label>
+				<div class="col-sm-4">
+					<span id="rship_type"> _____________</span>
+				</div>
+
+				<label for="rship_acc" class="col-sm-2 control-label">Account</label>
+				<div class="col-sm-4">
+					<span id="account"> _____________</span>
+				</div>
+			</div>
+							
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-3">
+					<button style="color:white;" class="btn btn-block sctheme">Update</button> 
+				</div>
+				<div class="col-sm-3">
+					<button style="color:white; background-color:cornflowerblue;" class="btn btn-block" >Book Appointment</button> 
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+							
+		</div>
+	</div>
+</div>
+  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>	
+	<script>
+		$(document).ready( function() {
+			$.get('api/user/loggedin/', function(data) {
+				data = $.parseJSON(data);
+				console.log(data);
+				$("#lbl_role").html(data.role);
+				$("#lbl_fullname").html(data.fname + ' ' + data.lname);
+			});
+			
+			$("#btn_logout").click(function() {
+				$.get('api/user/logout/', function(data) {
+					data = $.parseJSON(data);
+					console.log(data);
+					window.location.href = "index.html";
+				});
+			});
+			
+			var t = $('#tbl_customers').DataTable();
+			
+			$.get('api/customer/list/', function(data) {
+				data = $.parseJSON(data);
+				console.log(data);
+					
+				$.each(data, function(i, item) {
+					t.row.add([
+						item.cardno, 
+						item.lname,
+						item.fname,
+						item.phone1,
+						item.rship_type,
+						item.email1,
+						'<button class="btn btn-primary btn-xs details" href="#" data-toggle="tooltip" title="A hover" onclick="view_details('+item.cid+')">View Details...</button>',
+					]).draw(false);
+				});
+			});
+		});
+		
+		function view_details(id) {
+			//alert("button " +id+" was clicked");
+			$("#summary-list").addClass("hidden");
+			$("#details").removeClass("hidden");
+			
+			$.get('api/customer/list/'+id+'/', function(data) {
+				data = $.parseJSON(data);
+				console.log(data);
+				
+				$.each(data, function(i, item) {
+					$("#cardno").html(item.cardno);
+					$("#enroleeno").html(item.enroleeid);
+					$("#fullname").html(item.title + " " + item.fname + ' ' + item.lname);
+					$("#gender").html(item.gender);
+					$("#fulladdress").html(item.address + ", " + item.address_area + "" + item.address_state);
+					$("#dob").html(item.dob);
+					$("#age").html(item.age);
+					$("#occupation").html(item.occupation);
+					$("#nok").html(item.nok);
+					$("#mobile").html(item.phone1 + ", " + item.phone2);
+					$("#email").html(item.email1 + ",  " + item.email2);
+					$("#rship_type").html(item.rship_type);
+					$("#account").html(item.rship_account);
+				});
+			});
+		}
+		
+		function view_summary() {
+			$("#summary-list").removeClass("hidden");
+			$("#details").addClass("hidden");
+		}
+		
+	</script>	
+	<script src="assets/DataTables/datatables.min.js"></script>
+  </body>
+  
+</html>

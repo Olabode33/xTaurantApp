@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/sctheme.css" rel="stylesheet">
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  
+  <body style="background-color:cornsilk;">
+  <!--  <h1>Hello, world!</h1> -->
+
+  <div class="container" style="background-color:white; min-height:740px;">
+  
+  
+		  <nav class="navbar navbar-default" style="border-width:0px">
+			<div class="container-fluid"; style="background-color:white" >
+				<div class="navbar-header">
+				
+				<a class="navbar-brand" style="font-family:georgia; color:blue;" >Sight<span style="color:cornflowerblue">City</span></a> 
+			
+		</div>	
+				<p class="navbar-text navbar-right" style="font-style:italic;  color:black; margin-right:20px">Welcome <a href="#" class="navbar-link" style="color:black; margin-right:20px">Dr Elochukwu</a>
+				<a href="#" class="navbar-link" style="margin-left:5px; font-style:normal; color:black">Logout</a>
+				</p>
+				
+				
+			
+			</div>
+			</nav>
+  
+  <!--
+  <div class="row">
+  <div>
+  <h2 class="btn col-md-8" style="color:cornflowerblue;; text-align:center; padding:40px 40px 0px 40px; font-size:300%"> SC AutoSys <h2>
+  
+    
+  <button style="background-color:cornflowerblue; color:white;margin-top:2%;" class="btn col-md-1">Logout</button>
+  </div>
+</div>  
+  -->
+
+			  <ul class="nav nav-tabs">
+					  <li role="presentation"><a href="#">Home</a></li>
+					  <li role="presentation" class="active"><a href="#">Customer</a></li>
+					  <li role="presentation"><a href="#">Partner</a></li>
+					  <li role="presentation"><a href="#">Billing</a></li>
+					  <li role="presentation"><a href="#">Case List</a></li>
+					  <li role="presentation"><a href="#">Report</a></li>
+				</ul>
+
+
+
+					<div>
+
+						<ul class="nav nav-pills" style="margin-top:1%">
+
+						<li role="presentation" class="active"><a href="#">New</a></li>
+						  <li role="presentation"><a href="#">Existing</a></li>
+						  <ul>
+
+  
+					</div>
+
+
+					<div class="row" style="margin-top:4%">
+					
+							<form action="#/create_new.php" class="form-horizontal">
+							
+							<div class="col-md-8">
+							
+							<div class="form-group">
+								<label for="cardno" class="col-sm-2 control-label"><span class="text-danger">*</span>Card No.</label>
+								<div class="col-sm-4">
+									<input type="text" id="cardno" name="cardno" class="form-control" placeholder="xxxx/xxx/yyyy" Required>
+								</div>
+								
+								<label for="enroleeno" class="col-sm-2 control-label">Enrolee ID</label>
+								<div class="col-sm-4">
+									<input type="text" id="enroleeno" name="enroleeno" class="form-control" placeholder="xxxxxxx">
+								</div>
+							</div>
+								
+							<div class="form-group">
+								
+									<label for="sname" class="col-sm-2 control-label"> <span class="text-danger">*</span>Surname</label>
+								<div class="col-sm-4">
+									<input type="text" id="sname" name="sname" class="form-control" placeholder="Your surname..." required>
+								</div>
+								
+									<label for="fname" class="col-sm-2 control-label">Firstname</label>
+								<div class="col-sm-4">
+									<input type="text" id="fname" name="fname" class="form-control" placeholder="Your firstname...">
+								</div>	
+							</div>
+								
+							<div class="form-group">	
+									<label for="mname" class="col-sm-2 control-label">Middlename</label>
+								<div class="col-sm-4">
+									<input type="text" id="mname" name="mname" class="form-control" placeholder="Your middlename...">
+								</div>
+								
+									<label for="gender" class="col-sm-2 control-label">Gender</label>
+
+								<div class="col-sm-4">
+									<label class="radio-inline">
+									  <input type="radio" name="gender" id="inlineRadio1" value="Male"> Male
+									</label>
+									<label class="radio-inline">
+									  <input type="radio" name="gender" id="inlineRadio2" value="Female"> Female
+									  
+								</div>
+							</div>
+							
+							<div class="form-group">
+								
+									<label for="address" class="col-sm-2 control-label">Address</label>
+								<div class="col-sm-10">
+									<input type="text" id="address" name="address" class="form-control" placeholder="Address Line 1...">
+								</div>
+							</div>
+								
+								
+							<div class="form-group">	
+									<label for="add_area" class="col-sm-2 control-label">Area</label>
+								<div class="col-sm-4">
+									<input type="text" id="add_area" name="add_area" class="form-control" placeholder="Area...">
+								</div>
+
+								<label for="add_state" class="col-sm-2 control-label">State</label>
+								<div class="col-sm-4">
+									<input type="text" id="add_state" name="add_state" class="form-control" placeholder="state...">
+								</div>
+							</div>
+								
+							<div class="form-group">	
+									<label for="dob" class="col-sm-2 control-label"><span class="text-danger">*</span>Date of Birth</label>
+								<div class="col-sm-4">
+									<input type="date" id="dob" name="dob" class="form-control" required>
+								</div>
+
+								<label for="age" class="col-sm-2 control-label">Age</label>
+								<div class="col-sm-4">
+									<input type="text" id="age" name="age" class="form-control" placeholder="yrs...">
+								</div>
+							</div>
+								
+								
+														
+							<div class="form-group">	
+									<label for="occupation" class="col-sm-2 control-label">Occupation</label>
+								<div class="col-sm-4">
+									<input type="text" id="occupation" name="occupation" class="form-control" placeholder="occupation...">
+								</div>
+
+								<label for="nok" class="col-sm-2 control-label">Next of Kin</label>
+								<div class="col-sm-4">
+									<input type="text" id="nok" name="nok" class="form-control" placeholder="fullname...">
+								</div>
+							</div>
+						
+							<div class="form-group">	
+									<label for="mobile" class="col-sm-2 control-label">Mobile</label>
+								<div class="col-sm-4">
+									<input type="text" id="mobile" name="mobile" class="form-control" placeholder="080-...">
+								</div>
+
+								<label for="phone" class="col-sm-2 control-label">Alt Mobile</label>
+								<div class="col-sm-4">
+									<input type="text" id="phone" name="phone" class="form-control" placeholder="080-...">
+								</div>
+							</div>
+							
+							<div class="form-group">	
+									<label for="email" class="col-sm-2 control-label">Email</label>
+								<div class="col-sm-4">
+									<input type="text" id="email" name="email" class="form-control" placeholder="me@sightcity.com...">
+								</div>
+
+								<label for="email2" class="col-sm-2 control-label">Alt Email</label>
+								<div class="col-sm-4">
+									<input type="text" id="email2" name="email2" class="form-control" placeholder="me@sightcity.com...">
+								</div>
+							</div>
+							
+							<div class="form-group">	
+									<label for="rship_type" class="col-sm-2 control-label">Relationship</label>
+								<div class="col-sm-4">
+									<select class="form-control" Required>
+											  <option value=""></option>
+											  <option value="HMO">HMO</option>
+											  <option value="Organisation">Organisation</option>
+											  <option value="Private">Private</option>
+											  <option value="Secondary">Secondary</option>
+									</select>
+								</div>
+
+								<label for="rship_acc" class="col-sm-2 control-label"><span class="text-danger">*</span>Account</label>
+								<div class="col-sm-4">
+									<input type="text" id="rship_acc" name="rship_acc" class="form-control" placeholder="fullname..." Required>
+								</div>
+							</div>
+							
+															
+							
+							<div class="row">
+							
+								<div class="col-sm-4"></div>
+								<div class="col-sm-4">
+							<button style="color:white;" class="btn btn-block sctheme">Save</button> 
+								</div>
+								<div class="col-sm-4"></div>
+								
+							</div>
+							
+						</div>
+							<div class="col-md-4">
+							
+							</div>
+							
+						<div style="margin-bottom:3%;"> </div>
+							
+				
+								
+			</form>
+					
+					
+					
+
+
+ 
+</div>
+  
+ 
+  
+  
+  
+  
+  
+  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	
+  </body>
+  
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/sctheme.css" rel="stylesheet">
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  
+  <body style="background-color:cornsilk;">
+  <!--  <h1>Hello, world!</h1> -->
+
+  <div class="container" style="background-color:white; min-height:740px;">
+  
+  
+		  <nav class="navbar navbar-default" style="border-width:0px">
+			<div class="container-fluid"; style="background-color:white" >
+				<div class="navbar-header">
+				
+				<a class="navbar-brand" style="font-family:georgia; color:blue;" >Sight<span style="color:cornflowerblue">City</span></a> 
+			
+		</div>	
+				<p class="navbar-text navbar-right" style="font-style:italic;  color:black; margin-right:20px">Welcome <a href="#" class="navbar-link" style="color:black; margin-right:20px">Dr Elochukwu</a>
+				<a href="#" class="navbar-link" style="margin-left:5px; font-style:normal; color:black">Logout</a>
+				</p>
+				
+				
+			
+			</div>
+			</nav>
+  
+  <!--
+  <div class="row">
+  <div>
+  <h2 class="btn col-md-8" style="color:cornflowerblue;; text-align:center; padding:40px 40px 0px 40px; font-size:300%"> SC AutoSys <h2>
+  
+    
+  <button style="background-color:cornflowerblue; color:white;margin-top:2%;" class="btn col-md-1">Logout</button>
+  </div>
+</div>  
+  -->
+
+			  <ul class="nav nav-tabs">
+					  <li role="presentation"><a href="#">Home</a></li>
+					  <li role="presentation"><a href="#">Customer</a></li>
+					  <li role="presentation" class="active"><a href="#">Partner</a></li>
+					  <li role="presentation"><a href="#">Billing</a></li>
+					  <li role="presentation"><a href="#">Case List</a></li>
+					  <li role="presentation"><a href="#">Report</a></li>
+				</ul>
+
+
+
+					<div>
+
+						<ul class="nav nav-pills" style="margin-top:1%">
+
+						<li role="presentation"><a href="#">New</a></li>
+						  <li role="presentation"class="active"><a href="#">Existing</a></li>
+						  <ul>
+
+  
+					</div>
+
+
+					<div class="row" style="margin-top:4%">
+					
+							<form action="#/create_new.php" class="form-horizontal">
+							
+							<div class="col-sm-4">
+							
+									<div class="form-group">
+										
+											<label for="ptrname" class="col-sm-4 control-label">Partner Name</label>
+										<div class="col-sm-8">
+											<input type="text" id="ptrname" name="ptrname" class="form-control" placeholder="Company name...">
+										</div>
+										
+									</div>
+										
+															
+
+									<div class="form-group">
+										<label for="email" class="col-sm-4 control-label">Email</label>
+										<div class="col-sm-8">
+											<input type="text" id="email" name="email" class="form-control" placeholder="me@sightcity.com...">
+										</div>
+									</div>
+									
+									<div class="row">
+									
+										<div class="col-sm-3"></div>
+										<div class="col-sm-3">
+									<button style="color:white;" class="btn btn-block sctheme">Search</button> 
+										</div>
+										<div class="col-sm-3">
+									<button style="color:white;" class="btn btn-block sctheme">Clear</button> 
+										</div>
+										<div class="col-sm-3"></div>
+									
+									</div>
+									
+							</div>
+							
+							
+											
+							<div class="col-sm-8">
+							
+							<div class="form-group">
+								
+									<label for="ptrname" class="col-sm-2 control-label">Partner Name</label>
+								<div class="col-sm-10">
+									<span id="ptrname"> _____________</span>
+								</div>
+								
+							</div>
+								
+													
+							<div class="form-group">								
+									<label for="address" class="col-sm-2 control-label">Address</label>
+								<div class="col-sm-10">
+									<span id="address"> _____________</span>
+								</div>
+							</div>
+								
+								
+							<div class="form-group">	
+									<label for="phone" class="col-sm-2 control-label">Phone No.</label>
+								<div class="col-sm-10">
+									<span id="phone"> _____________</span>
+								</div>
+							</div>	
+								<div class="form-group">
+								<label for="email" class="col-sm-2 control-label">Email</label>
+								<div class="col-sm-10">
+									<span id="email"> _____________</span>
+								</div>
+							</div>
+							
+							<div class="row">
+							
+								<div class="col-sm-2"></div>
+								<div class="col-sm-3">
+							<button style="color:white;" class="btn btn-block sctheme">Update</button> 
+								</div>
+							<div class="col-sm-2"></div>
+								
+							</div>
+							
+							</div>
+							
+						
+						</div>
+						
+						<div style="margin-bottom:3%;"> </div>
+							
+				</form>
+					
+					
+					</div>
+
+
+ 
+
+  
+ 
+  
+  
+  
+  
+  
+  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	
+  </body>
+  
+</html>

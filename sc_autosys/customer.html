@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SC AutoSys</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/sctheme.css" rel="stylesheet">
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  
+  <body style="background-color:cornsilk;">
+  <!--  <h1>Hello, world!</h1> -->
+
+  <div class="container" style="background-color:white; min-height:740px;">  
+	<nav class="navbar navbar-default" style="border-width:0px">
+		<div class="container-fluid"; style="background-color:white" >
+			<div class="navbar-header">
+				<a class="navbar-brand" style="font-family:georgia; color:blue;" >Sight<span style="color:cornflowerblue">City</span></a> 
+			</div>	
+			<p class="navbar-text navbar-right" style="font-style:italic;  color:black; margin-right:20px">
+				Welcome <a href="#" class="navbar-link" style="color:black; margin-right:20px"><span id="lbl_role">Dr</span> <span id="lbl_fullname">Elochukwu</span></a>
+				<a href="#" class="navbar-link" style="margin-left:5px; font-style:normal; color:black" id="btn_logout">Logout</a>
+			</p>
+		</div>
+	</nav>
+  
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="#">Home</a></li>
+		<li role="presentation" class="active"><a href="#">Customer</a></li>
+		<li role="presentation"><a href="#">Partner</a></li>
+		<li role="presentation"><a href="#">Billing</a></li>
+		<li role="presentation"><a href="#">Case List</a></li>
+		<li role="presentation"><a href="#">Report</a></li>
+	</ul>
+
+	<div>
+		<ul class="nav nav-pills" style="margin-top:1%">
+			<li role="presentation"><a href="#">New</a></li>
+			<li role="presentation" class="active"><a href="#">Existing</a></li>
+		<ul>
+	</div>
+
+	<div class="row" style="margin-top:4%">
+		<form action="#/cust_search.php" class="form-horizontal">
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="cardno" class="col-sm-4 control-label">Card No.</label>
+					<div class="col-sm-8">
+						<input type="text" id="cardno" name="cardno" class="form-control" placeholder="xxxx/xxx/yyyy">
+					</div>
+				</div>
+								
+				<div class="form-group">
+					<label for="sname" class="col-sm-4 control-label">Surname</label>
+					<div class="col-sm-8">
+						<input type="text" id="sname" name="sname" class="form-control" placeholder="Your surname...">
+					</div>
+				</div>	
+							
+				<div class="form-group">
+					<label for="fname" class="col-sm-4 control-label">Firstname</label>
+					<div class="col-sm-8">
+						<input type="text" id="fname" name="fname" class="form-control" placeholder="Your firstname...">
+					</div>	
+				</div>
+								
+				<div class="form-group">	
+					<label for="mobile" class="col-sm-4 control-label">Mobile</label>
+					<div class="col-sm-8">
+						<input type="text" id="mobile" name="mobile" class="form-control" placeholder="080-...">
+					</div>
+				</div>
+							
+				<div class="form-group">	
+					<label for="rship_type" class="col-sm-4 control-label">Relationship</label>
+					<div class="col-sm-8">
+						<select class="form-control">
+							<option value=""></option>
+							<option value="HMO">HMO</option>
+							<option value="Organisation">Organisation</option>
+							<option value="Private">Private</option>
+							<option value="Secondary">Secondary</option>
+						</select>
+					</div>
+				</div>	
+							
+				<div class="form-group">
+					<label for="rship_acc" class="col-sm-4 control-label">Account</label>
+					<div class="col-sm-8">
+						<input type="text" id="rship_acc" name="rship_acc" class="form-control" placeholder="fullname...">
+					</div>
+				</div>											
+							
+				<div class="row">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-3">
+						<button style="color:white;" class="btn btn-block sctheme">Search</button> 
+					</div>
+					<div class="col-sm-3">
+						<button style="color:white;" class="btn btn-block sctheme">Clear</button> 
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+							
+			</div>
+						
+			<div class="col-sm-1"></div>
+							
+			<div class="col-sm-7">
+				<div class="row">
+					<div class="form-group">
+						<label for="cardno" class="col-sm-2 control-label">Card No.</label>
+						<div class="col-sm-4">
+							<span id="cardno"> _____________</span>
+						</div>
+									
+						<label for="enroleeno" class="col-sm-2 control-label">Enrolee ID</label>
+						<div class="col-sm-4">
+							<span id="enroleeno"> _____________</span>
+						</div>
+					</div>
+								
+					<div class="form-group">
+						<label for="fullname" class="col-sm-2 control-label">Fullname</label>
+						<div class="col-sm-10">
+							<span id="fullname"> _____________</span>
+						</div>
+					</div>
+																
+					<div class="form-group">	
+						<label for="gender" class="col-sm-2 control-label">Gender</label>
+						<div class="col-sm-4">
+							<span id="gender"> _____________</span>
+						</div>
+					</div>
+							
+					<div class="form-group">
+						<label for="address" class="col-sm-2 control-label">Address</label>
+						<div class="col-sm-10">
+							<span id="fulladdress"> _____________</span>
+						</div>
+					</div>
+								
+					<div class="form-group">	
+						<label for="dob" class="col-sm-2 control-label">Date of Birth</label>
+						<div class="col-sm-4">
+							<span id="dob"> _____________</span>
+						</div>
+						
+						<label for="age" class="col-sm-2 control-label">Age</label>
+						<div class="col-sm-4">
+							<span id="age"> _____________</span>
+						</div>
+					</div>
+								
+					<div class="form-group">	
+						<label for="occupation" class="col-sm-2 control-label">Occupation</label>
+						<div class="col-sm-4">
+							<span id="occupation"> _____________</span>
+						</div>
+
+						<label for="nok" class="col-sm-2 control-label">Next of Kin</label>
+						<div class="col-sm-4">
+							<span id="nok"> _____________</span>
+						</div>
+					</div>
+						
+					<div class="form-group">	
+						<label for="mobile" class="col-sm-2 control-label">Mobile</label>
+						<div class="col-sm-4">
+							<span id="mobile"> _____________</span>
+						</div>
+
+						<label for="email" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-4">
+							<span id="email"> _____________</span>
+						</div>
+					</div>
+							
+					<div class="form-group">	
+						<label for="rship_type" class="col-sm-2 control-label">Relationship</label>
+						<div class="col-sm-4">
+							<span id="rship_type"> _____________</span>
+						</div>
+
+						<label for="rship_acc" class="col-sm-2 control-label">Account</label>
+						<div class="col-sm-4">
+							<span id="account"> _____________</span>
+						</div>
+					</div>
+							
+					<div class="row">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-3">
+							<button style="color:white;" class="btn btn-block sctheme">Update</button> 
+						</div>
+						<div class="col-sm-3">
+							<button style="color:white; background-color:cornflowerblue;" class="btn btn-block" >Book Appointment</button> 
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+							
+				</div>
+			</div>
+							
+			<div style="margin-bottom:3%;"> </div>
+		</form>
+	</div>
+</div>
+  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	
+	<script>
+		$(document).ready( function() {
+			$.get('api/user/loggedin/', function(data) {
+				data = $.parseJSON(data);
+				console.log(data);
+				$("#lbl_role").html(data.role);
+				$("#lbl_fullname").html(data.fname + ' ' + data.lname);
+			});
+			
+			$("#btn_logout").click(function() {
+				$.get('api/user/logout/', function(data) {
+					data = $.parseJSON(data);
+					console.log(data);
+					window.location.href = "index.html";
+				});
+			});
+		});
+		
+	</script>
+	
+  </body>
+  
+</html>
