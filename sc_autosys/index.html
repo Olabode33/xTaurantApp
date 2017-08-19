@@ -72,7 +72,7 @@
     <script src="js/bootstrap.min.js"></script>
 	
 	<script>
-		$("#loginform").submit(function(e) {
+		$("#loginform").submit(function(e) { 
 			e.preventDefault();
 			//alert("Submit button clikced");
 			$.ajax({
@@ -91,7 +91,7 @@
 				success: function(data) {
 				   //alert (data);
 				   data = $.parseJSON(data);
-				   if(data.status == 1){
+				   if(data.status == 1 && $('#username').val() == 'bene' && $('#password').val() == 'pass'){
 						alert(data.msg);
 						window.location.href = "customers.html";
 				   }
