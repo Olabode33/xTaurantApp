@@ -171,7 +171,7 @@
 			
 			//print_r($users);
 			//echo $uname;
-			$uname = 'bene';
+			//$uname = 'bene';
 			
 			foreach($users as $user){
 				if($uname != '' && strtolower($uname) == strtolower($user['uname']) ){
