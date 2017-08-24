@@ -171,7 +171,7 @@
 			$pass = $_POST['password'];
 			
 			$users = $this->get_user();
-			$msg = array("user" => $_POST['username'], "pass" => $_POST['password']);
+			$msg = array("user" => $user, "pass" => $pass);
 			
 			//print_r($users);
 			//echo '<br>'.$uname;
