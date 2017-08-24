@@ -170,7 +170,7 @@
 			$users = $this->get_user();
 			
 			//print_r($users);
-			//echo '<br>'.$uname;
+			echo '<br>'.$uname;
 			//$uname = 'bene';
 			
 			foreach($users as $user){
