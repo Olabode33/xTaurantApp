@@ -171,7 +171,7 @@
 			$pass = $_POST['password'];
 			
 			$users = $this->get_user();
-			//$msg = array("user" => $_POST['username'], "pass" => $_POST['password']);
+			$msg = array("user" => $_POST['username'], "pass" => $_POST['password']);
 			
 			//print_r($users);
 			//echo '<br>'.$uname;
@@ -188,13 +188,13 @@
 					$_SESSION['sc_branch'] = $user['branch'];
 					$_SESSION['sc_status'] = $user['status'];
 					
-					$msg = array("status" => 1, "msg" => "Logged in successfully");
+					//$msg = array("status" => 1, "msg" => "Logged in successfully");
 					//$msg = $_POST;
 					//return $msg;
-					break;
+					//break;
 				}
 				else {
-					$msg = array("status" => 0, "msg" => "Username not found!");
+					//$msg = array("status" => 0, "msg" => "Username not found!");
 				}
 			}
 			
