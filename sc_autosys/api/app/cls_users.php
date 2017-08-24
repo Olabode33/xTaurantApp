@@ -168,6 +168,7 @@
 			//$pass = isset($_POST['password'])? filter_input(INPUT_POST, $_POST['password']) : '';
 			
 			$users = $this->get_user();
+			$msg = $_POST;
 			
 			//print_r($users);
 			//echo '<br>'.$uname;
@@ -185,7 +186,7 @@
 					$_SESSION['sc_status'] = $user['status'];
 					
 					//$msg = array("status" => 1, "msg" => "Logged in successfully");
-					$msg = $_POST;
+					//$msg = $_POST;
 					return $msg;
 				}
 				else {
