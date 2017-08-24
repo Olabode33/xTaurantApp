@@ -190,7 +190,7 @@
 					return $msg;
 				}
 				else {
-					$msg = array("status" => 0, "msg" => "Username not found!");
+					//$msg = array("status" => 0, "msg" => "Username not found!");
 				}
 			}
 			
