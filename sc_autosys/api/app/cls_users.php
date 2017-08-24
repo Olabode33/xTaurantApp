@@ -186,7 +186,7 @@
 					
 					$msg = array("status" => 1, "msg" => "Logged in successfully");
 					
-					break;
+					return $msg;
 				}
 				else {
 					$msg = array("status" => 0, "msg" => "Username not found!");
