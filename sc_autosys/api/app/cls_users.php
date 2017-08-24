@@ -194,7 +194,7 @@
 					break;
 				}
 				else {
-					$msg = array("status" => 0, "msg" => "Username not found!");
+					$msg = array("status" => 0, "msg" => "User or password not found!");
 				}
 			}
 			
