@@ -161,14 +161,14 @@
 		function login_user() {
 			$msg = array("status" => 0, "msg" => "Invalid login credentials!");
 			
-			//$uname = isset($_POST['username'])? mysql_real_escape_string($_POST['username']) : '';
-			//$pass = isset($_POST['password'])? mysql_real_escape_string($_POST['password']) : '';
+			$uname = isset($_POST['username'])? mysql_real_escape_string($_POST['username']) : '';
+			$pass = isset($_POST['password'])? mysql_real_escape_string($_POST['password']) : '';
 			
 			//$user = isset($_POST['username'])? filter_input(INPUT_POST, $_POST['username']) : '';
 			//$pass = isset($_POST['password'])? filter_input(INPUT_POST, $_POST['password']) : '';
 			
 			$users = $this->get_user();
-			$msg = $_POST;
+			$msg = array("user" = $uname, "pass" => $pass);
 			
 			//print_r($users);
 			//echo '<br>'.$uname;
