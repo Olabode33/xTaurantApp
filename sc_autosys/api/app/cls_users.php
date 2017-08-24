@@ -178,7 +178,7 @@
 			//$uname = 'bene';
 			
 			foreach($users as $user){
-				if($uname != '' && strtolower($uname) == strtolower($user['uname']) ){
+				if($uname != '' && strtolower($uname) == strtolower($user['uname']) && $pass == $user['pword']){
 					$_SESSION['sc_userid'] = $user['userid'];
 					$_SESSION['sc_title'] = $user['title'];
 					$_SESSION['sc_fname'] = $user['fname'];
