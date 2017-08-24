@@ -165,7 +165,7 @@
 			//$pass = isset($_POST['password'])? mysql_real_escape_string($_POST['password']) : '';
 			
 			$user = isset($_POST['username'])? filter_input(INPUT_POST, $_POST['username']) : '';
-			$pass = isset($_POST['password'])> filter_input(INPUT_POST, $_POST['password']) : '';
+			$pass = isset($_POST['password'])? filter_input(INPUT_POST, $_POST['password']) : '';
 			
 			$users = $this->get_user();
 			
