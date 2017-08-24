@@ -168,7 +168,7 @@
 			//$pass = isset($_POST['password'])? filter_input(INPUT_POST, $_POST['password']) : '';
 			
 			$users = $this->get_user();
-			$msg = array("user" => $uname, "pass" => $pass);
+			$msg = array("user" => $_POST['username'], "pass" => $pass);
 			
 			//print_r($users);
 			//echo '<br>'.$uname;
