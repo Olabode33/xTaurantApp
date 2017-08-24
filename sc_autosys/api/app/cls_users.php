@@ -164,13 +164,13 @@
 			//$uname = isset($_POST['username'])? mysql_real_escape_string($_POST['username']) : '';
 			//$pass = isset($_POST['password'])? mysql_real_escape_string($_POST['password']) : '';
 			
-			$user = isset($_POST['username'])? filter_input(INPUT_POST, $_POST['username']) : '';
-			$pass = isset($_POST['password'])? filter_input(INPUT_POST, $_POST['password']) : '';
+			//$user = isset($_POST['username'])? filter_input(INPUT_POST, $_POST['username']) : '';
+			//$pass = isset($_POST['password'])? filter_input(INPUT_POST, $_POST['password']) : '';
 			
 			$users = $this->get_user();
 			
 			//print_r($users);
-			echo '<br>'.$uname;
+			//echo '<br>'.$uname;
 			//$uname = 'bene';
 			
 			foreach($users as $user){
@@ -184,8 +184,8 @@
 					$_SESSION['sc_branch'] = $user['branch'];
 					$_SESSION['sc_status'] = $user['status'];
 					
-					$msg = array("status" => 1, "msg" => "Logged in successfully");
-					
+					//$msg = array("status" => 1, "msg" => "Logged in successfully");
+					$msg = $_POST;
 					return $msg;
 				}
 				else {
