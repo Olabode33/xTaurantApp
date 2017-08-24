@@ -91,13 +91,13 @@
 				success: function(data) {
 				   //alert (data);
 				   data = $.parseJSON(data);
-				   if( $('#username').val() == 'bene' && $('#password').val() == 'pass'){
-						alert(data);
-						//window.location.href = "customers.html";
-					   	console.log(data);
+				   if($data.status == 1){
+						alert(data.msg);
+						window.location.href = "customers.html";
+					   	//console.log(data);
 				   }
 				   else {
-						alert("Invalid login credentials!");
+						alert(data.msg);
 				   }
 				}
 			});
