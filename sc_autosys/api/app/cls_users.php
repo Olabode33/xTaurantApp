@@ -164,14 +164,14 @@
 			//$uname = isset($_POST['username'])? mysql_real_escape_string($_POST['username']) : '';
 			//$pass = isset($_POST['password'])? mysql_real_escape_string($_POST['password']) : '';
 			
-			$uname = isset($_POST['username'])? filter_input(INPUT_POST, $_POST['username']) : '';
-			$pass = isset($_POST['password'])? filter_input(INPUT_POST, $_POST['password']) : '';
+			//$uname = isset($_POST['username'])? filter_input(INPUT_POST, $_POST['username']) : '';
+			//$pass = isset($_POST['password'])? filter_input(INPUT_POST, $_POST['password']) : '';
 			
-			//$uname = $_POST['username'];
-			//$pass = $_POST['password'];
+			$uname = $_POST['username'];
+			$pass = $_POST['password'];
 			
 			$users = $this->get_user();
-			$msg = array("user" => $uname, "pass" => $pass);
+			//$msg = array("user" => $uname, "pass" => $pass);
 			
 			//print_r($users);
 			//echo '<br>'.$uname;
@@ -188,13 +188,13 @@
 					$_SESSION['sc_branch'] = $user['branch'];
 					$_SESSION['sc_status'] = $user['status'];
 					
-					//$msg = array("status" => 1, "msg" => "Logged in successfully");
+					$msg = array("status" => 1, "msg" => "Logged in successfully");
 					//$msg = $_POST;
 					//return $msg;
-					//break;
+					break;
 				}
 				else {
-					//$msg = array("status" => 0, "msg" => "Username not found!");
+					$msg = array("status" => 0, "msg" => "Username not found!");
 				}
 			}
 			
