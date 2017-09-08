@@ -149,7 +149,7 @@
 
 					<label for="rship_acc" class="col-sm-2 control-label"><span class="text-danger">*</span>Account</label>
 					<div class="col-sm-4">
-						<input type="text" id="rship_acc" name="rship_acc" class="form-control" placeholder="Relationship Account..." Required>
+						<input type="text" id="rship_acc" name="rship_acc" class="form-control" placeholder="Relationship Account...">
 						<!--select class="form-control" required id="rship_acc" name="rship_acc">
 							<option value="">-- Select a type</option>
 							<option value="">James</option>
@@ -166,7 +166,7 @@
 				<button type="submit" style="color:white; text-align: left;" class="btn btn-block sctheme">
 					<i class="fa fa-save" id="save_icon"></i> Save
 				</button> 
-				<a style="color:white; text-align: left;" class="btn btn-block btn-danger btn-block hidden" id="btn_delete" href="#"><i class="fa fa-trash"></i> Delete</a> 
+				<a style="color:white; text-align: left;" class="btn btn-block btn-danger btn-block hidden disabled" id="btn_delete" href="#"><i class="fa fa-trash"></i> Delete</a> 
 			</div>
 							
 			<div style="margin-bottom:3%;"> </div>
@@ -208,30 +208,30 @@
 							$("#nok").val(item.nok);
 							
 							$("#btn_clear").addClass("hidden");
-							$("#btn_delete").removeClass("hidden");
-							$("#btn_delete").bind("click", function(){
-								$.get('api/Customers_RestController.php?view=delete&id='+item.cid, function(data) {
-									console.log(data);
-									 data = $.parseJSON(data);
-									 if(data.status == 1){
-										$("#save_icon").removeClass("fa-spinner fa-pulse");
-										$("#save_icon").addClass("fa-save");
-										$("#insert_alert").removeClass("alert-info");
-										$("#insert_alert").addClass("alert-success");
-										$("#insert_msg").html(data.msg);
-										$("#insert_alert").removeClass("hidden");
-										$("#newcus_form").trigger("reset");
-									}
-									else {
-										$("#save_icon").removeClass("fa-spinner fa-pulse");
-										$("#save_icon").addClass("fa-save");
-										$("#insert_alert").removeClass("alert-info");
-										$("#insert_alert").addClass("alert-danger");
-										$("#insert_msg").html(data.msg);
-										$("#insert_cus").removeClass("hidden");
-									}
-								});
-							});
+							//$("#btn_delete").removeClass("hidden");
+							//$("#btn_delete").bind("click", function(){
+							//	$.get('api/Customers_RestController.php?view=delete&id='+item.cid, function(data) {
+							//		console.log(data);
+							//		 data = $.parseJSON(data);
+							//		 if(data.status == 1){
+							//			$("#save_icon").removeClass("fa-spinner fa-pulse");
+							//			$("#save_icon").addClass("fa-save");
+							//			$("#insert_alert").removeClass("alert-info");
+							//			$("#insert_alert").addClass("alert-success");
+							//			$("#insert_msg").html(data.msg);
+							//			$("#insert_alert").removeClass("hidden");
+							//			$("#newcus_form").trigger("reset");
+							//		}
+							//		else {
+							//			$("#save_icon").removeClass("fa-spinner fa-pulse");
+							//			$("#save_icon").addClass("fa-save");
+							//			$("#insert_alert").removeClass("alert-info");
+							//			$("#insert_alert").addClass("alert-danger");
+							//			$("#insert_msg").html(data.msg);
+							//			$("#insert_cus").removeClass("hidden");
+							//		}
+							//	});
+							//});
 						});
 					}
 				});
