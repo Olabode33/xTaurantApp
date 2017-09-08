@@ -93,7 +93,7 @@
 					<div class="col-sm-2">
 						<button class="btn btn-default btn-block" onclick="view_summary()" style="text-align: left;"><i class="fa fa-reply"></i> Back To Summary</button>
 						<a style="color:white; text-align: left;" class="btn btn-block sctheme btn-block" id="btn_udpated" href="#"><i class="fa fa-pencil-square-o"></i> Update</a> 
-						<a style="color:white; background-color:cornflowerblue; text-align: left;" class="btn btn-block" id="btn_book_app" href="#"><i class="fa fa-calendar-plus-o"></i> Book Appointment</a> 
+						<a style="color:white; background-color:cornflowerblue; text-align: left;" class="btn btn-block disabled" id="btn_book_app" href="#"><i class="fa fa-calendar-plus-o"></i> Book Appointment</a> 
 					</div>
 				</div>
 			</div>
@@ -185,7 +185,7 @@
 					$("#rship_type").html(item.rship_type);
 					$("#rship_account").html(item.rship_account);
 					$("#btn_udpated").attr("href", "newcust.php?id="+item.cid);
-					$("#btn_book_app").attr("href", "newcust.php?id="+item.cid);
+					//$("#btn_book_app").attr("href", "newcust.php?id="+item.cid);
 				});
 			});
 		}
