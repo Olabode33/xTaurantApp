@@ -60,7 +60,7 @@
 			</div>
 		</nav>
 			<ul class="nav nav-tabs container">
-				<li role="presentation"><a href="index.php" class="<?php echo (basename($_SERVER['PHP_SELF'])) == "home.php" ? "active" : "" ; ?>"><i class="fa fa-home"></i>Home</a></li>
+				<li role="presentation"  class="<?php echo (basename($_SERVER['PHP_SELF'])) == "home.php" ? "active" : "" ; ?>"><a href="#"><i class="fa fa-home"></i>Home</a></li>
 				<li role="presentation"  class="<?php echo (basename($_SERVER['PHP_SELF'])) == "customers.php" || (basename($_SERVER['PHP_SELF'])) == "newcust.php" ? "active" : "" ; ?>"><a href="customers.php">Customer</a></li>
 				<li role="presentation"  class="<?php echo (basename($_SERVER['PHP_SELF'])) == "home" ? "active" : "" ; ?>"><a href="#">Partner</a></li>
 				<li role="presentation"  class="<?php echo (basename($_SERVER['PHP_SELF'])) == "home.php" ? "active" : "" ; ?>"><a href="#">Billing</a></li>
