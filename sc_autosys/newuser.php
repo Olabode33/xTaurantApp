@@ -124,6 +124,8 @@
 							$("#fname").val(item.fname);
 							$("#role").val(item.role).change();
 							$("#uname").val(item.uname);	
+							$("#pass").val(item.pword);
+							$("#cpass").val(item.pword);
 							$("#ubranch").val(item.branch).change();
 							
 							$("#btn_clear").addClass("hidden");
