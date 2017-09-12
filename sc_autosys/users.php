@@ -136,12 +136,12 @@
 						rowData = $('<td></td>').text(item.branch);
 						row.append(rowData);
 							
-						//viewButton = $('<a></a>').addClass("btn btn-warning btn-xs details").text("Edit");
-						//viewButton.attr('href', 'newuser.php?id='+item.userid);
-						//viewButton.attr('data-toggle', 'tooltip');
-						//viewButton.attr('title', 'View Details');
+						viewButton = $('<a></a>').addClass("btn btn-warning btn-xs details").text("Edit");
+						viewButton.attr('href', 'newuser.php?id='+item.userid);
+						viewButton.attr('data-toggle', 'tooltip');
+						viewButton.attr('title', 'View Details');
 						//viewButton.attr('', 'view_details('+item.cid+')');
-						//rowData = $('<td></td>').append(viewButton);
+						rowData = $('<td></td>').append(viewButton);
 							
 						row.append(rowData);
 							
