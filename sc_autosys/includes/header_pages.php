@@ -36,15 +36,18 @@
 							window.location.href = "change-pass.php?id="+data.userid;
 						}
 						if(data.role != "Admin"){
-							$("#btn_user").attr("href", "#");
-							$("#btn_user").attr("disabled", "true");
+							
 						}
 						
 						if(data.role == 'Doctor'){
 							$(".doctor-only").removeClass("hidden");
+							 
 						}
 						else {
 							$(".doctor-only").addClass("hidden");
+							$("#nav_treatory").addClass("disabled");
+							$("#nav_treatory_anchor").attr("href", "#");
+							$("#nav_treatory_anchor").attr("disabled", "true");
 						}
 						
 						if(data.role == 'Front Desk'){
@@ -53,6 +56,7 @@
 						else {
 							$(".frontdesk-only").addClass("hidden");
 						}
+						
 					}
 					else {
 						window.location.href = "index.php?a=loginerr";
@@ -217,7 +221,7 @@
 					</ul>
 				</li>
 				<!--li role="presentation" id="nav_billing"><a href="#">Doctor</a></li-->
-				<li role="presentation"  id="nav_treatory"><a href="waiting.php"><i class="fa fa-user-md"></i> Doctor's View</a></li>
+				<li role="presentation"  id="nav_treatory"><a href="waiting.php" id="nav_treatory_anchor"><i class="fa fa-user-md"></i> Doctor's View</a></li>
 				<li role="presentation"  id="nav_report"><a href="#">Report</a></li>
 				<li role="presentation"  id="nav_admin" class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-gears"></i> Administration <span class="caret"></span></a>
