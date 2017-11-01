@@ -119,7 +119,7 @@
 				   if(data.status == 1){
 						$("#login_icon").removeClass("fa-spinner fa-pulse");
 						$("#login_icon").addClass("fa-check");
-						window.location.href = "customers.php";
+						window.location.href = "home.php";
 				   }
 				   else {
 						$("#login_icon").removeClass("fa-spinner fa-pulse");
