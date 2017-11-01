@@ -59,6 +59,13 @@
 						</div>
 					</div>
 				</form>
+				<div class="container"style="margin-top:10px;">
+				Copyright 2017
+				
+				<span class="pull-right">
+					v0.1
+				</span>
+			</div>
 			</div>
 		</div>
 
