@@ -914,7 +914,8 @@
 		$(document).ready( function() {
 			var c_cid = location.search;
 			c_cid = c_cid.split("=");
-			c_cid = c_cid[1];
+			c_cid = c_cid[1].split("&");
+			c_cid = c_cid[0];
 			//console.log(c_cid);
 			
 			if(c_cid != undefined){			
