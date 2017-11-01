@@ -12,15 +12,10 @@
 			<div style="margin-top: 3%">
 				<form id="loginform" method="post" action="api/user/login/">
 					<div style="padding-left:35%; padding-right:35%">
-						<div class="alert alert-info <?php echo isset($_GET["a"]) ? '' : 'hidden' ; ?>" role="alert" id="login_alert">
+						<div class="alert alert-info hidden" role="alert" id="login_alert">
 							<i class="fa fa-info-circle"></i> 
 							<span id="login_msg">
-								<?php
-									if(isset($_GET["a"]) && $_GET["a"] == "logout")
-										echo "Logged Out Successfully";
-									if(isset($_GET["a"]) && $_GET["a"] == "loginerr")
-										echo "Please login to access the system";
-								?>
+
 							</span>
 						</div>
 						<div class="form-group">
@@ -69,11 +64,30 @@
 
   
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery-2.1.4.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    
 	
 	<script>
+		$(document).ready(function() {
+			var login_msg = location.search;
+			login_msg = login_msg.split("=");
+			login_msg = login_msg[1];
+			console.log(login_msg);
+			
+			if(login_msg != undefined){
+				$("#login_alert").removeClass("hidden");
+				
+				if(login_msg == "logout")
+					$("#login_msg").html("Logged Out Successfully");
+				if(login_msg == "loginerr")
+					$("#login_msg").html("Please login to access the system");
+				if(login_msg == "changepass")
+					$("#login_msg").html("Password changed successfully!<br>Please Login again with you new passwordy");
+			}
+		});
+	
 		$("#loginform").submit(function(e) { 
 			e.preventDefault();
 			
@@ -82,8 +96,8 @@
 			
 			$.ajax({
 				//url: $('#myform').attr('action'),
-				//url: 'api/user/login/',
-				url: 'api/Users_RestController.php?view=login',
+				//url: 'api/user/login/', api/Controllers/Customers_RestController.php?view=all
+				url: 'api/Controllers/Users_RestController.php?view=login',
 				type: 'post',
 				//dataType: 'application/json',
 				//data: $('#myForm').serialize(),

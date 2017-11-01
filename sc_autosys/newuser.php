@@ -2,15 +2,19 @@
 		include "includes/header_pages.php";
 	?>
 		
-	<div>
+	<!--div>
 		<ul class="nav nav-pills" style="margin-top: 10px; margin-bottom: 10px;">
 			<li role="presentation" class="active"><a href="newuser.php"><i class="fa fa-user-plus"></i> New</a></li>
-			<!--li role="presentation"><a href="users.php">Existing</a></li-->
+			<!--li role="presentation"><a href="users.php">Existing</a></li>
 		</ul>
 	</div>
-	<hr  style="margin-top: 10px; margin-bottom: 10px;">
+	<hr  style="margin-top: 10px; margin-bottom: 10px;"-->
 
-	<div class="row" style="margin-top:20px">
+	<div class="row" >
+		<h4 class="col-sm-12" style="margin-top: 15px;">
+			<i class="fa fa-user-circle"></i> User Management
+			<hr style="margin-top: 10px; margin-bottom: 10px;">
+		</h4>
 		<div class="col-xs-12 " id="insert_cus">
 			<div class="alert alert-info alert-dismissible hidden" role="alert" id="insert_alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>	
@@ -19,72 +23,83 @@
 			</div>
 		</div>
 		<form action="#" class="form-horizontal" id="newuser_form">
-			<div class="col-md-10">		
-				<div class="form-group">
-					<label for="cardno" class="col-sm-2 control-label">Title</label>
-					<div class="col-sm-4">
-						<input type="text" id="title" name="title" class="form-control" placeholder="Enter Title">
+			<div class="col-md-10">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<span id="pnl_title">User's<span> Details
+						</h4>
 					</div>
-				</div>
-								
-				<div class="form-group">
-					<label for="sname" class="col-sm-2 control-label"> <span class="text-danger">*</span>Surname</label>
-					<div class="col-sm-4">
-						<input type="text" id="sname" name="sname" class="form-control" placeholder="Your surname..." required>
-					</div>
-								
-					<label for="fname" class="col-sm-2 control-label">Firstname</label>
-					<div class="col-sm-4">
-						<input type="text" id="fname" name="fname" class="form-control" placeholder="Your firstname...">
-					</div>	
-				</div>
-								
-				<div class="form-group">	
-					<label for="uname" class="col-sm-2 control-label">Username</label>
-					<div class="col-sm-4">
-						<input type="text" id="uname" name="uname" class="form-control" placeholder="Your username / login name...">
-					</div>
-				</div>
-				
-				<div class="form-group">	
-					<label for="role" class="col-sm-2 control-label">Role</label>
-					<div class="col-sm-4">
-						<select class="form-control" Required id="role" name="role">
-							<option value="">-- Select a role --</option>
-							<option value="Doctor">Doctor</option>
-							<option value="Receptionist">Receptionist</option>
-							<option value="Admin">Admin</option>
-						</select>
-					</div>
-				</div>
-								
-				<div class="form-group" id="pass_grp">								
-					<label for="pass" class="col-sm-2 control-label">Password</label>
-					<div class="col-sm-4">
-						<input type="password" id="pass" name="pass" class="form-control" placeholder="Enter your password..." required>
-					</div>
-					
-					<label for="cpass" class="col-sm-2 control-label">Confirm Password</label>
-					<div class="col-sm-4">
-						<input type="password" id="cpass" name="cpass" class="form-control" placeholder="Confirm your password..." required>
-					</div>
-				</div>
+					<div class="panel-collapse" role="tabpanel" aria-labelledby="case_header">
+						<div class="panel-body">
+							<div class="form-group">
+								<label for="cardno" class="col-sm-2 control-label">Title</label>
+								<div class="col-sm-4">
+									<input type="text" id="title" name="title" class="form-control" placeholder="Enter Title">
+								</div>
+							</div>
+											
+							<div class="form-group">
+								<label for="sname" class="col-sm-2 control-label"> <span class="text-danger">*</span>Surname</label>
+								<div class="col-sm-4">
+									<input type="text" id="sname" name="sname" class="form-control" placeholder="Your surname..." required>
+								</div>
+											
+								<label for="fname" class="col-sm-2 control-label">Firstname</label>
+								<div class="col-sm-4">
+									<input type="text" id="fname" name="fname" class="form-control" placeholder="Your firstname...">
+								</div>	
+							</div>
+											
+							<div class="form-group">	
+								<label for="uname" class="col-sm-2 control-label">Username</label>
+								<div class="col-sm-4">
+									<input type="text" id="uname" name="uname" class="form-control" placeholder="Your username / login name...">
+								</div>
+							</div>
 							
-				<div class="form-group">	
-					<label for="ubranch" class="col-sm-2 control-label">Branch</label>
-					<div class="col-sm-4">
-						<select class="form-control" id="ubranch" name="ubranch">
-							<option value="">-- Select a branch --</option>
-							<option value="VI">VI</option>
-							<option value="Ikeja">Ikeja</option>
-						</select>
+							<div class="form-group">	
+								<label for="role" class="col-sm-2 control-label">Role</label>
+								<div class="col-sm-4">
+									<select class="form-control" Required id="role" name="role">
+										<option value="">-- Select a role --</option>
+										<option value="Doctor">Doctor</option>
+										<option value="Front Desk">Front Desk</option>
+										<option value="Admin">Administrator</option>
+									</select>
+								</div>
+							</div>
+											
+							<div class="form-group" id="pass_grp">								
+								<label for="pass" class="col-sm-2 control-label">Password</label>
+								<div class="col-sm-4">
+									<input type="password" id="pass" name="pass" class="form-control" placeholder="Enter your password..." required>
+								</div>
+								
+								<label for="cpass" class="col-sm-2 control-label">Confirm Password</label>
+								<div class="col-sm-4">
+									<input type="password" id="cpass" name="cpass" class="form-control" placeholder="Confirm your password..." required>
+								</div>
+							</div>
+										
+							<div class="form-group">	
+								<label for="ubranch" class="col-sm-2 control-label">Branch</label>
+								<div class="col-sm-4">
+									<select class="form-control" id="ubranch" name="ubranch">
+										<option value="">-- Select a branch --</option>
+										<option value="VI">VI</option>
+										<option value="Ikeja">Ikeja</option>
+									</select>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="col-md-2">
 				<a class="btn btn-block btn-default" style="text-align: left;" id="btn_back" href="users.php">
-					<i class="fa fa-reply" id=""></i> Back to list
+					<i class="fa fa-users" id=""></i> Back to all Users
 				</a> 
 				<button type="reset" class="btn btn-block btn-default" style="text-align: left;" id="btn_clear">
 					<i class="fa fa-eraser" id=""></i> Clear
@@ -114,7 +129,7 @@
 			id = id[1];
 			if(id != undefined){			
 				//$("#frm_title").html("Edit User")
-				$.get('api/Users_RestController.php?view=single&id='+id, function(data) {
+				$.get('api/Controllers/Users_RestController.php?view=single&id='+id, function(data) {
 					data = $.parseJSON(data);
 					//console.log(data);
 					if(data.status === undefined){
@@ -127,6 +142,11 @@
 							$("#pass").val(item.pword);
 							$("#cpass").val(item.pword);
 							$("#ubranch").val(item.branch).change();
+							
+							
+							$("#pass").attr("disable", false);
+							$("#cpass").attr("disable", false);							
+							$("#pass_grp").addClass("hidden");
 							
 							$("#btn_clear").addClass("hidden");
 						});
@@ -142,7 +162,7 @@
 				
 				if(validate()){
 					$.ajax({
-						url: (id != undefined) ?  'api/Users_RestController.php?view=edit&id=' + id : 'api/Users_RestController.php?view=new',
+						url: (id != undefined) ?  'api/Controllers/Users_RestController.php?view=edit&id=' + id : 'api/Controllers/Users_RestController.php?view=new',
 						type: 'post',
 						data : {
 							'title' : $("#title").val(),
@@ -165,6 +185,7 @@
 								$("#insert_msg").html(data.msg);
 								$("#insert_alert").removeClass("hidden");
 								$("#newuser_form").trigger("reset");
+								window.location.href = "users.php?msg="+data.msg	
 						   }
 						   else {
 								$("#save_icon").removeClass("fa-spinner fa-pulse");

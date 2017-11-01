@@ -2,15 +2,17 @@
 		include "includes/header_pages.php";
 	?>
 	
-	<div>
-		<ul class="nav nav-pills" style="margin-top:1%">
-			<li role="presentation"><a href="newuser.php"><i class="fa fa-user-plus"></i> New</a></li>
-			<!--li role="presentation" class="active"><a href="users.php">Existing</a></li-->
-		</ul>
-	</div>
-	<hr  style="margin-top: 10px; margin-bottom: 10px;">
-
-	<div class="row" style="margin-top: 20px">
+	<div class="row">
+		<h4 class="col-sm-12" style="margin-top: 15px;">
+			<i class="fa fa-user-circle"></i> User Management
+			<hr style="margin-top: 10px; margin-bottom: 10px;">
+		</h4>
+		<div class="col-xs-12 hidden" id="result_msg">
+			<div class="alert alert-success alert-dismissable" role="alert">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<i class="fa fa-check"></i> <span id="result_msg_txt">Showing top 10 results</span>
+			</div>
+		</div>
 		<div class="col-xs-12 col-sm-6 hidden" style="margin-bottom: 20px">
 			<div class="input-group">
 				<div class="input-group-addon"><i class="fa fa-search"></i></div>
@@ -105,6 +107,14 @@
 			$("#summary-list").addClass("hidden");
 			search();
 			
+			var id = location.search;	
+			id = id.split("=");
+			id = id[1];
+			if(id != undefined){
+				$("#result_msg_txt").html(decodeURIComponent(id));
+				$("#result_msg").removeClass("hidden");
+			}
+			
 			$("#txt_search").keyup(function () {
 				search();
 			});
@@ -113,7 +123,7 @@
 		function search () {
 			var term = $("#txt_search").val();
 			
-			$.get('api/Users_RestController.php?view=all', function(data) {
+			$.get('api/Controllers/Users_RestController.php?view=all', function(data) {
 				data = $.parseJSON(data);
 				//console.log(data);
 					
@@ -121,7 +131,7 @@
 				$("#tbl_users tbody").empty();
 					
 				if(data.status != 0) {
-					$("#loading_txt").html("Showing top " + data.length + " results!");
+					$("#loading_txt").html("Showing all users!");
 					
 					$.each(data, function(i, item) {
 						row = $('<tr></tr>');
@@ -154,6 +164,7 @@
 					
 				$("#summary-list").removeClass("hidden");
 				$("#loading_cus").removeClass("hidden");
+	
 			});
 		}
 		
@@ -163,7 +174,7 @@
 			$("#details").removeClass("hidden");
 			$("#loading_cus").addClass("hidden");
 			
-			$.get('api/Customers_RestController.php?view=single&id='+id, function(data) {
+			$.get('api/Controllers/Customers_RestController.php?view=single&id='+id, function(data) {
 				data = $.parseJSON(data);
 				console.log(data);
 				
