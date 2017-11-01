@@ -9,4 +9,5 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/sctheme.css" rel="stylesheet">
 		<link rel="stylesheet" href="fonts/font-awesome.min.css" type="text/css" media="screen">
+		<script src="js/jquery-2.1.4.min.js"></script>
 	</head>
