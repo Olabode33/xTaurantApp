@@ -94,14 +94,8 @@
 												ifnull(email1, ''),  
 												ifnull(email2, ''),  
 												ifnull(rship_type, ''),  
-												ifnull(rship_account, ''),  
-												ifnull(dob, ''),  
-												ifnull(age, ''),  
-												ifnull(address, ''),  
-												ifnull(address_area, ''),  
-												ifnull(address_state, ''),  
-												ifnull(occupation, ''),  
-												ifnull(nok_fname, '')
+												ifnull(rship_account, '') 
+												
 									) LIKE ?
 						ORDER BY surname, firstname
 						LIMIT 0, 10;";
@@ -557,8 +551,8 @@
 			$primary_acct = $_POST["primary"];
 			$primary_id = $_POST["pri_id"];
 						
-			$sql = "INSERT INTO sc_customers (fname, lname, gender, relationship, phone, email, primary_acct, primary_cid, date_created)
-						VALUES (?, ?, ?, ? ?, ?, ?, ?, now());";
+			$sql = "INSERT INTO sc_dependents (fname, lname, gender, relationship, phone, email, primary_acct, primary_cid, date_created)
+						VALUES (?, ?, ?, ?, ?, ?, ?, ?, now());";
 			
 			try{
 				$conn = $this->db_obj->db_connect();
@@ -587,6 +581,141 @@
 			
 			return array_filter($msg);
 		}
+		
+		function get_dependents($id = 0) {
+			$customers = array("status" => 0, "msg" => "No Customers found");
+			
+			$sql = "SELECT dep_id, fname, lname, gender, relationship, phone, email, primary_acct, primary_cid, date_created
+					FROM `sc_dependents`
+					WHERE primary_acct = ?";
+			
+			try {
+				$conn = $this->db_obj->db_connect();
+				$stmt = $conn->prepare($sql);
+				$stmt->bind_param('s', $id);
+				$stmt->execute();
+				$stmt->bind_result($dep_id, $fname, $lname, $gender, $relationship, $phone, $email, $primary_acct, $primary_cid, $date_created);
+				
+				while($stmt->fetch()){
+					$result[] = array("dep_id" => $dep_id, 
+									  "fname" => $fname, 
+									  "lname" => $lname, 
+									  "gender" => $gender, 
+									  "rship" => $relationship, 
+									  "phone" => $phone, 
+									  "email" => $email, 
+									  "pri_acct" => $primary_acct, 
+									  "pri_id" => $primary_cid, 
+									  "date_created" => $date_created);
+				}
+				
+				if(isset($result))
+					$customers = $result;
+				
+				mysqli_close($conn);
+			}
+			catch (Exception $e){
+				
+			}
+			
+			return $customers;
+		}		
+		
+		function get_treatory_summary($id = 0) {
+			$customers = array("status" => 0, "msg" => "No Historical records found");
+			
+			$sql = "SELECT client_history_id, complain, `diagonis`, `plan`, `prescription`, `comments`, `customer_id`, `customer_cardno`, `date_created`
+					FROM `sc_diagnosis`
+					WHERE customer_id = ?";
+			
+			try {
+				$conn = $this->db_obj->db_connect();
+				$stmt = $conn->prepare($sql);
+				$stmt->bind_param('s', $id);
+				$stmt->execute();
+				$stmt->bind_result($treatory_id, $complain, $diagonis, $plan, $prescription, $comments, $customer_id, $customer_cardno, $date_created);
+				
+				while($stmt->fetch()){
+					$result[] = array("treatory_id" => $treatory_id, 
+									  "complain" => $complain, 
+									  "diagonis" => $diagonis, 
+									  "plan" => $plan, 
+									  "prescription" => $prescription, 
+									  "comments" => $comments, 
+									  "customer_id" => $customer_id, 
+									  "customer_cardno" => $customer_cardno, 
+									  "date_created" => $date_created);
+				}
+				
+				if(isset($result))
+					$customers = $result;
+				
+				mysqli_close($conn);
+			}
+			catch (Exception $e){
+				
+			}
+			
+			return $customers;
+		}		
+		
+		function get_treatory_details($id = 0) {
+			$customers = array("status" => 0, "msg" => "No Historical records found");
+			
+			$sql = "SELECT `complain`, `pxohx`, `pxmhx`, `pxfohx`, `pxfmhx`, `lee`, 
+							 `va_unaided_r_far`, `va_unaided_r_near`, `va_unaided_l_far`, `va_unaided_l_near`, 
+							 `va_aided_r_far`, `va_aided_r_near`, `va_aided_l_far`, `va_aided_l_near`, 
+							 `va_pinhole_r_far`, `va_pinhole_r_near`, `va_pinhole_l_far`, `va_pinhole_l_near`,
+							`old_spec_r`, `old_spec_l`, `iop_r`, `iop_l`, `near`,
+							`ar_sph_cyl_x_axis_r`, `ar_sph_cyl_x_axis_l`, `sub_sph_cyl_x_axis_r`, `sub_sph_cyl_x_axis_l`, `sub_add_r`, `sub_add_l`, `sub_va_r`, `sub_va_l`,
+							`fb_sph_cyl_x_axis_r`, `fb_sph_cyl_x_axix_l`, `fb_add_r`, `fb_add_l`, `fb_va_r`, `fb_va_l`,
+							`lids`, `conjuctiva`, `cornea`, `anterior_chamber`, `iris`, `pupil`, `lens`, `colour_vision`, `ee_others`,
+							`vitreous`, `choroid`, `retina`, `macular`, `disc`, `osle_others`,
+							`diagonis`, `plan`, `prescription`, `comments`, `customer_id`, `customer_cardno`, `date_created`
+					FROM `sc_diagnosis`
+					WHERE client_history_id = ?";
+			
+			try {
+				$conn = $this->db_obj->db_connect();
+				$stmt = $conn->prepare($sql);
+				$stmt->bind_param('s', $id);
+				$stmt->execute();
+				$stmt->bind_result($complain, $pxohx, $pxmhx, $pxfohx, $pxfmhx, $lee, 
+								   $va_unaided_r_far, $va_unaided_r_near, $va_unaided_l_far, $va_unaided_l_near, 
+								   $va_aided_r_far, $va_aided_r_near, $va_aided_l_far, $va_aided_l_near, 
+								   $va_pinhole_r_far, $va_pinhole_r_near, $va_pinhole_l_far, $va_pinhole_l_near,
+								   $old_spec_r, $old_spec_l, $iop_r, $iop_l, $near,
+								   $ar_sph_cyl_x_axis_r, $ar_sph_cyl_x_axis_l, $sub_sph_cyl_x_axis_r, $sub_sph_cyl_x_axis_l, $sub_add_r, $sub_add_l, $sub_va_r, $sub_va_l,
+								   $fb_sph_cyl_x_axis_r, $fb_sph_cyl_x_axix_l, $fb_add_r, $fb_add_l, $fb_va_r, $fb_va_l,
+								   $lids, $conjuctiva, $cornea, $anterior_chamber, $iris, $pupil, $lens, $colour_vision, $ee_others,
+								   $vitreous, $choroid, $retina, $macular, $disc, $osle_others,
+								   $diagonis, $plan, $prescription, $comments, $customer_id, $customer_cardno, $date_created);
+				
+				while($stmt->fetch()){
+					$result[] = array('complain' => $complain, 'pxohx' => $pxohx, 'pxmhx' => $pxmhx, 'pxfohx' => $pxfohx, 'pxfmhx' => $pxfmhx, 'lee' => $lee, 
+									  'va_unaided_r_far' => $va_unaided_r_far, 'va_unaided_r_near' => $va_unaided_r_near, 'va_unaided_l_far' => $va_unaided_l_far, 'va_unaided_l_near' => $va_unaided_l_near, 
+									  'va_aided_r_far' => $va_aided_r_far, 'va_aided_r_near' => $va_aided_r_near, 'va_aided_l_far' => $va_aided_l_far, 'va_aided_l_near' => $va_aided_l_near, 
+									  'va_pinhole_r_far' => $va_pinhole_r_far, 'va_pinhole_r_near' => $va_pinhole_r_near, 'va_pinhole_l_far' => $va_pinhole_l_far, 'va_pinhole_l_near' => $va_pinhole_l_near,
+									  'old_spec_r' => $old_spec_r, 'old_spec_l' => $old_spec_l, 'iop_r' => $iop_r, 'iop_l' => $iop_l, 'near' => $near,
+									  'ar_sph_cyl_x_axis_r' => $ar_sph_cyl_x_axis_r, 'ar_sph_cyl_x_axis_l' => $ar_sph_cyl_x_axis_l, 'sub_sph_cyl_x_axis_r' => $sub_sph_cyl_x_axis_r, 
+									  'sub_sph_cyl_x_axis_l' => $sub_sph_cyl_x_axis_l, 'sub_add_r' => $sub_add_r, 'sub_add_l' => $sub_add_l, 'sub_va_r' => $sub_va_r, 'sub_va_l' => $sub_va_l,
+									  'fb_sph_cyl_x_axis_r' => $fb_sph_cyl_x_axis_r, 'fb_sph_cyl_x_axix_l' => $fb_sph_cyl_x_axix_l, 'fb_add_r' => $fb_add_r, 'fb_add_l' => $fb_add_l, 'fb_va_r' => $fb_va_r, 'fb_va_l' => $fb_va_l,
+									  'lids' => $lids, 'conjuctiva' => $conjuctiva, 'cornea' => $cornea, 'anterior_chamber' => $anterior_chamber, 'iris' => $iris, 'pupil' => $pupil, 'lens' => $lens, 'colour_vision' => $colour_vision, 'ee_others' => $ee_others,
+									  'vitreous' => $vitreous, 'choroid' => $choroid, 'retina' => $retina, 'macular' => $macular, 'disc' => $disc, 'osle_others' => $osle_others,
+									  'diagonis' => $diagonis, 'plan' => $plan, 'prescription' => $prescription, 'comments' => $comments, 'customer_id' => $customer_id, 'customer_cardno' => $customer_cardno, 'date_created' => $date_created);
+				}
+				
+				if(isset($result))
+					$customers = $result;
+				
+				mysqli_close($conn);
+			}
+			catch (Exception $e){
+				
+			}
+			
+			return $customers;
+		}		
 		
 	}
 ?>
