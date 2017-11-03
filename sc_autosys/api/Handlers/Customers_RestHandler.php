@@ -186,5 +186,61 @@
 			$this->getResponse($rawData, $statusCode);
 		}
 		
+		public function addDependent() {
+			$customer_obj = new Customers();
+			$rawData = $customer_obj->add_dependant();
+			
+			if(empty($rawData)) {
+				$statusCode = 404;
+				$rawData = array('Error' => 'An error occured add dependent!');
+			} else {
+				$statusCode = 200;
+			}
+			
+			$this->getResponse($rawData, $statusCode);
+		}
+		
+		public function getDependents($id) {
+			$customer_obj = new Customers();
+			$rawData = $customer_obj->get_dependents($id);
+			
+			if(empty($rawData)) {
+				$statusCode = 404;
+				$rawData = array('Error' => 'An error occured add dependent!');
+			} else {
+				$statusCode = 200;
+			}
+			
+			$this->getResponse($rawData, $statusCode);
+		}
+		
+		public function treatorySummary($id) {
+			$customer_obj = new Customers();
+			$rawData = $customer_obj->get_treatory_summary($id);
+			
+			if(empty($rawData)) {
+				$statusCode = 404;
+				$rawData = array('Error' => 'An error retrieving treatment history summary!');
+			} else {
+				$statusCode = 200;
+			}
+			
+			$this->getResponse($rawData, $statusCode);
+		}
+		
+		public function treatoryDetail($id) {
+			$customer_obj = new Customers();
+			$rawData = $customer_obj->get_treatory_details($id);
+			
+			if(empty($rawData)) {
+				$statusCode = 404;
+				$rawData = array('Error' => 'An error retrieving treatment history detail!');
+			} else {
+				$statusCode = 200;
+			}
+			
+			$this->getResponse($rawData, $statusCode);
+		}
+		
 	}
 ?>
