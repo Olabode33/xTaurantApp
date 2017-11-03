@@ -35,9 +35,6 @@
 						if(data.status == "New" && cpage[0] != "change-pass.php"){
 							window.location.href = "change-pass.php?id="+data.userid;
 						}
-						if(data.role != "Admin"){
-							
-						}
 						
 						if(data.role == 'Doctor'){
 							$(".doctor-only").removeClass("hidden");
@@ -46,15 +43,20 @@
 						else {
 							$(".doctor-only").addClass("hidden");
 							$("#nav_treatory").addClass("disabled");
-							$("#nav_treatory_anchor").attr("href", "#");
-							$("#nav_treatory_anchor").attr("disabled", "true");
 						}
 						
 						if(data.role == 'Front Desk'){
 							$(".frontdesk-only").removeClass("hidden");
+							$("#nav_treatory_anchor").attr("href", "#");
+							$("#nav_treatory_anchor").attr("disabled", "true");
 						}
 						else {
 							$(".frontdesk-only").addClass("hidden");
+						}
+						
+						if(data.role == "Admin"){
+							$(".doctor-only").removeClass("hidden");
+							$(".frontdesk-only").removeClass("hidden");
 						}
 						
 					}
@@ -97,6 +99,9 @@
 						activateNavigation("nav_treatory");
 						break;
 					case "waiting":
+						activateNavigation("nav_treatory");
+						break;
+					case "history":
 						activateNavigation("nav_treatory");
 						break;
 					default:
