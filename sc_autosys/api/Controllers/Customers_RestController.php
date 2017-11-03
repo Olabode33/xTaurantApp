@@ -89,6 +89,29 @@
 			$customersRestHandler->examine();
 			break;
 			
+		case "add_dependent":
+			//to handle REST Url /customer/new/
+			$customersRestHandler = new Customers_RestHandler();
+			$customersRestHandler->addDependent();
+			break;
+			
+		case "get_dependents":
+			//to handle REST Url /customer/new/
+			$customersRestHandler = new Customers_RestHandler();
+			$customersRestHandler->getDependents($_GET['id']);
+			break;
+			
+		case "treatory_summary":
+			//to handle REST Url /customer/new/
+			$customersRestHandler = new Customers_RestHandler();
+			$customersRestHandler->treatorySummary($_GET['id']);
+			break;
+			
+		case "treatory_detail":
+			//to handle REST Url /customer/new/
+			$customersRestHandler = new Customers_RestHandler();
+			$customersRestHandler->treatoryDetail($_GET['id']);
+			break;
 		//case "":
 			//404 -not found
 			//break;
