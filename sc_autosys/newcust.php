@@ -131,7 +131,6 @@
 										<option value="HMO">HMO</option>
 										<option value="Organisation">Organisation</option>
 										<option value="Private">Private</option>
-										<option value="Secondary">Secondary</option>
 									</select>
 								</div>
 

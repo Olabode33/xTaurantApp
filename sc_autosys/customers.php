@@ -129,13 +129,13 @@
 								<div id="collapseNewCase" class="panel-collapse collapse" role="tabpanel" aria-labelledby="case_header">
 									<div class="panel-body">
 										<div class="table-responsive">
-											<table class="table table-hover" id="tbl_history" >
-												<thead class="thead-inverse">	
-													<th class="col-xs-1" >S/n</th>						
+											<table class="table table-hover" id="tbl_treatory2" >
+												<thead class="thead-inverse">							
 													<th class="col-xs-2">Date</th>
-													<th class="col-xs-2">Diagnosis</th>
-													<th class="col-xs-2">Prescription</th>	
-													<th class="col-xs-5">Note</th>		
+													<th class="col-xs-3">Diagnosis</th>
+													<th class="col-xs-3">Prescription</th>	
+													<th class="col-xs-3">Note</th>		
+													<th class="col-xs-1">Action</th>		
 												</thead>
 												
 												<tbody>
@@ -200,9 +200,9 @@
 									<div class="panel-body">
 										<div class="table-responsive">
 											<table class="table table-hover" id="tbl_dependents" >
-												<thead class="thead-inverse">	
-													<th class="col-xs-1" >S/n</th>						
+												<thead class="thead-inverse">							
 													<th class="col-xs-3">Name</th>
+													<th class="col-xs-1" >Gender</th>
 													<th class="col-xs-2">Relationship</th>
 													<th class="col-xs-2">Phone</th>	
 													<th class="col-xs-2">Email</th>		
@@ -224,7 +224,9 @@
 						<button class="btn btn-default btn-block" onclick="view_summary()" style="text-align: left;"><i class="fa fa-reply"></i> Back To Summary</button>
 						<a style="color:white; text-align: left;" class="btn btn-block sctheme btn-block" id="btn_udpated" href="#"><i class="fa fa-pencil-square-o"></i> Update</a> 
 						<a style="color:white; background-color:cornflowerblue; text-align: left;" class="btn btn-block" id="btn_book_app" href="#"><i class="fa fa-calendar-plus-o"></i> Book Appointment</a> 
-						<a style="text-align: left;" class="btn btn-block btn-success" id="btn_add_dep" href="#"><i class="fa fa-plus"></i>  &nbsp;Add Dependent</a> 
+						<button type="button" style="text-align: left;" class="btn btn-block btn-success" id="btn_add_dep">
+							<i class="fa fa-plus"></i>  &nbsp;Add Dependent
+						</button> 
 					</div>
 				</div>
 			</div>
@@ -289,6 +291,87 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="hidden" id="add_new_dep">
+				<div class="panel panel-primary">
+					<div class="panel-heading" role="tab">
+						<h4 class="panel-title">Add New Dependent</h4>
+					</div>
+					<div class="panel-body">
+						<form action="#" class="form-horizontal" id="frm_new_dep">
+							<div class="alert alert-info hidden" role="alert" id="new_dep_alert">
+								<i class="fa fa-info-circle"></i> 
+								<span id="new_dep_msg"></span>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="pri_acct_name">Primary Account Name</label>
+								<div class=" col-sm-4">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-user-circle"></i>
+										</div>
+										<input type="text" placeholder="" name="pri_acct_name" id="pri_acct_name" class="form-control" disabled>
+										<input type="hidden" placeholder="" name="pri_acct_id" id="pri_acct_id" class="form-control">
+									</div>
+								</div>
+								<label class="col-sm-2 control-label" for="pri_cardno">Card No.</label>
+								<div class="col-sm-4">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-address-card-o"></i>
+										</div>
+										<input type="text" placeholder="" name="pri_cardno" id="pri_cardno" class="form-control" disabled>
+									</div>
+								</div>
+							</div>	
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="newdep_fname">First Name</label>
+								<div class=" col-sm-4">
+									<input type="text" placeholder="Dependent's First Name" name="newdep_fname" id="newdep_fname" class="form-control">
+								</div>
+								<label class="col-sm-2 control-label" for="newdep_lname">Last Name</label>
+								<div class="col-sm-4">
+									<input type="text" placeholder="Dependent's Last Name" name="newdep_lname" id="newdep_lname" class="form-control">
+								</div>
+							</div>	
+							<div class="form-group">
+								<label for="newdep_gender" class="col-sm-2 control-label">Gender</label>
+								<div class="col-sm-4">
+									<label class="radio-inline">
+										<input type="radio" name="newdep_gender" id="newdep_gender" value="Male"> Male
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="newdep_gender" id="newdep_gender" value="Female"> Female
+									</label>
+								</div>
+								<label class="col-sm-2 control-label" for="newdep_relationship">Relationship</label>
+								<div class="col-sm-4">
+									<input type="text" placeholder="Relationship with Primary Accounts" name="newdep_relationship" id="newdep_relationship" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="newdep_phone">Mobile Number</label>
+								<div class=" col-sm-4">
+									<input type="text" placeholder="Dependent's mobile number" name="newdep_phone" id="newdep_phone" class="form-control">
+								</div>
+								<label class="col-sm-2 control-label" for="newdep_email">Email</label>
+								<div class="col-sm-4">
+									<input type="text" placeholder="Dependent's email" name="newdep_email" id="newdep_email" class="form-control">
+								</div>
+							</div>	
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="submit"></label>
+								<div class=" col-sm-4">
+									<button type="submit" class="btn btn-primary" id="btn_add_new_dep"><i class="fa fa-plus" id="new_dep_icon"></i> Add Dependent</button> 
+									<button type="button" class="btn btn-default" id="btn_back2details"><i class="fa fa-reply"></i> Go Back</button> 
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		
 		</div>
 	</div>
 	
@@ -339,7 +422,7 @@
 						rowData = $('<td></td>').text(item.email1);
 						row.append(rowData);
 							
-						viewButton = $('<button></button>').addClass("btn btn-primary btn-xs details").text("View Details");
+						viewButton = $('<button></button>').addClass("btn btn-primary btn-xs details").html('<i class="fa fa-info-circle" aria-hidden="true"></i> View Details');
 						viewButton.attr('href', '#');
 						viewButton.attr('data-toggle', 'tooltip');
 						viewButton.attr('title', 'View Details');
@@ -359,6 +442,7 @@
 				$("#loading_cus").removeClass("hidden");
 				$("#details").addClass("hidden");
 				$("#book_appointment").addClass("hidden");
+				$("#add_new_dep").addClass("hidden");
 			});
 		}
 		
@@ -368,6 +452,7 @@
 			$("#details").removeClass("hidden");
 			$("#loading_cus").addClass("hidden");
 			$("#book_appointment").addClass("hidden");
+			$("#add_new_dep").addClass("hidden");
 			
 			$.get('api/Controllers/Customers_RestController.php?view=single&id='+id, function(data) {
 				data = $.parseJSON(data);
@@ -390,14 +475,99 @@
 					$("#chistory_note").html(item.casenote);
 					$("#btn_udpated").attr("href", "newcust.php?id="+item.cid);
 					$("#btn_book_app").attr("onclick", "book_c_appt("+item.cid+")");
+					$("#btn_add_dep").attr("onclick", "add_new_dep("+item.cid+")");
+				
+					
+					//Load Dependents Details
+					$.get('api/Controllers/Customers_RestController.php?view=get_dependents&id='+item.cardno, function(data) {
+						data = $.parseJSON(data);
+						//console.log(data);
+							
+						var t = $("#tbl_dependents");
+						$("#tbl_dependents tbody").empty();
+							
+						if(data.status != 0) {					
+							$.each(data, function(i, item) {
+								row = $('<tr></tr>');
+								rowData = $('<td></td>').text(item.lname + " " + item.fname);
+								row.append(rowData);								
+								rowData = $('<td></td>').text(item.gender);
+								row.append(rowData);
+								rowData = $('<td></td>').text(item.rship);
+								row.append(rowData);
+								rowData = $('<td></td>').text(item.phone);
+								row.append(rowData);
+								rowData = $('<td></td>').text(item.email);
+								row.append(rowData);
+									
+								bookAppButton = $('<button></button>').addClass("btn btn-primary btn-xs details").html('<i class="fa fa-calendar-plus-o"></i> Book Appointment');
+								//viewButton.attr('href', '#');
+								bookAppButton.attr('data-toggle', 'tooltip');
+								bookAppButton.attr('title', 'Book an Appointment for dependent');
+								bookAppButton.attr('onclick', 'book_c_appt('+item.pri_id+')');
+								rowData = $('<td></td>').append(bookAppButton);
+									
+								row.append(rowData);
+									
+								t.append(row);
+							});
+						}
+						else {
+							$("#tbl_dependents tbody").html(data.msg);
+						}
+					});
 				});
+				
+				
 			});
+			
+			//Load Treatory
+			$.get('api/Controllers/Customers_RestController.php?view=treatory_summary&id='+id, function(datat) {
+				datat = $.parseJSON(datat);
+				console.log(datat);
+				var tt = $("#tbl_treatory2");
+				$("#tbl_treatory2 tbody").empty();
+					
+				if(datat.status != 0) {					
+					$.each(datat, function(i, itemt) {		
+						var app_date = itemt.date_created.split(" "); 
+						//app_date = app_date[0]
+						
+						row = $('<tr></tr>');
+						rowData = $('<td></td>').text(app_date[0]);
+						row.append(rowData);
+						rowData = $('<td></td>').text(itemt.diagonis);
+						row.append(rowData);
+						rowData = $('<td></td>').text(itemt.prescription);
+						row.append(rowData);
+						rowData = $('<td></td>').text(itemt.comments);
+						row.append(rowData);
+							
+						viewButton = $('<a></a>').addClass("btn btn-primary btn-xs doctor-only").html('<i class="fa fa-info-circle"></i> View');
+						//viewButton.attr('href', '#');
+						viewButton.attr('data-toggle', 'tooltip');
+						viewButton.attr('title', 'View Details');
+						viewButton.attr('href', 'history.php?id='+itemt.customer_id+'&h='+itemt.treatory_id);
+						rowData = $('<td></td>').append(viewButton);
+							
+						row.append(rowData);
+							
+						tt.append(row);
+					});
+				}
+				else {
+					$("#tbl_treatory2 tbody").html(datat.msg);
+				}
+			});
+			
+			
 		}
 		
 		function view_summary() {
 			$("#summary-list").removeClass("hidden");
 			$("#details").addClass("hidden");
 			$("#book_appointment").addClass("hidden");
+			$("#add_new_dep").addClass("hidden");
 			search();
 		}
 		
@@ -419,6 +589,7 @@
 			
 			$("#summary-list").addClass("hidden");
 			$("#details").addClass("hidden");
+			$("#add_new_dep").addClass("hidden");
 			$("#book_appointment").removeClass("hidden");
 		}
 		
@@ -460,6 +631,73 @@
 				}
 			});
 		});
+	
+		function add_new_dep(id) {
+			$("#frm_book_appoitment").trigger("reset");
+			$.get('api/Controllers/Customers_RestController.php?view=single&id='+id, function(data) {
+				data = $.parseJSON(data);
+				//console.log(data);
+				
+				$.each(data, function(i, item) {
+					$("#pri_acct_id").val(id);
+					$("#pri_cardno").val(item.cardno);
+					$("#pri_acct_name").val(item.title + " " + item.fname + ' ' + item.lname);
+					$("#btn_back2details").attr("onclick", "view_details("+id+")");
+				});
+				
+			});
+			
+			$("#summary-list").addClass("hidden");
+			$("#details").addClass("hidden");
+			$("#book_appointment").addClass("hidden");
+			$("#add_new_dep").removeClass("hidden");
+		}
+	
+		$("#frm_new_dep").submit(function(e) { 
+			$("#new_dep_icon").removeClass("fa-plus");
+			$("#new_dep_icon").addClass("fa-spinner fa-pulse");
+				
+			e.preventDefault();
+			
+			$.ajax({
+				url: 'api/Controllers/Customers_RestController.php?view=add_dependent',
+				type: 'post',
+				data : {
+					'pri_id' : $("#pri_acct_id").val(),
+					'primary': $("#pri_cardno").val(),
+					'fname': $("#newdep_fname").val(),
+					'lname': $("#newdep_lname").val(),
+					'gender': $("#newdep_gender").val(),
+					'rship': $("#newdep_relationship").val(),
+					'email': $("#newdep_email").val(),
+					'phone': $("#newdep_phone").val(),
+				},
+				success: function(data) {
+				   //alert (data);
+				   data = $.parseJSON(data);
+				   if(data.status == 1){
+						$("#new_dep_icon").removeClass("fa-spinner fa-pulse");
+						$("#new_dep_icon").addClass("fa-plus");
+						view_details($("#pri_acct_id").val());
+						$("#loading_cus_txt").html(data.msg);
+						$("#search_icon").removeClass("fa-search");
+						$("#search_icon").addClass("fa-check");
+						$("#loading_cus").removeClass("hidden");
+				   }
+				   else {
+						$("#new_dep_icon").removeClass("fa-spinner fa-pulse");
+						$("#new_dep_icon").addClass("fa-save");
+						$("#book_appt_alert").removeClass("alert-info");
+						$("#book_appt_alert").removeClass("alert-warning");
+						$("#book_appt_alert").addClass("alert-danger");
+						$("#loading_cus_txt").html(data.msg);
+						$("#book_appt_alert").removeClass("hidden");
+				   }
+				}
+			});
+		});
+	
+	
 	</script>	
 	<?php
 		include "includes/footer_pages.php";
