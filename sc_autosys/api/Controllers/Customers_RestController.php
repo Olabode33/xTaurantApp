@@ -107,10 +107,28 @@
 			$customersRestHandler->treatorySummary($_GET['id']);
 			break;
 			
+		case "dep_treatory_summary":
+			//to handle REST Url /customer/new/
+			$customersRestHandler = new Customers_RestHandler();
+			$customersRestHandler->treatorySummary($_GET['id'], 'dep');
+			break;
+			
 		case "treatory_detail":
 			//to handle REST Url /customer/new/
 			$customersRestHandler = new Customers_RestHandler();
 			$customersRestHandler->treatoryDetail($_GET['id']);
+			break;
+			
+		case "get_weekly_appointments":
+			//to handle REST Url /customer/new/
+			$customersRestHandler = new Customers_RestHandler();
+			$customersRestHandler->getAppointment(-1);
+			break;
+			
+		case "get_monthly_appointments":
+			//to handle REST Url /customer/new/
+			$customersRestHandler = new Customers_RestHandler();
+			$customersRestHandler->getAppointment(-2);
 			break;
 		//case "":
 			//404 -not found
