@@ -371,20 +371,23 @@
 			$card_no = $_POST["ccard"];
 			$date = $_POST["cdate"];
 			$notes = $_POST["cnotes"];
+			$branch = $_POST["cbranch"];
+			$dep_id = isset($_POST['cdep_id']) ? $_POST['cdep_id'] : 0;
 			$status = "New";
-			$branch = $_SESSION['sc_branch'];
+			//$branch = $_SESSION['sc_branch'];
 			
-			$sql = "INSERT INTO sc_appointments (customer_cardno, appointment_date, appointment_notes, appointment_status, appointment_branch, date_created)
-						VALUES (?, ?, ?, ?, ?, now());";
+			$sql = "INSERT INTO sc_appointments (customer_cardno, appointment_date, appointment_notes, appointment_status, appointment_branch, dep_id, date_created)
+						VALUES (?, ?, ?, ?, ?, ?, now());";
 			
 			try{
 				$conn = $this->db_obj->db_connect();
 				$stmt = $conn->prepare($sql);
-				$stmt->bind_param('sssss', $card_no,
+				$stmt->bind_param('sssssd', $card_no,
 														 $date,
 														 $notes,
 														 $status,
-														 $branch);
+														 $branch,
+														 $dep_id);
 				if($stmt->execute() ){
 					$msg = array("status" => 1, "msg" => "Appointment was booked successfully");
 				}
@@ -404,9 +407,12 @@
 		function get_appointment($id = 0) {
 			$customers = array("status" => 0, "msg" => "No Customers found");
 			
-			$sql = "SELECT a.appointment_id, a.customer_cardno, a.appointment_date, a.appointment_notes, a.appointment_status, a.appointment_branch, a.date_created, concat(c.title, ' ', c.surname, ' ', c.firstname) as 'fullname', c.cid 
+			$sql = "SELECT a.appointment_id, a.customer_cardno, a.appointment_date, a.appointment_notes, a.appointment_status, a.appointment_branch, a.date_created, 
+					concat(c.title, ' ', c.surname, ' ', c.firstname) as 'fullname', c.cid,
+					concat(d.fname, ' ', d.lname) as 'dep', ifnull(d.dep_id, 0) as 'dep_id'
 						FROM sc_autosys_2.sc_appointments a
 							LEFT JOIN sc_autosys_2.sc_customers c ON a.customer_cardno = c.cardno
+							LEFT JOIN sc_autosys_2.sc_dependents d ON a.dep_id = d.dep_id
 						WHERE appointment_branch = ? AND a.appointment_date = curdate()
 						ORDER BY case when a.appointment_status = 'New' then 1
 												  when a.appointment_status = 'Open' then 2
@@ -414,11 +420,43 @@
 												  else 4
 										   end asc, a.appointment_date desc";
 						
-			if($id != 0)
-				$sql = "SELECT a.appointment_id, a.customer_cardno, a.appointment_date, a.appointment_notes, a.appointment_status, a.appointment_branch, a.date_created, concat(c.title, ' ', c.surname, ' ', c.firstname) as 'fullname', c.cid
+			if($id > 0)
+				$sql = "SELECT a.appointment_id, a.customer_cardno, a.appointment_date, a.appointment_notes, a.appointment_status, a.appointment_branch, a.date_created, 
+			concat(c.title, ' ', c.surname, ' ', c.firstname) as 'fullname', c.cid,
+			concat(d.fname, ' ', d.lname) as 'dep', ifnull(d.dep_id, 0) as 'dep_id'
 							FROM sc_autosys_2.sc_appointments a
 								LEFT JOIN sc_autosys_2.sc_customers c ON a.customer_cardno = c.cardno
+								LEFT JOIN sc_autosys_2.sc_dependents d ON a.dep_id = d.dep_id
 							WHERE appointment_branch = ? AND a.appointment_id = ? AND a.appointment_date = curdate()
+							ORDER BY case when a.appointment_status = 'New' then 1
+													  when a.appointment_status = 'Open' then 2
+													  when a.appointment_status = 'Closed' then 3
+													  else 4
+											   end asc, a.appointment_date desc";
+										
+										
+			if($id == -1)
+				$sql = "SELECT a.appointment_id, a.customer_cardno, a.appointment_date, a.appointment_notes, a.appointment_status, a.appointment_branch, a.date_created, 
+						concat(c.title, ' ', c.surname, ' ', c.firstname) as 'fullname', c.cid,
+						concat(d.fname, ' ', d.lname) as 'dep', ifnull(d.dep_id, 0) as 'dep_id'
+							FROM sc_autosys_2.sc_appointments a
+								LEFT JOIN sc_autosys_2.sc_customers c ON a.customer_cardno = c.cardno
+								LEFT JOIN sc_autosys_2.sc_dependents d ON a.dep_id = d.dep_id
+							WHERE appointment_branch = ? AND week(a.appointment_date) = week(curdate())
+							ORDER BY case when a.appointment_status = 'New' then 1
+													  when a.appointment_status = 'Open' then 2
+													  when a.appointment_status = 'Closed' then 3
+													  else 4
+											   end asc, a.appointment_date desc";
+											   
+			if($id == -2)
+				$sql = "SELECT a.appointment_id, a.customer_cardno, a.appointment_date, a.appointment_notes, a.appointment_status, a.appointment_branch, a.date_created, 
+						concat(c.title, ' ', c.surname, ' ', c.firstname) as 'fullname', c.cid,
+						concat(d.fname, ' ', d.lname) as 'dep', ifnull(d.dep_id, 0) as 'dep_id'
+							FROM sc_autosys_2.sc_appointments a
+								LEFT JOIN sc_autosys_2.sc_customers c ON a.customer_cardno = c.cardno
+								LEFT JOIN sc_autosys_2.sc_dependents d ON a.dep_id = d.dep_id
+							WHERE appointment_branch = ? AND month(a.appointment_date) = month(curdate())
 							ORDER BY case when a.appointment_status = 'New' then 1
 													  when a.appointment_status = 'Open' then 2
 													  when a.appointment_status = 'Closed' then 3
@@ -429,14 +467,14 @@
 				$conn = $this->db_obj->db_connect();
 				$stmt = $conn->prepare($sql);
 				
-				if($id != 0){
+				if($id > 0){
 					$stmt->bind_param('sd',  $_SESSION['sc_branch'], $id);
 				}
 				else
 					$stmt->bind_param('s',  $_SESSION['sc_branch']);
 				
 				$stmt->execute();
-				$stmt->bind_result($id, $cardno, $date, $notes, $status, $branch, $date_created, $name, $cid);
+				$stmt->bind_result($id, $cardno, $date, $notes, $status, $branch, $date_created, $name, $cid, $dep, $dep_id);
 				
 				while($stmt->fetch()){
 					$result[] = array("id" => $id,
@@ -446,7 +484,9 @@
 												"status" => $status,
 												"branch" => $branch,
 												"fname" => $name,
-												"cid" => $cid
+												"cid" => $cid,
+												"dep" => $dep,
+												"dep_id" => $dep_id
 												);
 				}
 				
@@ -489,40 +529,44 @@
 		
 		function doctors_examination(){
 			//$_POST = array_map( 'stripslashes', $_POST );
+			$ignore_param = '';
 			
 			$sql = "INSERT INTO `sc_diagnosis`
 						(`complain`, `pxohx`, `pxmhx`, `pxfohx`, `pxfmhx`, `lee`, 
 						 `va_unaided_r_far`, `va_unaided_r_near`, `va_unaided_l_far`, `va_unaided_l_near`, 
 						 `va_aided_r_far`, `va_aided_r_near`, `va_aided_l_far`, `va_aided_l_near`, 
 						 `va_pinhole_r_far`, `va_pinhole_r_near`, `va_pinhole_l_far`, `va_pinhole_l_near`,
-						`old_spec_r`, `old_spec_l`, `iop_r`, `iop_l`, `near`,
+						 `va_far_nlp_r`, `va_far_nlp_l`, `va_far_lp_r`, `va_far_lp_l`,
+						`old_spec_r`, `old_spec_l`, `iop_r`, `iop_l`, `near`, `ospadd`,
 						`ar_sph_cyl_x_axis_r`, `ar_sph_cyl_x_axis_l`, `sub_sph_cyl_x_axis_r`, `sub_sph_cyl_x_axis_l`, `sub_add_r`, `sub_add_l`, `sub_va_r`, `sub_va_l`,
-						`fb_sph_cyl_x_axis_r`, `fb_sph_cyl_x_axix_l`, `fb_add_r`, `fb_add_l`, `fb_va_r`, `fb_va_l`,
+						`fb_sph_cyl_x_axis_r`, `fb_sph_cyl_x_axix_l`, `fb_add_r`, `fb_add_l`, `fb_va_r`, `fb_va_l`, `fb_near`,
 						`lids`, `conjuctiva`, `cornea`, `anterior_chamber`, `iris`, `pupil`, `lens`, `colour_vision`, `ee_others`,
 						`vitreous`, `choroid`, `retina`, `macular`, `disc`, `osle_others`,
-						`diagonis`, `plan`, `prescription`, `comments`, `customer_id`, `customer_cardno`, `date_created`)
+						`diagonis`, `plan`, `prescription`, `comments`, `customer_id`, `customer_cardno`, `dep_id`, `date_created`)
 						VALUES
-						(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now());
+						(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+						 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now());
 				
 			";
 			
 			try{
 				$conn = $this->db_obj->db_connect();
 				$stmt = $conn->prepare($sql);
-				$stmt->bind_param('ssssssssssssssssssssssssssssssssssssssssssssssssssssssssds', 
+				$stmt->bind_param('ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdsd', 
 												$_POST['chiefcomplain'], $_POST['pxohx'], $_POST['pxmhx'], $_POST['pxfohx'], $_POST['pxfmhx'], $_POST['lee'],
-												$_POST['va_far_unaided_r'], $_POST['va_near_unaided_r'], $_POST['va_far_unaided_l'], $_POST['va_near_unaided_l'],
-												$_POST['va_far_aided_r'], $_POST['va_near_aided_r'], $_POST['va_far_aided_l'], $_POST['va_near_aided_l'],
-												$_POST['va_far_pinhole_r'], $_POST['va_near_pinhole_r'], $_POST['va_far_pinhole_l'], $_POST['va_near_pinhole_l'],
-												$_POST['ospr'], $_POST['ospl'], $_POST['iopr'], $_POST['iopl'], $_POST['ospn'],
+												$_POST['va_far_unaided_r'], $_POST['va_near_unaided_r'], $_POST['va_far_unaided_l'], $ignore_param,
+												$_POST['va_far_aided_r'], $_POST['va_near_aided_r'], $_POST['va_far_aided_l'], $ignore_param,
+												$_POST['va_far_pinhole_r'], $_POST['va_near_pinhole_r'], $_POST['va_far_pinhole_l'], $ignore_param,
+												$_POST['va_far_nlp_r'], $_POST['va_far_nlp_l'], $_POST['va_far_lp_l'], $_POST['va_far_lp_r'],
+												$_POST['ospr'], $_POST['ospl'], $_POST['iopr'], $_POST['iopl'], $_POST['ospn'], $_POST['ospadd'],
 												$_POST['sph_cyl_x_axis_r'], $_POST['sph_cyl_x_axis_l'], $_POST['sub_sph_cyl_x_axis_r'], $_POST['sub_sph_cyl_x_axis_l'], 
 												$_POST['sub_add_r'], $_POST['sub_add_l'], 
 												$_POST['sub_va_r'], $_POST['sub_va_l'],
-												$_POST['fb_sph_cyl_x_axis_r'], $_POST['fb_sph_cyl_x_axis_l'], $_POST['fb_add_r'], $_POST['fb_add_l'], $_POST['fb_va_r'], $_POST['fb_va_l'],
+												$_POST['fb_sph_cyl_x_axis_r'], $_POST['fb_sph_cyl_x_axis_l'], $_POST['fb_add_r'], $_POST['fb_add_l'], $_POST['fb_va_r'], $_POST['fb_va_l'], $_POST['fb_near_new'],
 												$_POST['libs'], $_POST['con'], $_POST['cornea'], $_POST['antc'], $_POST['iris'], $_POST['pupl'], $_POST['lens'], $_POST['colv'], $_POST['oth'],
 												$_POST['vitr'], $_POST['chor'], $_POST['ret'], $_POST['mac'], $_POST['disc'], $_POST['oth1'], 
 												$_POST['diag'], $_POST['plan'], $_POST['presc'], $_POST['comments'], 
-												$_POST['cid'], $_POST['c_cardno']);
+												$_POST['cid'], $_POST['c_cardno'], $_POST['dep_id']);
 				if($stmt->execute() ){
 					$msg = array("status" => 1, "msg" => "Your record inserted successfully");
 				}
@@ -583,11 +627,16 @@
 		}
 		
 		function get_dependents($id = 0) {
-			$customers = array("status" => 0, "msg" => "No Customers found");
+			$customers = array("status" => 0, "msg" => "No Dependents found");
 			
 			$sql = "SELECT dep_id, fname, lname, gender, relationship, phone, email, primary_acct, primary_cid, date_created
 					FROM `sc_dependents`
 					WHERE primary_acct = ?";
+			
+			if(is_numeric($id) && $id > 0)
+				$sql = "SELECT dep_id, fname, lname, gender, relationship, phone, email, primary_acct, primary_cid, date_created
+						FROM `sc_dependents`
+						WHERE dep_id = ?";
 			
 			try {
 				$conn = $this->db_obj->db_connect();
@@ -621,19 +670,24 @@
 			return $customers;
 		}		
 		
-		function get_treatory_summary($id = 0) {
+		function get_treatory_summary($id = 0, $type = 'cus') {
 			$customers = array("status" => 0, "msg" => "No Historical records found");
 			
-			$sql = "SELECT client_history_id, complain, `diagonis`, `plan`, `prescription`, `comments`, `customer_id`, `customer_cardno`, `date_created`
-					FROM `sc_diagnosis`
-					WHERE customer_id = ?";
+			$sql = "SELECT client_history_id, complain, `diagonis`, `plan`, `prescription`, `comments`, `customer_id`, `customer_cardno`, `dep_id`, `date_created`
+					FROM `sc_diagnosis` ";
+					
+			if($type == 'dep'){
+				$sql .= ' WHERE dep_id = ?';
+			}
+			else
+				$sql .= ' WHERE customer_id = ?';
 			
 			try {
 				$conn = $this->db_obj->db_connect();
 				$stmt = $conn->prepare($sql);
-				$stmt->bind_param('s', $id);
+				$stmt->bind_param('d', $id);
 				$stmt->execute();
-				$stmt->bind_result($treatory_id, $complain, $diagonis, $plan, $prescription, $comments, $customer_id, $customer_cardno, $date_created);
+				$stmt->bind_result($treatory_id, $complain, $diagonis, $plan, $prescription, $comments, $customer_id, $customer_cardno, $dep_id, $date_created);
 				
 				while($stmt->fetch()){
 					$result[] = array("treatory_id" => $treatory_id, 
@@ -644,6 +698,7 @@
 									  "comments" => $comments, 
 									  "customer_id" => $customer_id, 
 									  "customer_cardno" => $customer_cardno, 
+									  "dependant_id" => $dep_id,
 									  "date_created" => $date_created);
 				}
 				
@@ -666,12 +721,13 @@
 							 `va_unaided_r_far`, `va_unaided_r_near`, `va_unaided_l_far`, `va_unaided_l_near`, 
 							 `va_aided_r_far`, `va_aided_r_near`, `va_aided_l_far`, `va_aided_l_near`, 
 							 `va_pinhole_r_far`, `va_pinhole_r_near`, `va_pinhole_l_far`, `va_pinhole_l_near`,
-							`old_spec_r`, `old_spec_l`, `iop_r`, `iop_l`, `near`,
+							 `va_far_nlp_r`, `va_far_nlp_r`, `va_far_lp_l`, `va_far_lp_r`,
+							`old_spec_r`, `old_spec_l`, `iop_r`, `iop_l`, `near`, `ospadd`,
 							`ar_sph_cyl_x_axis_r`, `ar_sph_cyl_x_axis_l`, `sub_sph_cyl_x_axis_r`, `sub_sph_cyl_x_axis_l`, `sub_add_r`, `sub_add_l`, `sub_va_r`, `sub_va_l`,
-							`fb_sph_cyl_x_axis_r`, `fb_sph_cyl_x_axix_l`, `fb_add_r`, `fb_add_l`, `fb_va_r`, `fb_va_l`,
+							`fb_sph_cyl_x_axis_r`, `fb_sph_cyl_x_axix_l`, `fb_add_r`, `fb_add_l`, `fb_va_r`, `fb_va_l`, `fb_near`,
 							`lids`, `conjuctiva`, `cornea`, `anterior_chamber`, `iris`, `pupil`, `lens`, `colour_vision`, `ee_others`,
 							`vitreous`, `choroid`, `retina`, `macular`, `disc`, `osle_others`,
-							`diagonis`, `plan`, `prescription`, `comments`, `customer_id`, `customer_cardno`, `date_created`
+							`diagonis`, `plan`, `prescription`, `comments`, `customer_id`, `customer_cardno`, `dep_id`, `date_created`
 					FROM `sc_diagnosis`
 					WHERE client_history_id = ?";
 			
@@ -684,25 +740,28 @@
 								   $va_unaided_r_far, $va_unaided_r_near, $va_unaided_l_far, $va_unaided_l_near, 
 								   $va_aided_r_far, $va_aided_r_near, $va_aided_l_far, $va_aided_l_near, 
 								   $va_pinhole_r_far, $va_pinhole_r_near, $va_pinhole_l_far, $va_pinhole_l_near,
-								   $old_spec_r, $old_spec_l, $iop_r, $iop_l, $near,
+								   $va_far_nlp_r, $va_far_nlp_l, $va_far_lp_r, $va_far_lp_l,
+								   $old_spec_r, $old_spec_l, $iop_r, $iop_l, $near, $ospadd,
 								   $ar_sph_cyl_x_axis_r, $ar_sph_cyl_x_axis_l, $sub_sph_cyl_x_axis_r, $sub_sph_cyl_x_axis_l, $sub_add_r, $sub_add_l, $sub_va_r, $sub_va_l,
-								   $fb_sph_cyl_x_axis_r, $fb_sph_cyl_x_axix_l, $fb_add_r, $fb_add_l, $fb_va_r, $fb_va_l,
+								   $fb_sph_cyl_x_axis_r, $fb_sph_cyl_x_axix_l, $fb_add_r, $fb_add_l, $fb_va_r, $fb_va_l, $fa_near,
 								   $lids, $conjuctiva, $cornea, $anterior_chamber, $iris, $pupil, $lens, $colour_vision, $ee_others,
 								   $vitreous, $choroid, $retina, $macular, $disc, $osle_others,
-								   $diagonis, $plan, $prescription, $comments, $customer_id, $customer_cardno, $date_created);
+								   $diagonis, $plan, $prescription, $comments, $customer_id, $customer_cardno, $dep_id, $date_created);
 				
 				while($stmt->fetch()){
 					$result[] = array('complain' => $complain, 'pxohx' => $pxohx, 'pxmhx' => $pxmhx, 'pxfohx' => $pxfohx, 'pxfmhx' => $pxfmhx, 'lee' => $lee, 
 									  'va_unaided_r_far' => $va_unaided_r_far, 'va_unaided_r_near' => $va_unaided_r_near, 'va_unaided_l_far' => $va_unaided_l_far, 'va_unaided_l_near' => $va_unaided_l_near, 
 									  'va_aided_r_far' => $va_aided_r_far, 'va_aided_r_near' => $va_aided_r_near, 'va_aided_l_far' => $va_aided_l_far, 'va_aided_l_near' => $va_aided_l_near, 
 									  'va_pinhole_r_far' => $va_pinhole_r_far, 'va_pinhole_r_near' => $va_pinhole_r_near, 'va_pinhole_l_far' => $va_pinhole_l_far, 'va_pinhole_l_near' => $va_pinhole_l_near,
-									  'old_spec_r' => $old_spec_r, 'old_spec_l' => $old_spec_l, 'iop_r' => $iop_r, 'iop_l' => $iop_l, 'near' => $near,
+									  'va_far_nlp_r' => $va_far_nlp_r, 'va_far_nlp_l' => $va_far_nlp_l, 'va_far_lp_l' => $va_far_lp_l, 'va_far_lp_r' => $va_far_lp_r,
+									  'old_spec_r' => $old_spec_r, 'old_spec_l' => $old_spec_l, 'iop_r' => $iop_r, 'iop_l' => $iop_l, 'near' => $near, 'ospadd' => $ospadd,
 									  'ar_sph_cyl_x_axis_r' => $ar_sph_cyl_x_axis_r, 'ar_sph_cyl_x_axis_l' => $ar_sph_cyl_x_axis_l, 'sub_sph_cyl_x_axis_r' => $sub_sph_cyl_x_axis_r, 
 									  'sub_sph_cyl_x_axis_l' => $sub_sph_cyl_x_axis_l, 'sub_add_r' => $sub_add_r, 'sub_add_l' => $sub_add_l, 'sub_va_r' => $sub_va_r, 'sub_va_l' => $sub_va_l,
-									  'fb_sph_cyl_x_axis_r' => $fb_sph_cyl_x_axis_r, 'fb_sph_cyl_x_axix_l' => $fb_sph_cyl_x_axix_l, 'fb_add_r' => $fb_add_r, 'fb_add_l' => $fb_add_l, 'fb_va_r' => $fb_va_r, 'fb_va_l' => $fb_va_l,
+									  'fb_sph_cyl_x_axis_r' => $fb_sph_cyl_x_axis_r, 'fb_sph_cyl_x_axix_l' => $fb_sph_cyl_x_axix_l, 'fb_add_r' => $fb_add_r, 'fb_add_l' => $fb_add_l, 'fb_va_r' => $fb_va_r, 'fb_va_l' => $fb_va_l, 'fa_near' => $fa_near,
 									  'lids' => $lids, 'conjuctiva' => $conjuctiva, 'cornea' => $cornea, 'anterior_chamber' => $anterior_chamber, 'iris' => $iris, 'pupil' => $pupil, 'lens' => $lens, 'colour_vision' => $colour_vision, 'ee_others' => $ee_others,
 									  'vitreous' => $vitreous, 'choroid' => $choroid, 'retina' => $retina, 'macular' => $macular, 'disc' => $disc, 'osle_others' => $osle_others,
-									  'diagonis' => $diagonis, 'plan' => $plan, 'prescription' => $prescription, 'comments' => $comments, 'customer_id' => $customer_id, 'customer_cardno' => $customer_cardno, 'date_created' => $date_created);
+									  'diagonis' => $diagonis, 'plan' => $plan, 'prescription' => $prescription, 'comments' => $comments, 'customer_id' => $customer_id, 'customer_cardno' => $customer_cardno, 'dependant_id' => $dep_id,
+									  'date_created' => $date_created);
 				}
 				
 				if(isset($result))

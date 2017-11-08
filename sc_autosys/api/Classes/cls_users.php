@@ -241,27 +241,29 @@
 		function change_password($id, $type="change") {
 			$msg = array("status" => 0, "msg" => "Error changing password");
 			
-			$old_password = $this->encrypt_pass($_POST['opass']);
-			//$old_password = $_POST['opass'];
-			$password = $_POST['npass'];
-			
-			if($type == "reset")
+			if($type == "reset"){
 				$status = 'New';
-			else 
-				$status = "Approved";
+				$password = $this->encrypt_pass('password#321#');
+			}
+			else {
+				$old_password = $this->encrypt_pass($_POST['opass']);
+				//$old_password = $_POST['opass'];
+				$password = $this->encrypt_pass($_POST['npass']);
 				
-			$users = $this->get_user($id);
-			
-			foreach($users as $user){
-				if($old_password == $user['pword']){
-					//Do nothing
-				}
-				else {
-					$msg = array("status" => 0, "msg" => "Wrong old password! Please type in the correct old password!! Old".$user['fname'].": User".$old_password);
-					return $msg;
+				$status = "Approved";
+					
+				$users = $this->get_user($id);
+				
+				foreach($users as $user){
+					if($old_password == $user['pword']){
+						//Do nothing
+					}
+					else {
+						$msg = array("status" => 0, "msg" => "Wrong old password! Please type in the correct old password!! Old".$user['fname'].": User".$old_password);
+						return $msg;
+					}
 				}
 			}
-			
 			
 			$sql = "UPDATE sc_users 
 						SET password = ?,
@@ -273,7 +275,10 @@
 				$stmt = $conn->prepare($sql);
 				$stmt->bind_param('ssd', $password, $status, $id);
 				if($stmt->execute() ){
-					$msg = array("status" => 1, "msg" => "User password successfully updated");
+					if($type == 'reset')
+						$msg = array("status" => 1, "msg" => "User password successfully resetted to 'password#321#'");
+					else
+						$msg = array("status" => 1, "msg" => "User password successfully changed");
 				}
 				else {
 					$msg = array("status" => 0, " msg" => "Error: <br>" . $sql ."<br>". mysqli_error($conn)); 
@@ -288,6 +293,41 @@
 			return $msg;
 		}
 	
+		function deactivate($id, $type="Lock") {
+			
+			$status = ($type == 'Lock' ? 'Locked' : 'New');
+			$action = ($type == 'Lock' ? 'User successfully locked!' : 'User successfully unlocked!');
+			
+			$msg = array("status" => 0, "msg" => "Error "+ ($type == 'Lock' ? 'Deactivating' : 'Re-activating') +" user");
+			
+			$sql = "UPDATE sc_users 
+						SET status = ?
+						WHERE usrid = ?;";
+						
+			try{
+				$conn = $this->db_obj->db_connect();
+				$stmt = $conn->prepare($sql);
+				$stmt->bind_param('sd', $status, $id);
+				if($stmt->execute() ){
+					if($type == 'Lock')
+						$msg = array("status" => 1, "msg" => "User successfully deactivated");
+					else
+						$msg = array("status" => 1, "msg" => "User successfully re-activated");					
+				}
+				else {
+					$msg = array("status" => 0, " msg" => "Error: <br>" . $sql ."<br>". mysqli_error($conn)); 
+				}
+				
+				mysqli_close($conn);
+			}
+			catch(Exception $e){
+				
+			}		
+			
+			return $msg;
+		}
+	
+		
 		private function encrypt_pass($pword) {
 			$hash_pword = hash('sha256', $pword);		
 			$new_pword = substr($hash_pword, 5, 15);
