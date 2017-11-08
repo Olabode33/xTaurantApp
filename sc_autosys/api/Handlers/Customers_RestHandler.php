@@ -214,9 +214,9 @@
 			$this->getResponse($rawData, $statusCode);
 		}
 		
-		public function treatorySummary($id) {
+		public function treatorySummary($id, $type='cus') {
 			$customer_obj = new Customers();
-			$rawData = $customer_obj->get_treatory_summary($id);
+			$rawData = $customer_obj->get_treatory_summary($id, $type);
 			
 			if(empty($rawData)) {
 				$statusCode = 404;
