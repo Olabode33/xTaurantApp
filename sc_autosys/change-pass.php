@@ -10,37 +10,51 @@
 				<span id="insert_msg"> You would have to login again after your password has been successfully changed</span>
 			</div>
 		</div>
+		
 		<form action="#" class="form-horizontal" id="newuser_form">
 			<div class="col-md-10">		
-			
-				<div class="form-group">								
-					<label for="opass" class="col-sm-2 control-label">Old Password</label>
-					<div class="col-sm-4">
-						<input type="password" id="opass" name="opass" class="form-control" placeholder="Enter your old password..." required>
+				<div class="panel panel-primary">
+					<div class="panel-heading" role="tab">
+						<h4 class="panel-title">Change Password</h4>
 					</div>
-				</div>
-								
-				<div class="form-group" id="pass_grp">								
-					<label for="npass" class="col-sm-2 control-label">New Password</label>
-					<div class="col-sm-4">
-						<input type="password" id="npass" name="npass" class="form-control" placeholder="Enter your new password..." required>
-					</div>
-					
-					<label for="cpass" class="col-sm-2 control-label">Confirm Password</label>
-					<div class="col-sm-4">
-						<input type="password" id="cpass" name="cpass" class="form-control" placeholder="Confirm your new password..." required>
-					</div>
-				</div>
+					<div class="panel-body">
+						<div class="form-group">								
+							<label for="opass" class="col-sm-2 control-label">Old Password</label>
+							<div class="col-sm-4">
+								<input type="password" id="opass" name="opass" class="form-control" placeholder="Enter your old password..." required>
+							</div>
+						</div>
+										
+						<div class="form-group" id="pass_grp">								
+							<label for="npass" class="col-sm-2 control-label">New Password</label>
+							<div class="col-sm-4">
+								<input type="password" id="npass" name="npass" class="form-control" placeholder="Enter your new password..." required>
+							</div>
 							
+							<label for="cpass" class="col-sm-2 control-label">Confirm Password</label>
+							<div class="col-sm-4">
+								<input type="password" id="cpass" name="cpass" class="form-control" placeholder="Confirm your new password..." required>
+							</div>
+						</div>
+						
+						<div class="form-group">								
+							<label for="opass" class="col-sm-2 control-label"></label>
+							<div class="col-sm-10">
+								<button type="reset" class="btn btn-default" style="text-align: left;" id="btn_clear">
+									<i class="fa fa-eraser" id=""></i> Clear
+								</button> 
+								<button type="submit" style="color:white; text-align: left;" class="btn btn-info sctheme">
+									<i class="fa fa-save" id="save_icon"></i> Change Password
+								</button> 
+								<p class="help-block"><i class="fa fa-info-circle"></i> You would have to login again.</p>
+							</div>
+						</div>
+					</div>
+				</div>		
 			</div>
 
 			<div class="col-md-2">
-				<button type="reset" class="btn btn-block btn-default" style="text-align: left;" id="btn_clear">
-					<i class="fa fa-eraser" id=""></i> Clear
-				</button> 
-				<button type="submit" style="color:white; text-align: left;" class="btn btn-block sctheme">
-					<i class="fa fa-save" id="save_icon"></i> Save
-				</button> 
+				
 			</div>
 							
 			<div style="margin-bottom:3%;"> </div>
@@ -77,7 +91,7 @@
 							'npass': $("#npass").val()
 						},
 						success: function(data) {
-						   alert (data);
+						   //alert (data);
 						   data = $.parseJSON(data);
 						   if(data.status == 1){
 								$("#save_icon").removeClass("fa-spinner fa-pulse");

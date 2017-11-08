@@ -111,7 +111,7 @@
 						row.append(rowData);
 						rowData = $('<td></td>').text(item.cardno);
 						row.append(rowData);
-						rowData = $('<td></td>').text(item.fname);
+						rowData = $('<td></td>').text(item.dep_id > 0 ? item.dep : item.fname);
 						row.append(rowData);
 						rowData = $('<td></td>').text(item.date);
 						row.append(rowData);
@@ -122,7 +122,7 @@
 						viewButton.attr('href', '#');
 						viewButton.attr('data-toggle', 'tooltip');
 						viewButton.attr('title', 'View Details');
-						viewButton.attr('onclick', 'view_details('+item.id+')');
+						viewButton.attr('onclick', 'view_details('+item.id+', '+item.dep_id+')');
 						if(item.status != 'Closed')
 							rowData = $('<td></td>').append(viewButton);
 						else
@@ -140,7 +140,7 @@
 			});
 		}
 		
-		function view_details(id) {
+		function view_details(id, dep_id) {
 			//alert("button " +id+" was clicked");
 			$("#waiting-list").addClass("hidden");
 			$("#waiting-details").removeClass("hidden");
@@ -158,10 +158,10 @@
 					appt_date = item.date.split("-");
 					
 					$("#vw_cardno").html(item.cardno);
-					$("#vw_cname").html(item.fname);
+					$("#vw_cname").html(item.dep_id > 0? item.dep : item.fname);
 					$("#vw_date").html(appt_date[2] + "-" + monthNames[appt_date[1] - 1] + "-" + appt_date[0]);
 					$("#vw_notes").html(item.notes);
-					$("#btn_vw_appt").attr("href", "dr_view.php?id="+item.cid+"&a="+id);
+					$("#btn_vw_appt").attr("href", "dr_view.php?id="+item.cid+"&a="+id+"&dep="+dep_id);
 				});
 			});
 		}

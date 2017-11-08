@@ -91,7 +91,9 @@
 				if(login_msg == "loginerr")
 					$("#login_msg").html("Please login to access the system");
 				if(login_msg == "changepass")
-					$("#login_msg").html("Password changed successfully!<br>Please Login again with you new passwordy");
+					$("#login_msg").html("Password changed successfully!<br>Please Login again with you new password");
+				if(login_msg == "locked")
+					$("#login_msg").html("This user account has been deactivated. Please contact your system administrator");
 			}
 		});
 	

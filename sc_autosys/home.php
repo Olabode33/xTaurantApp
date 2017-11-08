@@ -13,16 +13,19 @@
 		<div class="col-sm-6">
 			<div class="panel panel-default panel-primary" style="height:">
 				<div class="panel-heading  ">
-					<h3 class="panel-title">Notifications</h3>
+					<h3 class="panel-title">Annoucements</h3>
 				 </div>
-				<div class="panel-body">
-					Coming soon...
+				<div class="list-group" id="lg-notifications">
+					<a href="#" class="list-group-item">
+						<h5 class="list-group-item-heading"><strong>List group item heading</strong><small class="pull-right">Time</small></h5>
+						<p class="list-group-item-text">List groupo item body</p>
+					</a>
 				</div>
 			</div>
 		</div>
 		
 		<div class="col-sm-6">
-			<div id="waiting-list" class="doctor-only">
+			<div id="waiting-list" class="">
 				<div class="alert alert-info hidden alert-dismissible" role="alert" id="examine_alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -32,14 +35,27 @@
 				</div>
 				<div class="panel panel-default panel-primary" style="height:">
 					<div class="panel-heading  ">
-						<h3 class="panel-title">Appointments for Today</h3>
+						<h3 class="panel-title">
+							Appointments for <span id="apptime">Today</span>
+						</h3>
 					 </div>
 					<div class="panel-body">
 						<div class="table-responsive">
+							<div class="row">
+								<h5 class="col-sm-2 control-label">Filter:</h5>
+								<div class="col-sm-10">
+									<select id="appfilter" name="appfilter" class="form-control input-sm">
+										<option value="daily">Today</option>
+										<option value="weekly">This Week</option>
+										<option value="monthly">This Month</option>
+									</select>
+								</div>
+							</div>
+							<hr style="margin-top: 10px; margin-bottom: 10px;">
 							<table class="table table-hover" id="tbl_waiting" >
 								<thead class="thead-inverse">	
 									<th class="col-xs-1" >S/n</th>						
-									<th class="col-xs-2" >Card No.</th>						
+									<th class="col-xs-2" id="dym_tilte">Card No.</th>						
 									<th class="col-xs-5">Full Name</th>
 									<th class="col-xs-2">Status</th>				
 									<th class="col-xs-2">Actions</th>			
@@ -54,7 +70,7 @@
 				</div>
 			</div>
 			
-			<div id="quick_actions" class="frontdesk-only">
+			<!--div id="quick_actions" class="frontdesk-only">
 				<div class="panel panel-default panel-primary" style="height:">
 					<div class="panel-heading  ">
 						<h3 class="panel-title">Actions</h3>
@@ -65,7 +81,7 @@
 						</span>
 					</div>
 				</div>
-			</div>
+			</div-->
 		</div>
 	</div>
 	
@@ -84,29 +100,155 @@
 					$("#examine_msg").html("Appointment was successfully closed")
 				}
 			}
+			
+			$("#appfilter").on('change', function() {
+				search();
+			})
+			
+			$.get('api/Controllers/Notifications_RestController.php?view=recent', function(data) {
+				data = $.parseJSON(data);	
+				//console.log(data);
+				if(data.length > 0){
+					var lg = $("#lg-notifications");
+					lg.empty();
+					
+					$.each(data, function(i, item) {
+						//console.log(item);
+						listItem = $('<a></a>').addClass("list-group-item");
+						listItem.html('<h5 class="list-group-item-heading"><strong>'+item.fname + ' ' + item.lname+'</strong><small class="pull-right">'+item.date+'</small></h5><p class="list-group-item-text">'+item.msg+'</p>');
+						listItem.attr("href", "#");
+						lg.append(listItem);
+					});
+				}
+				else {
+					var l = $("#lg-notifications");
+					l.empty();
+					listItem = $('<a></a>').addClass("list-group-item").html("<strong>No Notifications for now</strong>");
+					l.append(listItem);
+				}
+			});
 		});	
 		
-		function search () {
-			$.get('api/Controllers/Customers_RestController.php?view=get_all_appointments', function(data) {
+		function search() {
+			var uri = '';
+			var term = $("#appfilter").val();
+			
+			switch(term){
+				case 'daily':
+					uri = 'api/Controllers/Customers_RestController.php?view=get_all_appointments';
+					$("#apptime").text('today');
+					break;
+				case 'weekly':
+					uri = 'api/Controllers/Customers_RestController.php?view=get_weekly_appointments';
+					$("#apptime").text('this week');
+					break;
+				case 'monthly':
+					uri = 'api/Controllers/Customers_RestController.php?view=get_monthly_appointments';
+					$("#apptime").text('this month');
+					break;
+				default:
+					uri = 'api/Controllers/Customers_RestController.php?view=get_all_appointments';
+					$("#apptime").text('today');
+					break;
+			}
+			
+			$.get(uri, function(data) {
 				data = $.parseJSON(data);
 					
 				var t = $("#tbl_waiting");
 				$("#tbl_waiting tbody").empty();
-					
+				
+				//console.log(getWeekNumber('2017-11-24'));
+				
 				if(data.status != 0) {		
+					var weekdays = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday", "Sunday");
+					
 					var count = 1;
 					$.each(data, function(i, item) {
+						var appdates = new Date(item.date);
+						appWeek = getWeekNumber(item.date);
+						
+						var today = new Date('2017-11-30');
+						curWeek = getWeekNumber(today);
+						
+						diffWeek = appWeek - curWeek;
+						//console.log(diffWeek);
+						weekkk = '';
+						
+						switch(diffWeek){
+							case 0:
+								weekkk = 'This Week';
+								break;
+							
+							case 1:
+								weekkk = 'Next Week';
+								break;
+								
+							case 2:
+								weekkk = 'Upper Week';
+								break;
+								
+							case 3:
+								weekkk = 'in 3 weeks';
+								break;
+								
+							case 4:
+								weekkk = 'in 4 weeks';
+								break;
+								
+							case 5:
+								weekkk = 'in 5 weeks';
+								break;
+								
+							case -1:
+								weekkk = 'Last Week';
+								break;
+								
+							case -2:
+								weekkk = '2 Weeks ago';
+								break;
+								
+							case -3:
+								weekkk = '3 weeks ago';
+								break;
+								
+							case -4:
+								weekkk = '4 weeks ago';
+								break;
+								
+							case -5:
+								weekkk = '5 weeks ago';
+								break;
+								
+							default:
+								weekkk = 'This Week';
+								
+						}
+						
 						row = $('<tr></tr>');
 						rowData = $('<td></td>').text(count);
 						row.append(rowData);
-						rowData = $('<td></td>').text(item.cardno);
+						
+						if($("#appfilter").val() == 'weekly'){
+							rowData = $('<td></td>').text(weekdays[appdates.getDay()]);
+							$("#dym_tilte").text("Day");
+						}
+						else if($("#appfilter").val() == 'monthly'){
+							rowData = $('<td></td>').text(weekkk);
+							$("#dym_tilte").text("Week");
+						}
+						else{
+							rowData = $('<td></td>').text(item.cardno);
+							$("#dym_tilte").text('Card No.');
+						}
+							
 						row.append(rowData);
-						rowData = $('<td></td>').text(item.fname);
+						rowData = $('<td></td>').text(item.dep_id > 0? item.dep : item.fname);
 						row.append(rowData);
 						rowData = $('<td></td>').html('<div class="badge" '+(item.status == 'New'? ' style="background-color: green"': item.status == 'Closed'? ' style="background-color: #337ab7"': '')+'>' + item.status + "</div>");
 						row.append(rowData);
 							
-						viewButton = $('<a></a>').addClass("btn btn-primary btn-xs details").text("View Details");
+						viewButton = $('<a></a>').addClass("btn btn-primary btn-xs details doctor-only").text("View Details");
 						//viewButton.attr('href', '#');
 						viewButton.attr('data-toggle', 'tooltip');
 						viewButton.attr('title', 'View Details');
@@ -123,9 +265,39 @@
 					});
 				}
 				else {
+					$("#dym_tilte").text('Card No.');
 					$("#tbl_waiting tbody").html(data.msg);
 				}
-			});
+				
+				$.get('api/Controllers/Users_RestController.php?view=loggedin', function(data) {
+					data = $.parseJSON(data);
+					//console.log(data);
+					if(data.role == 'Doctor' || data.role == 'Admin'){
+						$(".doctor-only").removeClass("hidden");
+					}
+					else {
+						$(".doctor-only").addClass("hidden");
+						$("#nav_treatory").addClass("disabled");
+					}
+				});	
+			});			
+		}
+		
+		function getWeekNumber(aDate){
+			var dt = new Date(aDate);
+			var thisDay = dt.getDate();
+			
+			var newDate = dt;
+			newDate.setDate(1);
+			var digit = newDate.getDay();
+			
+			var Q = (thisDay + digit) / 7;
+			var R = (thisDay + digit) % 7;
+			
+			if(R !== 0)
+				return Math.ceil(Q);
+			else
+				return Q;
 		}
 		
 		

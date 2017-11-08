@@ -9,7 +9,7 @@
 		</h4>
 		<div class="col-xs-12 hidden" id="result_msg">
 			<div class="alert alert-success alert-dismissable" role="alert">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<!--a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a-->
 				<i class="fa fa-check"></i> <span id="result_msg_txt">Showing top 10 results</span>
 			</div>
 		</div>
@@ -19,10 +19,8 @@
 				<input type="text" id="txt_search" name="txt_search" class="form-control input-lg" placeholder="Enter your search terms">
 			</div>
 		</div>
-		<div class="col-xs-12 hidden" id="loading_cus">
-			<div class="alert alert-info" role="alert">
-				<i class="fa fa-search"></i> <span id="loading_txt">Showing top 10 results</span>
-			</div>
+		<div class="col-xs-12" style="margin-bottom: 20px">
+			<a href="newuser.php" class="btn btn-primary pull-right"><i class="fa fa-user-plus"></i> Add New User</a>
 		</div>
 		<div class="col-xs-12">
 			<div id="summary-list">
@@ -141,17 +139,40 @@
 						row.append(rowData);
 						rowData = $('<td></td>').text(item.fname);
 						row.append(rowData);
-						rowData = $('<td></td>').text(item.uname);
+						rowData = $('<td></td>').html(
+													item.uname
+													+
+													(item.status == 'Locked' ? ' <div class="badge"  style="background-color: #d9534f;"><i class="fa fa-lock"></i></div>' : '')
+													+
+													(item.status == 'New' ? ' <div class="badge"  style="background-color: green;"><i class="fa fa-asterisk"></i></div>' : '')
+												);
 						row.append(rowData);
 						rowData = $('<td></td>').text(item.branch);
 						row.append(rowData);
 							
-						viewButton = $('<a></a>').addClass("btn btn-warning btn-xs details").text("Edit");
+							
+						viewButton = $('<a></a>').addClass("btn btn-warning btn-xs details").html('<i class="fa fa-pencil-square-o"></i>');
 						viewButton.attr('href', 'newuser.php?id='+item.userid);
 						viewButton.attr('data-toggle', 'tooltip');
 						viewButton.attr('title', 'View Details');
 						//viewButton.attr('', 'view_details('+item.cid+')');
 						rowData = $('<td></td>').append(viewButton);
+						
+						resetButton = $('<button></button>').addClass("btn btn-primary btn-xs details").html('<i class="fa fa-key"></i>');
+						//deactivateButton.attr('href', 'newuser.php?id='+item.userid);
+						resetButton.attr('data-toggle', 'tooltip');
+						resetButton.attr('title', 'Reset User\'s Password');
+						resetButton.attr('onclick', 'reset_pass('+item.userid+')');
+						rowData.append(' ');
+						rowData.append(resetButton);
+						
+						deactivateButton = $('<button></button>').addClass("btn " + (item.status == 'Locked' ? "btn-success" : "btn-danger") +"  btn-xs details").html(item.status == 'Locked' ? '<i class="fa fa-unlock-alt"></i></div>' : '<i class="fa fa-lock"></i></div>');
+						//deactivateButton.attr('href', 'newuser.php?id='+item.userid);
+						deactivateButton.attr('data-toggle', 'tooltip');
+						deactivateButton.attr('title', (item.status == 'Locked' ? "Re-activate" : "Deactivate") + ' User');
+						deactivateButton.attr('onclick', 'deactivate_user('+item.userid + ', "'+(item.status == 'Locked' ? "unlock" : "lock")+'")');
+						rowData.append(' ');
+						rowData.append(deactivateButton);
 							
 						row.append(rowData);
 							
@@ -167,43 +188,46 @@
 	
 			});
 		}
-		
-		function view_details(id) {
-			//alert("button " +id+" was clicked");
-			$("#summary-list").addClass("hidden");
-			$("#details").removeClass("hidden");
-			$("#loading_cus").addClass("hidden");
-			
-			$.get('api/Controllers/Customers_RestController.php?view=single&id='+id, function(data) {
-				data = $.parseJSON(data);
-				console.log(data);
 				
-				$.each(data, function(i, item) {
-					$("#cardno").html(item.cardno);
-					$("#enroleeno").html(item.enroleeid);
-					$("#fullname").html(item.title + " " + item.fname + ' ' + item.lname);
-					$("#gender").html(item.gender);
-					$("#fulladdress").html(item.address + ", " + item.address_area + " " + item.address_state);
-					$("#dob").html(item.dob);
-					$("#age").html(item.age);
-					$("#occupation").html(item.occupation);
-					$("#nok").html(item.nok);
-					$("#mobile").html(item.phone1 + ", " + item.phone2);
-					$("#email").html(item.email1 + ",  " + item.email2);
-					$("#rship_type").html(item.rship_type);
-					$("#rship_account").html(item.rship_account);
-					$("#btn_udpated").attr("href", "newcust.php?id="+item.cid);
-					$("#btn_book_app").attr("href", "newcust.php?id="+item.cid);
-				});
-			});
-		}
-		
 		function view_summary() {
 			$("#summary-list").removeClass("hidden");
 			$("#details").addClass("hidden");
 		}
 		
 		function update_record() {
+			
+		}
+		
+		function reset_pass(userid) {
+			$.get('api/Controllers/Users_RestController.php?view=resetpass&id='+userid, function(data) {
+				data = $.parseJSON(data);
+				//console.log(data);
+				if(data.status != 0){
+					$("#result_msg_txt").text(data.msg)
+					$("#result_msg").removeClass("hidden");
+					search();
+				}
+			});
+		}
+		
+		function deactivate_user(userid, lock) {
+			var uri = 'api/Controllers/Users_RestController.php?view=deactivate&id='+userid;
+			
+			if(lock == 'unlock')
+				uri = 'api/Controllers/Users_RestController.php?view=reactivate&id='+userid;
+			else
+				uri = 'api/Controllers/Users_RestController.php?view=deactivate&id='+userid;
+			
+			$.get(uri, function(data) {
+				console.log(data)
+				data = $.parseJSON(data);
+				if(data.status != 0){
+					$("#result_msg_txt").text(data.msg)
+					$("#result_msg").removeClass("hidden");
+					search();
+				}
+			});
+			
 			
 		}
 		

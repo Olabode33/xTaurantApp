@@ -250,6 +250,7 @@
 										</div>
 										<input type="text" placeholder="" name="cname" id="cname" class="form-control" disabled>
 										<input type="hidden" placeholder="" name="c_ba_id" id="c_ba_id" class="form-control">
+										<input type="hidden" placeholder="" name="c_dep_id" id="c_dep_id" class="form-control">
 									</div>
 								</div>
 								<label class="col-sm-2 control-label" for="ccard">Card No.</label>
@@ -271,6 +272,19 @@
 										<div class="input-group-addon">
 											<i class="fa fa-calendar"></i>
 										</div>
+									</div>
+								</div>
+								<label class="col-sm-2 control-label" for="cdate">Branch</label>
+								<div class=" col-sm-4">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-map-marker"></i>
+										</div>
+										<select class="form-control" Required id="cbranch" name="cbranch">
+											<option value="">-- Select a Branch --</option>
+											<option value="Ikeja">Ikeja</option>
+											<option value="VI">Victoria Island</option>
+										</select>
 									</div>
 								</div>
 							</div>	
@@ -504,7 +518,7 @@
 								//viewButton.attr('href', '#');
 								bookAppButton.attr('data-toggle', 'tooltip');
 								bookAppButton.attr('title', 'Book an Appointment for dependent');
-								bookAppButton.attr('onclick', 'book_c_appt('+item.pri_id+')');
+								bookAppButton.attr('onclick', 'book_c_appt('+item.pri_id+', '+item.dep_id+')');
 								rowData = $('<td></td>').append(bookAppButton);
 									
 								row.append(rowData);
@@ -547,7 +561,7 @@
 						//viewButton.attr('href', '#');
 						viewButton.attr('data-toggle', 'tooltip');
 						viewButton.attr('title', 'View Details');
-						viewButton.attr('href', 'history.php?id='+itemt.customer_id+'&h='+itemt.treatory_id);
+						viewButton.attr('href', 'history.php?id='+itemt.customer_id+'&h='+itemt.treatory_id+'&a=0');
 						rowData = $('<td></td>').append(viewButton);
 							
 						row.append(rowData);
@@ -571,10 +585,11 @@
 			search();
 		}
 		
-		function book_c_appt(id) {
+		function book_c_appt(id, dep_id) {
 			$("#frm_book_appoitment").trigger("reset");
 			$.get('api/Controllers/Customers_RestController.php?view=single&id='+id, function(data) {
 				data = $.parseJSON(data);
+				//console.log(data);
 				//console.log(data);
 				
 				$.each(data, function(i, item) {
@@ -582,6 +597,17 @@
 					$("#ccard").val(item.cardno);
 					$("#cname").val(item.title + " " + item.fname + ' ' + item.lname);
 					$('#cdate').val(new Date().toISOString().split('T')[0]);
+					$('#cbranch').val(item.branch);
+					$('#c_dep_id').val(dep_id);
+					if(dep_id > 0){
+						$.get('api/Controllers/Customers_RestController.php?view=get_dependents&id='+dep_id, function(data) {
+							data = $.parseJSON(data);
+							data = data[0];
+							
+							$("#cname").val(data.fname + " " + data.lname);
+						});
+						$('#cnotes').val('For a dependent')
+					}
 					$("#btn_back2view").attr("onclick", "view_details("+id+")");
 				});
 				
@@ -605,7 +631,9 @@
 				data : {
 					'ccard' : $("#ccard").val(),
 					'cdate' : $("#cdate").val(),
-					'cnotes': $("#cnotes").val()
+					'cnotes': $("#cnotes").val(),
+					'cbranch': $("#cbranch").val(),
+					'cdep_id': $("#c_dep_id").val()
 				},
 				success: function(data) {
 				   //alert (data);
