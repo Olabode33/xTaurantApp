@@ -487,6 +487,10 @@
 					$("#rship_type").html(item.rship_type);
 					$("#rship_account").html(item.rship_account);
 					$("#chistory_note").html(item.casenote);
+					$("#nok_fname").html(item.nok_fname + ' ' + item.nok_lname);
+					$("#nok_relationship").html(item.nok_relationship);
+					$("#nok_email").html(item.nok_email);
+					$("#nok_phone").html(item.nok_phone);
 					$("#btn_udpated").attr("href", "newcust.php?id="+item.cid);
 					$("#btn_book_app").attr("onclick", "book_c_appt("+item.cid+")");
 					$("#btn_add_dep").attr("onclick", "add_new_dep("+item.cid+")");
