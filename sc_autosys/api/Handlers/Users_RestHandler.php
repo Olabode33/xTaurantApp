@@ -116,5 +116,18 @@
 			$this->getResponse($rawData, $statusCode);
 		}
 		
+		public function deactivate($id, $type) {
+			$user_obj = new User();
+			$rawData = $user_obj->deactivate($id, $type);
+
+			if(empty($rawData)) {
+				$statusCode = 404;
+				$rawData = array('error' => 'Error updating deactivating User!');		
+			} else {
+				$statusCode = 200;
+			}
+
+			$this->getResponse($rawData, $statusCode);
+		}
 	}
 ?>
