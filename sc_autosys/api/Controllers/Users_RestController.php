@@ -62,7 +62,19 @@
 		case "resetpass":
 			//to handle REST Url /user/update/<id>/
 			$userRestHandler = new Users_RestHandler();
-			$userRestHandler->updateUser($_GET["id"], "reset");
+			$userRestHandler->changePass($_GET["id"], "reset");
+			break;
+		
+		case "deactivate":
+			//to handle REST Url /user/update/<id>/
+			$userRestHandler = new Users_RestHandler();
+			$userRestHandler->deactivate($_GET["id"], "Lock");
+			break;
+			
+		case "reactivate":
+			//to handle REST Url /user/update/<id>/
+			$userRestHandler = new Users_RestHandler();
+			$userRestHandler->deactivate($_GET["id"], "Unlock");
 			break;
 			
 		case "":
