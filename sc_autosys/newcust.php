@@ -414,7 +414,7 @@
 			
 			$("#rship_type").change(function() {
 				$.get('api/Controllers/Partners_RestController.php?view=type&id='+$("#rship_type").val(), function(data) {
-					console.log(data);
+					alert(data);
 					data = $.parseJSON(data);
 					$('#rship_acc').empty();
 					$.each(data, function (i, item) {
