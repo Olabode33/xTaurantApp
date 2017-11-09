@@ -424,6 +424,12 @@
 						}));
 					});
 				});
+				if($("#rship_type").val() == 'Private'){
+					$('#rship_acc').append($('<option>', { 
+						value: 'Private',
+						text : 'Private' 
+					}));	
+				}
 			});
 		});
 	</script>
