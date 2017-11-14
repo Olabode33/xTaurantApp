@@ -216,7 +216,9 @@
 			<div class="container">
 				<div class="navbar-header">
 					<img src="img/sc_brand.jpg" class="img-responsive thumbnail" alt="SightCity" style="margin-top: 5px; margin-bottom: 5px; margin-left: 0px;">
-				</div>	
+				</div>
+				
+				<span style="width: 50%; font-size: 30px; margin-left: 10%; background-color: darkred; padding: 14px; border-radius: 50px;" class="code">::: Test Environment \></span>
 				
 				<ul class="nav navbar-nav navbar-right" style="font-size: 14px;">
 					<li><p class="navbar-text" style="color: #fff;">Welcome Back!</p></li>
