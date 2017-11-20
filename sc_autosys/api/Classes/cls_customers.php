@@ -13,10 +13,17 @@
 		function get_customers($id = 0) {
 			$customers = array("status" => 0, "msg" => "No Customers found");
 			
-			$sql = "SELECT c.cid, c.title, c.surname, c.middlename, c.firstname, c.gender, c.cardno, c.enroleeid, c.phoneno1, c.phoneno2, c.email1, c.email2, c.rship_type, c.rship_account, c.dob, c.age, c.address, c.address_area, c.address_state, c.occupation, 
-									 c.dob_day, c.dob_month, c.nok_fname, c.nok_lname, c.nok_email, c.nok_phone, c.nok_relationship, ch.casenote
-						FROM sc_customers c
-							left join sc_chistory ch on c.cid = ch.cid";
+			$sql = "SELECT c.cid, ifnull(c.title, '-') title, ifnull(c.surname, '-') surname, ifnull(c.middlename, '') middlename, 
+					ifnull(c.firstname, '') firstname, ifnull(c.gender, '-') gender, ifnull(c.cardno, '-') cardno, 
+					ifnull(c.enroleeid, '-') enroleeid, ifnull(c.phoneno1, '-') phoneno1, ifnull(c.phoneno2, '') phoneno2, 
+					ifnull(c.email1, '-') email1, ifnull(c.email2, '') email2, ifnull(c.rship_type, '') rship_type, 
+					ifnull(c.rship_account, '-') rship_account, ifnull(c.dob, '') dob, ifnull(c.age, '-') age, 
+					ifnull(c.address, '-') address, ifnull(c.address_area, '') address_area, ifnull(c.address_state, '') address_state,
+					ifnull(c.occupation, '-') occupation, ifnull(c.dob_day, '-') dob_day, ifnull(c.dob_month, '-') dob_month, 
+					ifnull(c.nok_fname, '-') nok_fname, ifnull(c.nok_lname, '-') nok_lname, ifnull(c.nok_email, '-') nok_email, 
+					ifnull(c.nok_phone, '-') nok_phone, ifnull(c.nok_relationship, '-') nok_relationship, ifnull(ch.casenote, '-') casenote
+				FROM sc_customers c
+					left join sc_chistory ch on c.cid = ch.cid";
 						
 			if($id != 0)
 				$sql .= " WHERE c.cid=?;";
@@ -146,32 +153,32 @@
 		function add_customer(){
 			$_POST = array_map( 'stripslashes', $_POST );
 			
-			$title = $_POST["title"];
-			$lname = $_POST["lname"];
-			$mname = $_POST["mname"];
-			$fname = $_POST["fname"];
-			$gender = $_POST["gender"];
-			$cardno = $_POST["cardno"];
-			$enroleeid = $_POST["cardno"];
+			$title = strtoupper($_POST["title"]);
+			$lname = strtoupper($_POST["lname"]); 
+			$mname = strtoupper($_POST["mname"]);
+			$fname = strtoupper($_POST["fname"]);
+			$gender = strtoupper($_POST["gender"]);
+			$cardno = strtoupper($_POST["cardno"]);
+			$enroleeid = strtoupper($_POST["enroleeid"]);
 			$phone1 = $_POST["phone1"];
 			$phone2 = $_POST["phone2"];
-			$email1 = $_POST["email1"];
-			$email2 = $_POST["email2"];
+			$email1 = strtolower($_POST["email1"]);
+			$email2 = strtolower($_POST["email2"]);
 			$rship_type = $_POST["rship_type"];
 			$rship_account = $_POST["rship_account"];
 			//$dob = $_POST["dob"];
 			$dob_day = $_POST["dob_day"];
 			$dob_month = $_POST["dob_month"];
 			$age = $_POST["age"];
-			$address = $_POST["address"];
-			$area = $_POST["area"];
-			$state = $_POST["state"];
-			$occupation = $_POST["occupation"];
-			$nok_fname = $_POST["nok_fname"];
-			$nok_lname = $_POST["nok_lname"];
-			$nok_email = $_POST["nok_email"];
+			$address = strtoupper($_POST["address"]);
+			$area = strtoupper($_POST["area"]);
+			$state = strtoupper($_POST["state"]);
+			$occupation = strtoupper($_POST["occupation"]);
+			$nok_fname = strtoupper($_POST["nok_fname"]);
+			$nok_lname = strtoupper($_POST["nok_lname"]);
+			$nok_email = strtolower($_POST["nok_email"]);
 			$nok_phone = $_POST["nok_phone"];
-			$nok_relationship = $_POST["nok_rel"];
+			$nok_relationship = strtoupper($_POST["nok_rel"]);
 			
 			$sql = "INSERT INTO sc_customers (title, surname, middlename, firstname, gender, cardno, enroleeid, 
 												phoneno1, phoneno2, email1, email2, rship_type, rship_account, dob_day, dob_month, age, address, address_area, address_state, occupation, 
@@ -537,7 +544,7 @@
 						 `va_aided_r_far`, `va_aided_r_near`, `va_aided_l_far`, `va_aided_l_near`, 
 						 `va_pinhole_r_far`, `va_pinhole_r_near`, `va_pinhole_l_far`, `va_pinhole_l_near`,
 						 `va_far_nlp_r`, `va_far_nlp_l`, `va_far_lp_r`, `va_far_lp_l`,
-						`old_spec_r`, `old_spec_l`, `iop_r`, `iop_l`, `near`, `ospadd`,
+						`old_spec_r`, `old_spec_l`, `iop_r`, `iop_l`, `near`, `ospadd_r`, `ospadd_l`,
 						`ar_sph_cyl_x_axis_r`, `ar_sph_cyl_x_axis_l`, `sub_sph_cyl_x_axis_r`, `sub_sph_cyl_x_axis_l`, `sub_add_r`, `sub_add_l`, `sub_va_r`, `sub_va_l`,
 						`fb_sph_cyl_x_axis_r`, `fb_sph_cyl_x_axix_l`, `fb_add_r`, `fb_add_l`, `fb_va_r`, `fb_va_l`, `fb_near`,
 						`lids`, `conjuctiva`, `cornea`, `anterior_chamber`, `iris`, `pupil`, `lens`, `colour_vision`, `ee_others`,
@@ -545,20 +552,20 @@
 						`diagonis`, `plan`, `prescription`, `comments`, `customer_id`, `customer_cardno`, `dep_id`, `date_created`)
 						VALUES
 						(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
-						 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now());
+						 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now());
 				
 			";
 			
 			try{
 				$conn = $this->db_obj->db_connect();
 				$stmt = $conn->prepare($sql);
-				$stmt->bind_param('ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdsd', 
+				$stmt->bind_param('sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdsd', 
 												$_POST['chiefcomplain'], $_POST['pxohx'], $_POST['pxmhx'], $_POST['pxfohx'], $_POST['pxfmhx'], $_POST['lee'],
 												$_POST['va_far_unaided_r'], $_POST['va_near_unaided_r'], $_POST['va_far_unaided_l'], $ignore_param,
 												$_POST['va_far_aided_r'], $_POST['va_near_aided_r'], $_POST['va_far_aided_l'], $ignore_param,
 												$_POST['va_far_pinhole_r'], $_POST['va_near_pinhole_r'], $_POST['va_far_pinhole_l'], $ignore_param,
-												$_POST['va_far_nlp_r'], $_POST['va_far_nlp_l'], $_POST['va_far_lp_l'], $_POST['va_far_lp_r'],
-												$_POST['ospr'], $_POST['ospl'], $_POST['iopr'], $_POST['iopl'], $_POST['ospn'], $_POST['ospadd'],
+												$ignore_param, $ignore_param, $ignore_param, $ignore_param,
+												$_POST['ospr'], $_POST['ospl'], $_POST['iopr'], $_POST['iopl'], $_POST['ospn'], $_POST['ospaddr'], $_POST['ospaddl'],
 												$_POST['sph_cyl_x_axis_r'], $_POST['sph_cyl_x_axis_l'], $_POST['sub_sph_cyl_x_axis_r'], $_POST['sub_sph_cyl_x_axis_l'], 
 												$_POST['sub_add_r'], $_POST['sub_add_l'], 
 												$_POST['sub_va_r'], $_POST['sub_va_l'],
@@ -680,7 +687,7 @@
 				$sql .= ' WHERE dep_id = ?';
 			}
 			else
-				$sql .= ' WHERE customer_id = ?';
+				$sql .= ' WHERE customer_id = ? and dep_id = 0';
 			
 			try {
 				$conn = $this->db_obj->db_connect();
@@ -722,7 +729,7 @@
 							 `va_aided_r_far`, `va_aided_r_near`, `va_aided_l_far`, `va_aided_l_near`, 
 							 `va_pinhole_r_far`, `va_pinhole_r_near`, `va_pinhole_l_far`, `va_pinhole_l_near`,
 							 `va_far_nlp_r`, `va_far_nlp_r`, `va_far_lp_l`, `va_far_lp_r`,
-							`old_spec_r`, `old_spec_l`, `iop_r`, `iop_l`, `near`, `ospadd`,
+							`old_spec_r`, `old_spec_l`, `iop_r`, `iop_l`, `near`, `ospadd_r`, `ospadd_l`,
 							`ar_sph_cyl_x_axis_r`, `ar_sph_cyl_x_axis_l`, `sub_sph_cyl_x_axis_r`, `sub_sph_cyl_x_axis_l`, `sub_add_r`, `sub_add_l`, `sub_va_r`, `sub_va_l`,
 							`fb_sph_cyl_x_axis_r`, `fb_sph_cyl_x_axix_l`, `fb_add_r`, `fb_add_l`, `fb_va_r`, `fb_va_l`, `fb_near`,
 							`lids`, `conjuctiva`, `cornea`, `anterior_chamber`, `iris`, `pupil`, `lens`, `colour_vision`, `ee_others`,
@@ -741,7 +748,7 @@
 								   $va_aided_r_far, $va_aided_r_near, $va_aided_l_far, $va_aided_l_near, 
 								   $va_pinhole_r_far, $va_pinhole_r_near, $va_pinhole_l_far, $va_pinhole_l_near,
 								   $va_far_nlp_r, $va_far_nlp_l, $va_far_lp_r, $va_far_lp_l,
-								   $old_spec_r, $old_spec_l, $iop_r, $iop_l, $near, $ospadd,
+								   $old_spec_r, $old_spec_l, $iop_r, $iop_l, $near, $ospaddr, $ospaddl,
 								   $ar_sph_cyl_x_axis_r, $ar_sph_cyl_x_axis_l, $sub_sph_cyl_x_axis_r, $sub_sph_cyl_x_axis_l, $sub_add_r, $sub_add_l, $sub_va_r, $sub_va_l,
 								   $fb_sph_cyl_x_axis_r, $fb_sph_cyl_x_axix_l, $fb_add_r, $fb_add_l, $fb_va_r, $fb_va_l, $fa_near,
 								   $lids, $conjuctiva, $cornea, $anterior_chamber, $iris, $pupil, $lens, $colour_vision, $ee_others,
@@ -754,7 +761,7 @@
 									  'va_aided_r_far' => $va_aided_r_far, 'va_aided_r_near' => $va_aided_r_near, 'va_aided_l_far' => $va_aided_l_far, 'va_aided_l_near' => $va_aided_l_near, 
 									  'va_pinhole_r_far' => $va_pinhole_r_far, 'va_pinhole_r_near' => $va_pinhole_r_near, 'va_pinhole_l_far' => $va_pinhole_l_far, 'va_pinhole_l_near' => $va_pinhole_l_near,
 									  'va_far_nlp_r' => $va_far_nlp_r, 'va_far_nlp_l' => $va_far_nlp_l, 'va_far_lp_l' => $va_far_lp_l, 'va_far_lp_r' => $va_far_lp_r,
-									  'old_spec_r' => $old_spec_r, 'old_spec_l' => $old_spec_l, 'iop_r' => $iop_r, 'iop_l' => $iop_l, 'near' => $near, 'ospadd' => $ospadd,
+									  'old_spec_r' => $old_spec_r, 'old_spec_l' => $old_spec_l, 'iop_r' => $iop_r, 'iop_l' => $iop_l, 'near' => $near, 'ospadd_r' => $ospaddr, 'ospadd_l' => $ospaddl,
 									  'ar_sph_cyl_x_axis_r' => $ar_sph_cyl_x_axis_r, 'ar_sph_cyl_x_axis_l' => $ar_sph_cyl_x_axis_l, 'sub_sph_cyl_x_axis_r' => $sub_sph_cyl_x_axis_r, 
 									  'sub_sph_cyl_x_axis_l' => $sub_sph_cyl_x_axis_l, 'sub_add_r' => $sub_add_r, 'sub_add_l' => $sub_add_l, 'sub_va_r' => $sub_va_r, 'sub_va_l' => $sub_va_l,
 									  'fb_sph_cyl_x_axis_r' => $fb_sph_cyl_x_axis_r, 'fb_sph_cyl_x_axix_l' => $fb_sph_cyl_x_axix_l, 'fb_add_r' => $fb_add_r, 'fb_add_l' => $fb_add_l, 'fb_va_r' => $fb_va_r, 'fb_va_l' => $fb_va_l, 'fa_near' => $fa_near,
