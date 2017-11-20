@@ -55,7 +55,7 @@
 							<table class="table table-hover" id="tbl_waiting" >
 								<thead class="thead-inverse">	
 									<th class="col-xs-1" >S/n</th>						
-									<th class="col-xs-2" id="dym_tilte">Card No.</th>						
+									<th class="col-xs-2" id="dym_tilte">Date</th>						
 									<th class="col-xs-5">Full Name</th>
 									<th class="col-xs-2">Status</th>				
 									<th class="col-xs-2">Actions</th>			
@@ -160,89 +160,16 @@
 				
 				//console.log(getWeekNumber('2017-11-24'));
 				
-				if(data.status != 0) {		
-					var weekdays = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday", "Sunday");
-					
+				if(data.status != 0) {						
 					var count = 1;
 					$.each(data, function(i, item) {
-						var appdates = new Date(item.date);
-						appWeek = getWeekNumber(item.date);
-						
-						var today = new Date('2017-11-30');
-						curWeek = getWeekNumber(today);
-						
-						diffWeek = appWeek - curWeek;
-						//console.log(diffWeek);
-						weekkk = '';
-						
-						switch(diffWeek){
-							case 0:
-								weekkk = 'This Week';
-								break;
-							
-							case 1:
-								weekkk = 'Next Week';
-								break;
-								
-							case 2:
-								weekkk = 'Upper Week';
-								break;
-								
-							case 3:
-								weekkk = 'in 3 weeks';
-								break;
-								
-							case 4:
-								weekkk = 'in 4 weeks';
-								break;
-								
-							case 5:
-								weekkk = 'in 5 weeks';
-								break;
-								
-							case -1:
-								weekkk = 'Last Week';
-								break;
-								
-							case -2:
-								weekkk = '2 Weeks ago';
-								break;
-								
-							case -3:
-								weekkk = '3 weeks ago';
-								break;
-								
-							case -4:
-								weekkk = '4 weeks ago';
-								break;
-								
-							case -5:
-								weekkk = '5 weeks ago';
-								break;
-								
-							default:
-								weekkk = 'This Week';
-								
-						}
-						
 						row = $('<tr></tr>');
 						rowData = $('<td></td>').text(count);
 						row.append(rowData);
 						
-						if($("#appfilter").val() == 'weekly'){
-							rowData = $('<td></td>').text(weekdays[appdates.getDay()]);
-							$("#dym_tilte").text("Day");
-						}
-						else if($("#appfilter").val() == 'monthly'){
-							rowData = $('<td></td>').text(weekkk);
-							$("#dym_tilte").text("Week");
-						}
-						else{
-							rowData = $('<td></td>').text(item.cardno);
-							$("#dym_tilte").text('Card No.');
-						}
-							
+						rowData = $('<td></td>').text(item.date);
 						row.append(rowData);
+						
 						rowData = $('<td></td>').text(item.dep_id > 0? item.dep : item.fname);
 						row.append(rowData);
 						rowData = $('<td></td>').html('<div class="badge" '+(item.status == 'New'? ' style="background-color: green"': item.status == 'Closed'? ' style="background-color: #337ab7"': '')+'>' + item.status + "</div>");
@@ -265,7 +192,6 @@
 					});
 				}
 				else {
-					$("#dym_tilte").text('Card No.');
 					$("#tbl_waiting tbody").html(data.msg);
 				}
 				

@@ -4,14 +4,16 @@
 		include ("includes/head.php");
 	?>
 	
-	<body style="background-color:cornsilk;">
+	<body style="background-color:#f8f8f8;">
 		<div class="container">
-			<div style="margin-top:3%">				
-				<img src="img/sc_logo.jpg" class="img-responsive thumbnail" style="margin: 0 auto">
+			<div style="margin-top:3%" class="row">		
+				<div class="col-sm-offset-3 col-sm-6">
+					<img src="img/sc_logo.jpg" class="img-responsive thumbnail">
+				</div>
 			</div>
-			<div style="margin-top: 3%">
+			<div style="margin-top: 3%" class="row">
 				<form id="loginform" method="post" action="api/user/login/">
-					<div style="padding-left:35%; padding-right:35%">
+					<div class="col-sm-offset-4 col-sm-4">
 						<div class="alert alert-info hidden" role="alert" id="login_alert">
 							<i class="fa fa-info-circle"></i> 
 							<span id="login_msg">
@@ -55,17 +57,15 @@
 							</button> 
 						</div>
 						<div class="form-group">
-							<a style="background-color:gray; color:white;" class="btn btn-block">Forgot password <i class="fa fa-question-circle"></i></a>
+							<p class="help-block"><i class="fa fa-question-circle"></i> Please contact your administrator if you've forgotten your password</p>
 						</div>
 					</div>
 				</form>
-				<div class="container"style="margin-top:10px;">
-				Copyright 2017
-				
-				<span class="pull-right">
-					v0.1
-				</span>
-			</div>
+				<div class="col-sm-offset-3 col-sm-6">
+					<hr>
+					Copyright 2017 
+					<strong class="pull-right">v0.2b</strong>
+				</div>
 			</div>
 		</div>
 

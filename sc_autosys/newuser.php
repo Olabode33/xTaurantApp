@@ -154,6 +154,14 @@
 				});
 			}
 		
+			$('#newuser_form').on('keyup keypress', function(e) {
+			  var keyCode = e.keyCode || e.which;
+			  if (keyCode === 13) { 
+				e.preventDefault();
+				return false;
+			  }
+			});
+		
 			$("#newuser_form").submit(function(e) { 
 				$("#save_icon").removeClass("fa-save");
 				$("#save_icon").addClass("fa-spinner fa-pulse");

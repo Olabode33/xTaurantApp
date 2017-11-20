@@ -98,7 +98,7 @@
 
 								<label for="age" class="col-sm-2 control-label">Age</label>
 								<div class="col-sm-4">
-									<input type="text" id="age" name="age" class="form-control" placeholder="yrs...">
+									<input type="number" id="age" name="age" class="form-control" placeholder="yrs...">
 								</div>
 							</div>
 					
@@ -179,12 +179,12 @@
 							<div class="form-group">	
 								<label for="mobile" class="col-sm-2 control-label">Mobile</label>
 								<div class="col-sm-4">
-									<input type="text" id="mobile" name="mobile" class="form-control" placeholder="080-...">
+									<input type="number" id="mobile" name="mobile" class="form-control" placeholder="080-...">
 								</div>
 
 								<label for="phone" class="col-sm-2 control-label">Alt Mobile</label>
 								<div class="col-sm-4">
-									<input type="text" id="phone" name="phone" class="form-control" placeholder="080-...">
+									<input type="number" id="phone" name="phone" class="form-control" placeholder="080-...">
 								</div>
 							</div>
 										
@@ -229,7 +229,7 @@
 							<div class="form-group">	
 								<label for="nok_mobile" class="col-sm-2 control-label">Mobile</label>
 								<div class="col-sm-4">
-									<input type="text" id="nok_mobile" name="nok_mobile" class="form-control" placeholder="080-...">
+									<input type="number" id="nok_mobile" name="nok_mobile" class="form-control" placeholder="080-...">
 								</div>
 
 								<label for="nok_email" class="col-sm-2 control-label">Email</label>
@@ -326,7 +326,7 @@
 							//$("#btn_delete").removeClass("hidden");
 							$("#btn_delete").bind("click", function(){
 								$.get('api/Customers_RestController.php?view=delete&id='+item.cid, function(data) {
-									console.log(data);
+									//console.log(data);
 									 data = $.parseJSON(data);
 									 if(data.status == 1){
 										$("#save_icon").removeClass("fa-spinner fa-pulse");
@@ -351,6 +351,14 @@
 					}
 				});
 			}
+		
+			$('#newcus_form').on('keyup keypress', function(e) {
+			  var keyCode = e.keyCode || e.which;
+			  if (keyCode === 13) { 
+				e.preventDefault();
+				return false;
+			  }
+			});
 		
 			$("#newcus_form").submit(function(e) { 
 				$("#save_icon").removeClass("fa-save");

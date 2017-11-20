@@ -87,8 +87,8 @@
 												<tr>
 													<td><label><strong>Occupation</strong></label></td>
 													<td id="occupation">_____________</td>		
-													<td><label><strong>Next of Kin</strong></label></td>
-													<td id="nok">_____________</td>	
+													<td><label><strong></strong></label></td>
+													<td id="nok"></td>	
 												</tr>
 												<tr>
 													<td><label><strong>Mobile</strong></label></td>
@@ -367,11 +367,11 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="newdep_phone">Mobile Number</label>
 								<div class=" col-sm-4">
-									<input type="text" placeholder="Dependent's mobile number" name="newdep_phone" id="newdep_phone" class="form-control">
+									<input type="number" placeholder="Dependent's mobile number" name="newdep_phone" id="newdep_phone" class="form-control">
 								</div>
 								<label class="col-sm-2 control-label" for="newdep_email">Email</label>
 								<div class="col-sm-4">
-									<input type="text" placeholder="Dependent's email" name="newdep_email" id="newdep_email" class="form-control">
+									<input type="email" placeholder="Dependent's email" name="newdep_email" id="newdep_email" class="form-control">
 								</div>
 							</div>	
 							<div class="form-group">
@@ -507,7 +507,7 @@
 						if(data.status != 0) {					
 							$.each(data, function(i, item) {
 								row = $('<tr></tr>');
-								rowData = $('<td></td>').text(item.lname + " " + item.fname);
+								rowData = $('<td></td>').html('<a role="button" data-toggle="collapse" href=".depid'+item.dep_id+'">' + item.lname + " " + item.fname + '</a>');
 								row.append(rowData);								
 								rowData = $('<td></td>').text(item.gender);
 								row.append(rowData);
@@ -528,6 +528,69 @@
 								row.append(rowData);
 									
 								t.append(row);
+								
+								//Load Dependents Treatory
+								uri = 'api/Controllers/Customers_RestController.php?view=dep_treatory_summary&id='+item.dep_id
+				
+								$.get(uri, function(datat) {
+									datat = $.parseJSON(datat);
+									
+									header_row = $('<tr></tr>').addClass('panel-collapse collapse info');
+									header_row.addClass('depid' + item.dep_id);
+									hRowData = $('<td colspan="6"></td>').html("<i>Treatment History</i>");
+									header_row.append(hRowData);
+									
+									titleRow = $('<tr></tr>').addClass('panel-collapse collapse active');
+									titleRow.addClass('depid' + item.dep_id);
+									
+									tRowData = $('<td></td>').html('<strong>Date</strong>');
+									titleRow.append(tRowData);
+									
+									tRowData = $('<td colspan="2"></td>').html('<strong>Prescription</strong>');
+									titleRow.append(tRowData);
+									
+									tRowData = $('<td></td>').html('<strong>Plan</strong>');
+									titleRow.append(tRowData);
+									
+									tRowData = $('<td></td>').html('<strong>Diagnosis</strong>');
+									titleRow.append(tRowData);
+									
+									tRowData = $('<td></td>').html('<strong>Comments</strong>');
+									titleRow.append(tRowData);
+									
+									t.append(header_row);
+									t.append(titleRow);
+										
+									if(datat.status != 0) {					
+										$.each(datat, function(i, itemt) {		
+											var app_date = itemt.date_created.split(" "); 
+											row = $('<tr></tr>').addClass('panel-collapse collapse');
+											row.addClass('depid' + item.dep_id)
+											
+											viewButton = $('<a></a>').addClass("doctor-only").text(app_date[0]);
+											viewButton.attr('data-toggle', 'tooltip');
+											viewButton.attr('title', 'View Details');
+											viewButton.attr('href', 'history.php?id='+itemt.customer_id+'&h='+itemt.treatory_id+'&a='+0+'&dep='+item.dep_id);
+											rowData = $('<td></td>').append(viewButton);
+												
+											row.append(rowData);
+											
+											rowData = $('<td colspan="2"></td>').text(itemt.prescription);
+											row.append(rowData);
+											
+											rowData = $('<td></td>').text(itemt.plan);
+											row.append(rowData);
+											
+											rowData = $('<td></td>').text(itemt.diagonis);
+											row.append(rowData);
+											
+											rowData = $('<td></td>').text(itemt.comments);
+											row.append(rowData);
+												
+											t.append(row);
+										});
+									}
+								});
 							});
 						}
 						else {
@@ -684,6 +747,14 @@
 			$("#book_appointment").addClass("hidden");
 			$("#add_new_dep").removeClass("hidden");
 		}
+	
+		$('#frm_new_dep').on('keyup keypress', function(e) {
+		  var keyCode = e.keyCode || e.which;
+		  if (keyCode === 13) { 
+			e.preventDefault();
+			return false;
+		  }
+		});
 	
 		$("#frm_new_dep").submit(function(e) { 
 			$("#new_dep_icon").removeClass("fa-plus");

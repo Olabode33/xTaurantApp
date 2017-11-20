@@ -218,7 +218,8 @@
 																<div class="col-sm-6" style="padding-right: 0px;" >
 																	<select class="form-control" name="va_far_unaided_r" id="va_far_unaided_r">
 																		<option value=""></option>
-																		<option value="HM@6m">HM@6m</option>
+																		<option value="NLP">NLP</option>
+																		<option value="LP">LP</option>
 																		<option value="CF@6m">CF@6m</option>
 																		<option value="6/60">6/60</option>
 																		<option value="6/36">6/36</option>
@@ -234,6 +235,8 @@
 																<div class="col-sm-6" style="padding-left: 0px;">
 																	<select class="form-control" name="va_far_unaided_l" id="va_far_unaided_l">
 																		<option value=""></option>
+																		<option value="NLP">NLP</option>
+																		<option value="LP">LP</option>
 																		<option value="HM@6m">HM@6m</option>
 																		<option value="CF@6m">CF@6m</option>
 																		<option value="6/60">6/60</option>
@@ -257,6 +260,8 @@
 																<div class="col-sm-6" style="padding-right: 0px;" >
 																	<select class="form-control" name="va_far_aided_r" id="va_far_aided_r">
 																		<option value=""></option>
+																		<option value="NLP">NLP</option>
+																		<option value="LP">LP</option>
 																		<option value="HM@6m">HM@6m</option>
 																		<option value="CF@6m">CF@6m</option>
 																		<option value="6/60">6/60</option>
@@ -273,6 +278,8 @@
 																<div class="col-sm-6" style="padding-left: 0px;">
 																	<select class="form-control" name="va_far_aided_l" id="va_far_aided_l">
 																		<option value=""></option>
+																		<option value="NLP">NLP</option>
+																		<option value="LP">LP</option>
 																		<option value="HM@6m">HM@6m</option>
 																		<option value="CF@6m">CF@6m</option>
 																		<option value="6/60">6/60</option>
@@ -295,6 +302,8 @@
 																<div class="col-sm-6" style="padding-right: 0px;" >
 																	<select class="form-control" name="va_far_pinhole_r" id="va_far_pinhole_r">
 																		<option value=""></option>
+																		<option value="NLP">NLP</option>
+																		<option value="LP">LP</option>
 																		<option value="HM@6m">HM@6m</option>
 																		<option value="CF@6m">CF@6m</option>
 																		<option value="6/60">6/60</option>
@@ -311,6 +320,8 @@
 																<div class="col-sm-6" style="padding-left: 0px; padding-right:20px">
 																	<select class="form-control" name="va_far_pinhole_l" id="va_far_pinhole_l">
 																		<option value=""></option>
+																		<option value="NLP">NLP</option>
+																		<option value="LP">LP</option>
 																		<option value="HM@6m">HM@6m</option>
 																		<option value="CF@6m">CF@6m</option>
 																		<option value="6/60">6/60</option>
@@ -447,95 +458,7 @@
 														
 													</div>
 												</div>
-												<!--Ext Header 1-->
-												<div class="row">
-													<div class="col-sm-3"> </div>
-													<div class="col-sm-3" style="font-weight:bold; text-align:center"> NLP </div>
-													<div class="col-sm-3" style="font-weight:bold; text-align:center"> LP </div>
-													<div class="col-sm-3" style="font-weight:bold; text-align:center">  </div>
-												</div>
-												<!-- NLP & LP -->
-												<div class="row">
-													<div class="form-group">
-														<label for="va" class="col-sm-3 control-label">Far</label>
-														<!--NLP-->
-														<div class="col-sm-3">
-															<div class="row">
-																<div class="col-sm-6" style="padding-right: 0px;" >
-																	<select class="form-control" name="va_far_nlp_r" id="va_far_nlp_r">
-																		<option value=""></option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>
-																</div>
-																<div class="col-sm-6" style="padding-left: 0px;">
-																	<select class="form-control" name="va_far_nlp_l" id="va_far_nlp_l">
-																		<option value=""></option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>									
-																</div>
-																
-															</div>
-														</div>
-														
-														<!--LP-->
-														<div class="col-sm-3">
-															<div class="row">
-																<div class="col-sm-6" style="padding-right: 0px;" >
-																	<select class="form-control" name="va_far_lp_r" id="va_far_lp_r">
-																		<option value=""></option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>
-																</div>
-																<div class="col-sm-6" style="padding-left: 0px;">
-																	<select class="form-control" name="va_far_lp_l" id="va_far_lp_l">
-																		<option value=""></option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>									
-																</div>
-															</div>
-														</div>													
-													</div>
-												</div>
+												
 												<!-- OSP -->
 												<div class="row">
 													<div class="form-group">
@@ -551,14 +474,7 @@
 															</div>
 														</div>
 														
-														
 														<div class="col-sm-3">
-															<div class="row">
-																<label for="va" class="col-sm-3 control-label">Add</label>
-																<div class="col-sm-9">
-																	<input type="text" id="ospadd" name="ospadd" class="form-control">
-																</div>
-															</div>
 														</div>
 														
 														<div class="col-sm-3">
@@ -571,10 +487,26 @@
 														</div>	
 													</div>
 												</div>
+												<!-- OSP ADD-->
+												<div class="row">
+													<div class="form-group">
+														<label for="va" class="col-sm-3 control-label">ADD</label>
+														<div class="col-sm-3">
+															<div class="row">
+																<div class="col-sm-6"  style="padding-right: 0px;" >
+																	<input type="text" id="ospaddr" name="ospaddr" class="form-control">
+																</div>
+																<div class="col-sm-6"  style="padding-left: 0px;" >
+																	<input type="text" id="opsaddl" name="ospaddl" class="form-control">								
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
 												<!-- IOP -->
 												<div class="row">
 													<div class="form-group">
-														<label for="va" class="col-sm-3 control-label">IOP::</label>													
+														<label for="va" class="col-sm-3 control-label">IOP:</label>													
 														<div class="col-sm-3">
 															<div class="row">
 																<div class="col-sm-6" style="padding-right: 0px;">
@@ -596,6 +528,7 @@
 											</div>
 										</div>
 									</div>
+									
 									<!-- REFRACTION -->
 									<div class="panel panel-default panel-primary">
 										<div class="panel-heading">
@@ -931,7 +864,7 @@
 									<!-- Diag, Plan & Pres -->
 									<div class="panel panel-default panel-primary">
 										<div class="panel-heading">
-											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#dpp">Diagnosis, Plan & Prescription</a></h3>
+											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#dpp">Prescription, Plan & Diagnosis</a></h3>
 										</div>
 										<div id="dpp" class="panel-collapse collapse">
 											<div class="panel-body">
@@ -1151,6 +1084,14 @@
 					}
 				});
 			}
+		
+			$('#frm_doctors_input').on('keyup keypress', function(e) {
+			  var keyCode = e.keyCode || e.which;
+			  if (keyCode === 13) { 
+				e.preventDefault();
+				return false;
+			  }
+			});
 		});
 		
 		function edit_customer(){

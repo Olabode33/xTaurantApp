@@ -68,11 +68,11 @@
 							<div class="form-group">	
 								<label for="dob" class="col-sm-2 control-label"><span class="text-danger">*</span>Mobile</label>
 								<div class="col-sm-4">
-									<input type="text" id="p_phone" name="p_phone" class="form-control" placeholder="Mobile" required>
+									<input type="number" id="p_phone" name="p_phone" class="form-control" placeholder="Mobile" required>
 								</div>
 								<label for="age" class="col-sm-2 control-label"><span class="text-danger">*</span>Email</label>
 								<div class="col-sm-4">
-									<input type="text" id="p_email" name="p_email" class="form-control" placeholder="Email" required>
+									<input type="email" id="p_email" name="p_email" class="form-control" placeholder="Email" required>
 								</div>
 							</div>
 								
@@ -83,7 +83,7 @@
 			</div>
 
 			<div class="col-md-2">
-				<a style="text-align: left;" class="btn btn-block btn-default btn-block" id="btn_goback" href="partners.php"><i class="fa fa-reply"></i> Go Back</a> 
+				<a style="text-align: left;" class="btn btn-block btn-default btn-block" id="btn_goback" href="partners.php"><i class="fa fa-cubes"></i> View All Partners</a> 
 				<button type="reset" class="btn btn-block btn-default" style="text-align: left;" id="btn_clear">
 					<i class="fa fa-eraser" id=""></i> Clear
 				</button> 
@@ -148,6 +148,14 @@
 					}
 				});
 			}
+		
+			$('#newPartnerForm').on('keyup keypress', function(e) {
+			  var keyCode = e.keyCode || e.which;
+			  if (keyCode === 13) { 
+				e.preventDefault();
+				return false;
+			  }
+			});
 		
 			$("#newPartnerForm").submit(function(e) { 
 				$("#save_icon").removeClass("fa-save");
