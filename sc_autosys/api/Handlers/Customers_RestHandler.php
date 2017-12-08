@@ -144,9 +144,9 @@
 			$this->getResponse($rawData, $statusCode);
 		}
 		
-		public function getAppointment($id) {
+		public function getAppointment($id, $fdate = '', $tdate = '') {
 			$customer_obj = new Customers();
-			$rawData = $customer_obj->get_appointment($id);
+			$rawData = $customer_obj->get_appointment($id, $fdate, $tdate);
 			
 			if(empty($rawData)) {
 				$statusCode = 404;
