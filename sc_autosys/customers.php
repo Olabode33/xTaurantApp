@@ -217,6 +217,31 @@
 									</div>
 								</div>
 							</div>
+							<!-- Appointment History-->
+							<div class="panel panel-primary">
+								<div class="panel-heading" role="tab" id="appistory_header">
+									<h4 class="panel-title">
+										<a role="button" data-toggle="collapse" data-parent="#accordion" href="#appistory" aria-expanded="true" aria-controls="collapseOne">Appointment History</a>
+									</h4>
+								</div>
+								<div id="appistory" class="panel-collapse collapse" role="tabpanel" aria-labelledby="appistory_header">
+									<div class="panel-body">
+										<div class="table-responsive">
+											<table class="table table-hover" id="tbl_appistory" >
+												<thead class="thead-inverse">							
+													<th class="col-xs-4">Date</th>
+													<th class="col-xs-4">Branch</th>
+													<th class="col-xs-4">Status</th>		
+												</thead>
+												
+												<tbody>
+													
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 						<!--end panel group-->	
 					</div>
@@ -389,6 +414,302 @@
 		</div>
 	</div>
 	
+	<!-- Modal div to delete a project --> 
+	<div class="modal fade" id="history_details" tabindex="-1" role="dialog"  aria-labelledby="projectTitle" aria-hidden="true"> 
+		<div class="modal-dialog modal-lg modal-header-danger" role="document"> 
+			<div class="modal-content"> 
+				<div class="modal-header"> 
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button> 
+					<h4 class="modal-title" id="projectTitle">View History Details</h4> 
+				</div> 
+				<div class="modal-body">
+					<div class="panel-group" id="h_drspage">
+						<!--Client History -->
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title"><a data-toggle="collapse" data-parent="#h_drspage" href="#h_ch">Client History</a></h3>
+							</div>
+							<div id="h_ch" class="panel-collapse collapse">
+								<div class="panel-body">
+									<div class="row">
+										<b class="col-sm-3">Chief Complain:</b> 
+										<div class="col-sm-9">
+											<p id="h_chiefcomplain"></p>
+										</div>
+									</div>	
+														
+									<div class="row">
+										<b class="col-sm-3">PxOHx:</b> 
+										<div class="col-sm-9">
+											<p type="text" id="h_pxohx"></p>
+										</div>
+									</div>	
+															
+									<div class="row">
+										<b class="col-sm-3">PxMHx:</b> 
+										<div class="col-sm-9">
+											<p id="h_pxmhx"></p>
+										</div>
+									</div>	
+															
+									<div class="row">
+										<b class="col-sm-3">PxFOHx:</b> 
+										<div class="col-sm-9">
+											<p id="h_pxfohx"></p>
+										</div>	
+									</div>
+									
+									<div class="row">
+										<b class="col-sm-3">PxFMHx:</b> 
+										<div class="col-sm-9">
+											<p id="h_pxfmhx"></p>
+										</div>	
+									</div>
+															
+									<div class="row">
+										<b class="col-sm-3">LEE:</b> 
+										<div class="col-sm-9">
+											<p id="h_lee"></p>
+										</div>	
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--Examination-->
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title"><a data-toggle="collapse" data-parent="#h_drspage" href="#h_exam">Examination</a></h3>
+							</div>
+							<div id="h_exam" class="panel-collapse collapse">
+								<div class="panel-body">
+									<!--Header 1-->
+									<div class="row">
+										<div class="col-sm-3"> </div>
+										<div class="col-sm-3" style="font-weight:bold; text-align:center"> Unaided </div>
+										<div class="col-sm-3" style="font-weight:bold; text-align:center"> Aided </div>
+										<div class="col-sm-3" style="font-weight:bold; text-align:center"> Pinhole </div>
+									</div>
+									<!--Header 2-->
+									<div class="row">		
+										<div class="col-sm-3" style="font-weight:bold; text-align: right"> Visual Acuity</div>
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-6" style="font-weight:bold; text-align:center"> R </div>
+												<div class="col-sm-6" style="font-weight:bold; text-align:center"> L </div>
+											</div>
+										</div>
+													
+										<div class="col-sm-3"> 
+											<div class="row">
+												<div class="col-sm-6" style="font-weight:bold; text-align:center"> R </div>
+												<div class="col-sm-6" style="font-weight:bold; text-align:center"> L </div>
+											</div>				
+										</div>
+													
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-6" style="font-weight:bold; text-align:center"> R </div>
+												<div class="col-sm-6" style="font-weight:bold; text-align:center"> L </div>
+											</div>
+										</div>					
+									</div>
+									<!-- Far  -->
+									<div class="row">
+										<b for="va" class="col-sm-3 control-label">Far</b>
+										<!--Unaided-->
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-6" style="padding-right: 0px;" >
+													<p id="h_va_far_unaided_r"></p>
+												</div>
+												<div class="col-sm-6" style="padding-left: 0px;">
+													<p id="h_va_far_unaided_l"></p>							
+												</div>
+											</div>
+										</div>
+														
+										<!--Aided-->
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-6" style="padding-right: 0px;" >
+													<p id="h_va_far_aided_r"></p>
+												</div>
+												<div class="col-sm-6" style="padding-left: 0px;">
+													<p id="h_va_far_aided_l"></p>									
+												</div>
+											</div>
+										</div>
+														
+										<!--Pinhole-->
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-6" style="padding-right: 0px;" >
+													<p id="h_va_far_pinhole_r"></p>
+												</div>
+												<div class="col-sm-6" style="padding-left: 0px; padding-right:20px">
+													<p id="h_va_far_pinhole_l"></p>								
+												</div>
+											</div>
+										</div>
+														
+									</div>
+									<!-- Far Row 2-->
+									<div class="row">
+										<b for="va" class="col-sm-3 control-label"></b>
+										<!--Far2 Unaided-->
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-6" style="padding-right: 0px;" >
+													<p id="h_va_far2_unaided_r"></p>
+												</div>
+												<div class="col-sm-6" style="padding-left: 0px;">
+													<p id="h_va_far2_unaided_l"></p>								
+												</div>
+											</div>
+										</div>
+														
+										<!--Aided-->
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-6" style="padding-right: 0px;" >
+													<p id="h_va_far2_aided_r"></p>
+												</div>
+												<div class="col-sm-6" style="padding-left: 0px;">
+													<p id="va_far2_aided_l"></p>								
+												</div>
+											</div>
+										</div>
+														
+										<!--Pinhole-->
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-6" style="padding-right: 0px;" >
+													<p id="h_va_far2_pinhole_r"></p>
+												</div>
+												<div class="col-sm-6" style="padding-left: 0px; padding-right:20px">
+													<p id="h_va_far2_pinhole_l"></p>								
+												</div>
+											</div>
+										</div>
+														
+									</div>
+												
+									<!--Near -->
+									<div class="row">
+										<b class="col-sm-3 control-label">Near</b>
+										<!--Unaided-->
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-12" style="padding-right: 0px;" >
+													<p id="h_va_near_unaided_r"></p>
+												</div>
+												<!--div class="col-sm-6" style="padding-left: 0px;">
+													<p id="h_va_near_unaided_l"></p>						
+												</div-->
+																
+											</div>
+										</div>
+														
+										<!--Aided-->
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-12" style="padding-right: 0px;" >
+													<p id="h_va_near_aided_r"></p>
+												</div>
+												<!--div class="col-sm-6" style="padding-left: 0px;">
+													<p id="h_va_near_aided_l"></p>								
+												</div-->
+											</div>
+										</div>
+										
+										<!--Pinhole-->
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-12" style="padding-right: 20px;" >
+													<p id="h_va_near_pinhole_r"></p>
+												</div>
+												<!--div class="col-sm-6" style="padding-left: 0px; padding-right:20px">
+													<p id="h_va_near_pinhole_l"></p>								
+												</div-->
+											</div>
+										</div>
+														
+									</div>
+												
+									<!-- OSP -->
+									<div class="row">
+										<b class="col-sm-3 control-label">Old Spec Pres:</b>
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-6"  style="padding-right: 0px;" >
+													<p id="h_ospr"></p>
+												</div>
+												<div class="col-sm-6"  style="padding-left: 0px;" >
+													<p id="h_opsl" ></p>								
+												</div>
+											</div>
+										</div>
+										
+										<div class="col-sm-3">
+										</div>
+										
+										<div class="col-sm-3">
+											<div class="row">
+												<b for="va" class="col-sm-3 control-label">Near</b>
+												<div class="col-sm-9" style="padding-right:20px">
+													<p id="h_ospn"></p>
+												</div>
+											</div>
+										</div>	
+									</div>
+									<!-- OSP ADD-->
+									<div class="row">
+										<b for="va" class="col-sm-3 control-label">ADD</b>
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-12"  style="padding-right: 0px;" >
+													<p id="h_ospaddr"></p>
+												</div>
+												<!--div class="col-sm-6"  style="padding-left: 0px;" >
+													<input type="text" id="opsaddl" name="ospaddl" class="form-control">								
+												</div-->
+											</div>
+										</div>
+									</div>
+									<!-- IOP -->
+									<div class="row">
+										<b for="va" class="col-sm-3 control-label">IOP:</b>													
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-6" style="padding-right: 0px;">
+													<p id="h_iopr"></p>
+												</div>												
+												<div class="col-sm-6" style="padding-left: 0px;">
+													<p id="h_iopl" ></p>
+												</div>
+											</div>
+										</div>
+										
+										<b for="iop" class="col-sm-3 control-label" style="text-align: left; margin-left: -20px;">mmHg</b>
+										
+										<div class="col-sm-3" style="padding-right:20px"> 
+											<p id="tim"> </p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					
+					</div>
+				</div> 
+				<div class="modal-footer"> 
+					
+				</div> 
+			</div><!-- /.modal-content --> 
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
 	<script>
 		$(document).ready( function() {
 			search();
@@ -478,7 +799,7 @@
 					$("#fullname").html(item.title + " " + item.fname + ' ' + item.lname);
 					$("#gender").html(item.gender);
 					$("#fulladdress").html(item.address + ", " + item.address_area + " " + item.address_state);
-					$("#dob").html(item.dob);
+					$("#dob").html(item.dob_month + ' ' + item.dob_day + ' ' + item.dob);
 					$("#age").html(item.age);
 					$("#occupation").html(item.occupation);
 					$("#nok").html(item.nok);
@@ -567,9 +888,10 @@
 											row = $('<tr></tr>').addClass('panel-collapse collapse');
 											row.addClass('depid' + item.dep_id)
 											
-											viewButton = $('<a></a>').addClass("doctor-only").text(app_date[0]);
-											viewButton.attr('data-toggle', 'tooltip');
-											viewButton.attr('title', 'View Details');
+											viewButton = $('<a></a>').addClass("btn btn-primary btn-xs doctor-only").text(app_date[0]);
+											//viewButton.attr('data-toggle', 'modal');
+											//viewButton.attr('data-target', '#history_details');
+											//viewButton.attr('data-tid', itemt.treatory_id);
 											viewButton.attr('href', 'history.php?id='+itemt.customer_id+'&h='+itemt.treatory_id+'&a='+0+'&dep='+item.dep_id);
 											rowData = $('<td></td>').append(viewButton);
 												
@@ -626,8 +948,9 @@
 							
 						viewButton = $('<a></a>').addClass("btn btn-primary btn-xs doctor-only").html('<i class="fa fa-info-circle"></i> View');
 						//viewButton.attr('href', '#');
-						viewButton.attr('data-toggle', 'tooltip');
-						viewButton.attr('title', 'View Details');
+						//viewButton.attr('data-toggle', 'modal');
+						//viewButton.attr('data-target', '#history_details');
+						//viewButton.attr('data-tid', itemt.treatory_id);
 						viewButton.attr('href', 'history.php?id='+itemt.customer_id+'&h='+itemt.treatory_id+'&a=0');
 						rowData = $('<td></td>').append(viewButton);
 							
@@ -638,6 +961,36 @@
 				}
 				else {
 					$("#tbl_treatory2 tbody").html(datat.msg);
+				}
+			});
+			
+			//Load Appointment History
+			$.get('api/Controllers/Customers_RestController.php?view=get_customer_appointments&id='+id, function(datat) {
+				datat = $.parseJSON(datat);
+				console.log(datat);
+				var tt = $("#tbl_appistory");
+				$("#tbl_appistory tbody").empty();
+					
+				if(datat.status != 0) {					
+					$.each(datat, function(i, itemt) {		
+						row = $('<tr></tr>');
+						rowData = $('<td></td>').text(itemt.date);
+						row.append(rowData);
+						rowData = $('<td></td>').text(itemt.branch);
+						row.append(rowData);
+						var app_status = itemt.status;
+						var t_date = new Date();
+						if(itemt.status == 'New' || itemt.status == 'Open' && itemt.date < t_date)
+							app_status = 'Missed'
+						
+						rowData = $('<td></td>').html('<div class="badge" '+(app_status == 'New'? ' style="background-color: green"': app_status == 'Closed'? ' style="background-color: #337ab7"': '')+'>' + app_status + "</div>");
+						row.append(rowData);
+						
+						tt.append(row);
+					});
+				}
+				else {
+					$("#tbl_appistory tbody").html(datat.msg);
 				}
 			});
 			
@@ -800,7 +1153,37 @@
 			});
 		});
 	
-	
+		$('#history_details').on('show.bs.modal', function (event) {
+			var button = $(event.relatedTarget) // Button that triggered the modal
+			var th_id = button.data('tid') // Extract info from data-* attributes
+			var name = button.data('dep') // Extract info from data-* attributes
+			
+			console.log(th_id);
+		  
+			$.get('api/Controllers/Customers_RestController.php?view=treatory_detail&id='+th_id, function(data) {
+				data = $.parseJSON(data);
+				console.log(data);
+				if(data.status === undefined){
+					$.each(data, function(i, item) {
+						$('#h_chiefcomplain').html(item.complain); $('#h_pxohx').html(item.pxohx); $('#h_pxmhx').html(item.pxmhx); 
+						$('#h_pxfohx').html(item.pxfohx); $('#h_pxfmhx').html(item.pxfmhx); $('#h_lee').html(item.lee);
+						
+						$('#h_va_unaided_r_far').html(item.va_unaided_r_far); $('#h_va_unaided_r_near').html(item.va_unaided_r_near);
+						$('#h_va_unaided_l_far').html(item.va_unaided_l_far);$('#h_va_unaided_l_near').html(item.va_unaided_l_near);
+						$('#h_va_aided_r_far').html(item.va_aided_r_far); $('#h_va_aided_r_near').html(item.va_aided_r_near); 
+						$('#h_va_aided_l_far').html(item.va_aided_l_far); $('#h_va_aided_l_near').html(item.va_aided_l_near);
+						$('#h_va_pinhole_r_far').html(item.va_pinhole_r_far); $('#h_va_pinhole_r_near').html(item.va_pinhole_r_near); 
+						$('#h_va_pinhole_l_far').html(item.va_pinhole_l_far); $('#h_va_pinhole_l_near').html(item.va_pinhole_l_near);
+						$('#h_va_far2_unaided_r').html(item.va_far2_unaided_r); $('#h_va_far2_unaided_l').html(item.va_far2_unaided_l);
+						$('#h_va_far2_aided_r').html(item.va_far2_aided_r); $('#h_va_far2_aided_l').html(item.va_far2_aided_l);
+						$('#h_va_far2_pinhole_r').html(item.va_far2_pinhole_r); $('#h_va_far2_pinhole_r').html(item.va_far2_pinhole_r);
+						$('#h_va_far_nlp_r').html(item.va_far_nlp_r); $('#h_va_far_nlp_l').html(item.va_far_nlp_l); $('#h_va_far_lp_l').html(item.va_far_lp_l); $('#h_va_far_lp_r').html(item.va_far_lp_r);
+						$('#h_old_spec_r').html(item.old_spec_r); $('#h_old_spec_l').html(item.old_spec_l); 
+						$('#h_iop_r').html(item.iop_r); $('#h_iop_l').html(item.iop_l); $('#h_near').html(item.near); $('#h_ospadd_r').html(item.ospaddr); $('#h_ospadd_l').html(item.ospaddl);
+					});
+				}
+			});
+		})
 	</script>	
 	<?php
 		include "includes/footer_pages.php";

@@ -48,7 +48,24 @@
 										<option value="daily">Today</option>
 										<option value="weekly">This Week</option>
 										<option value="monthly">This Month</option>
+										<option value="custom">Custom</option>
 									</select>
+									<div class="row" id="custom_filter">
+										<div class="col-sm-5">
+											<input type="date" id="filter_fdate" class="form-control input-sm">
+										</div>
+										<b class="col-sm-1 text-center" style="padding-top: 10px;">
+											to
+										</b>
+										<div class="col-sm-4">
+											<div class="input-group">
+												<input type="date" id="filter_tdate" class="form-control input-sm">
+												<span class="input-group-btn">
+													<button class="btn btn-primary btn-sm" id="btn_custom_filter">GO !</button>
+												</span>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 							<hr style="margin-top: 10px; margin-bottom: 10px;">
@@ -132,26 +149,54 @@
 		function search() {
 			var uri = '';
 			var term = $("#appfilter").val();
+			$("#custom_filter").addClass("hidden");
 			
 			switch(term){
 				case 'daily':
 					uri = 'api/Controllers/Customers_RestController.php?view=get_all_appointments';
 					$("#apptime").text('today');
+					get_filter_data(uri);
 					break;
 				case 'weekly':
 					uri = 'api/Controllers/Customers_RestController.php?view=get_weekly_appointments';
 					$("#apptime").text('this week');
+					get_filter_data(uri);
 					break;
 				case 'monthly':
 					uri = 'api/Controllers/Customers_RestController.php?view=get_monthly_appointments';
 					$("#apptime").text('this month');
+					get_filter_data(uri);
+					break;
+				case 'custom':
+					var date = new Date();
+
+					var day = date.getDate();
+					var month = date.getMonth() + 1;
+					var year = date.getFullYear();
+
+					if (month < 10) month = "0" + month;
+					if (day < 10) day = "0" + day;
+
+					var today = year + "-" + month + "-" + day;
+					$("#custom_filter").removeClass("hidden");
+					$("#filter_fdate").val(today);
+					$("#filter_tdate").val(today);
+					$("#btn_custom_filter").click(function(){
+						uri = 'api/Controllers/Customers_RestController.php?view=get_custom_appointments&fdate='+$("#filter_fdate").val()+'&tdate='+$("#filter_tdate").val();
+						$("#apptime").text($("#filter_fdate").val()+' to '+$("#filter_tdate").val());
+						get_filter_data(uri);
+					})
 					break;
 				default:
 					uri = 'api/Controllers/Customers_RestController.php?view=get_all_appointments';
 					$("#apptime").text('today');
+					get_filter_data(uri);
 					break;
-			}
-			
+			}		
+		}
+		
+		
+		function get_filter_data(uri){
 			$.get(uri, function(data) {
 				data = $.parseJSON(data);
 					
@@ -206,7 +251,7 @@
 						$("#nav_treatory").addClass("disabled");
 					}
 				});	
-			});			
+			});	
 		}
 		
 		function getWeekNumber(aDate){

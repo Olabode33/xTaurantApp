@@ -220,6 +220,7 @@
 																		<option value=""></option>
 																		<option value="NLP">NLP</option>
 																		<option value="LP">LP</option>
+																		<option value="HM@6m">HM@6m</option>
 																		<option value="CF@6m">CF@6m</option>
 																		<option value="6/60">6/60</option>
 																		<option value="6/36">6/36</option>
@@ -340,6 +341,116 @@
 														
 													</div>
 												</div>
+												<!-- Far Row 2-->
+												<div class="row">
+													<div class="form-group">
+														<label for="va" class="col-sm-3 control-label"></label>
+														<!--Far2 Unaided-->
+														<div class="col-sm-3">
+															<div class="row">
+																<div class="col-sm-6" style="padding-right: 0px;" >
+																	<select class="form-control" name="va_far2_unaided_r" id="va_far2_unaided_r">
+																		<option value=""></option>
+																		<option value="-4">-4</option>
+																		<option value="-3">-3</option>
+																		<option value="-2">-2</option>
+																		<option value="-1">-1</option>
+																		<option value="0">0</option>
+																		<option value="+1">+1</option>
+																		<option value="+2">+2</option>
+																		<option value="+3">+3</option>
+																		<option value="+4">+4</option>
+																	</select>
+																</div>
+																<div class="col-sm-6" style="padding-left: 0px;">
+																	<select class="form-control" name="va_far2_unaided_l" id="va_far2_unaided_l">
+																		<option value=""></option>
+																		<option value="-4">-4</option>
+																		<option value="-3">-3</option>
+																		<option value="-2">-2</option>
+																		<option value="-1">-1</option>
+																		<option value="0">0</option>
+																		<option value="+1">+1</option>
+																		<option value="+2">+2</option>
+																		<option value="+3">+3</option>
+																		<option value="+4">+4</option>
+																	</select>									
+																</div>
+																
+															</div>
+														</div>
+														
+														<!--Aided-->
+														<div class="col-sm-3">
+															<div class="row">
+																<div class="col-sm-6" style="padding-right: 0px;" >
+																	<select class="form-control" name="va_far2_aided_r" id="va_far2_aided_r">
+																		<option value=""></option>
+																		<option value="-4">-4</option>
+																		<option value="-3">-3</option>
+																		<option value="-2">-2</option>
+																		<option value="-1">-1</option>
+																		<option value="0">0</option>
+																		<option value="+1">+1</option>
+																		<option value="+2">+2</option>
+																		<option value="+3">+3</option>
+																		<option value="+4">+4</option>
+																	</select>
+																</div>
+																<div class="col-sm-6" style="padding-left: 0px;">
+																	<select class="form-control" name="va_far2_aided_l" id="va_far2_aided_l">
+																		<option value=""></option>
+																		<option value="-4">-4</option>
+																		<option value="-3">-3</option>
+																		<option value="-2">-2</option>
+																		<option value="-1">-1</option>
+																		<option value="0">0</option>
+																		<option value="+1">+1</option>
+																		<option value="+2">+2</option>
+																		<option value="+3">+3</option>
+																		<option value="+4">+4</option>
+																	</select>									
+																</div>
+															</div>
+														</div>
+														
+														<!--Pinhole-->
+														<div class="col-sm-3">
+															<div class="row">
+																<div class="col-sm-6" style="padding-right: 0px;" >
+																	<select class="form-control" name="va_far2_pinhole_r" id="va_far2_pinhole_r">
+																		<option value=""></option>
+																		<option value="-4">-4</option>
+																		<option value="-3">-3</option>
+																		<option value="-2">-2</option>
+																		<option value="-1">-1</option>
+																		<option value="0">0</option>
+																		<option value="+1">+1</option>
+																		<option value="+2">+2</option>
+																		<option value="+3">+3</option>
+																		<option value="+4">+4</option>
+																	</select>
+																</div>
+																<div class="col-sm-6" style="padding-left: 0px; padding-right:20px">
+																	<select class="form-control" name="va_far2_pinhole_l" id="va_far2_pinhole_l">
+																		<option value=""></option>
+																		<option value="-4">-4</option>
+																		<option value="-3">-3</option>
+																		<option value="-2">-2</option>
+																		<option value="-1">-1</option>
+																		<option value="0">0</option>
+																		<option value="+1">+1</option>
+																		<option value="+2">+2</option>
+																		<option value="+3">+3</option>
+																		<option value="+4">+4</option>
+																	</select>									
+																</div>
+															</div>
+														</div>
+														
+													</div>
+												</div>
+												
 												<!--Near -->
 												<div class="row">
 													<div class="form-group">
@@ -493,12 +604,12 @@
 														<label for="va" class="col-sm-3 control-label">ADD</label>
 														<div class="col-sm-3">
 															<div class="row">
-																<div class="col-sm-6"  style="padding-right: 0px;" >
+																<div class="col-sm-12"  style="padding-right: 0px;" >
 																	<input type="text" id="ospaddr" name="ospaddr" class="form-control">
 																</div>
-																<div class="col-sm-6"  style="padding-left: 0px;" >
+																<!--div class="col-sm-6"  style="padding-left: 0px;" >
 																	<input type="text" id="opsaddl" name="ospaddl" class="form-control">								
-																</div>
+																</div-->
 															</div>
 														</div>
 													</div>
@@ -518,7 +629,7 @@
 															</div>
 														</div>
 														
-														<label for="iop" class="col-sm-3 control-label"></label>
+														<label for="iop" class="col-sm-3 control-label" style="text-align: left; margin-left: -20px;">mmHg</label>
 														
 														<div class="col-sm-3" style="padding-right:20px"> 
 															<input type="time" class="form-control" id="tim"> 
@@ -585,7 +696,7 @@
 													</div>
 												</div>
 
-												<div class="row">
+												<!--div class="row">
 													<div class="col-sm-4">
 														<div class="row">
 															<h6 class="col-sm-12" style="font-weight:bold">Add</h6> 
@@ -603,7 +714,7 @@
 															<input type="text" id="sub_add_l" name="sub_add_l" class="form-control">
 														</div>													
 													</div>					
-												</div>
+												</div-->
 										
 												<div class="row">
 													<div class="col-sm-4">
@@ -656,13 +767,13 @@
 														</div>
 													</div>
 													
-													<div class="col-sm-4">
+													<!--div class="col-sm-4">
 														<div class="form-group">
 															<input type="text" id="fb_add_r" name="fb_add_r" class="form-control">
 														</div>
-													</div>
+													</div-->
 													
-													<div class="col-sm-4" style="padding-right:20px">
+													<div class="col-sm-8" style="padding-right:20px">
 														<div class="form-group">
 															<input type="text" id="fb_add_l" name="fb_add_l" class="form-control">
 														</div>
@@ -676,13 +787,13 @@
 														</div>
 													</div>
 												
-													<div class="col-sm-4">
+													<!--div class="col-sm-4">
 														<div class="form-group">
 															<input type="text" id="fb_va_r" name="fb_va_r" class="form-control">
 														</div>
-													</div>
+													</div-->
 												
-													<div class="col-sm-4" style="padding-right:20px">
+													<div class="col-sm-8" style="padding-right:20px">
 														<div class="form-group">
 															<input type="text" id="fb_va_l" name="fb_va_l" class="form-control">
 														</div>	
@@ -696,7 +807,7 @@
 														</div>
 													</div>
 												
-													<div class="col-sm-8">
+													<div class="col-sm-8" style="padding-right:20px">
 														<div class="form-group">
 															<input type="text" id="fb_near_new" name="fb_near_new" class="form-control">
 														</div>
@@ -706,6 +817,7 @@
 											</div>
 										</div>
 									</div> 
+									
 									<!-- External Examination -->
 									<div class="panel panel-primary">
 										<div class="panel-heading">
@@ -718,8 +830,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">LIDS</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="lids" name="lids" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="lidsodosou" id="lidsodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 																	
@@ -727,8 +847,16 @@
 													<div class="col-sm-3">
 													  <label class="control-label">CONJUNCTIVA</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="con" name="con" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="conodosou" id="conodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 										
@@ -736,8 +864,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">CORNEA</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="cornea" name="cornea" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="corneaodosou" id="corneaodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>									
 										
@@ -745,8 +881,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">ANTERIOR CHAMBER</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="antc" name="antc" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="antcodosou" id="antcodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 										
@@ -754,8 +898,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">IRIS</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="iris" name="iris" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="irisodosou" id="irisodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 										
@@ -763,8 +915,16 @@
 													<div class="col-sm-3">
 													  <label class="control-label">PUPIL</label>
 													 </div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 													  <input type="text" id="pupl" name="pupl" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="puplodosou" id="puplodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 												
@@ -772,8 +932,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">LENS</label>
 													 </div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="lens" name="lens" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="lensodosou" id="lensodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 										
@@ -781,8 +949,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">COLOUR VISION</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="colv" name="colv" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="colvodosou" id="colvodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 												
@@ -790,8 +966,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">OTHERS</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="oth" name="oth" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="othodosou" id="othodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 											</div>
@@ -808,8 +992,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">VITREOUS</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="vitr" name="vitr" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="vitrodosou" id="vitrodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 										
@@ -817,8 +1009,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">CHOROID</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="chor" name="chor" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="chorodosou" id="chorodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 										
@@ -826,8 +1026,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">RETINA</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="ret" name="ret" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="retodosou" id="retodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 										
@@ -835,8 +1043,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">MACULAR</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="mac" name="mac" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="macodosou" id="macodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 										
@@ -844,8 +1060,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">DISC</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="disc" name="disc" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="discodosou" id="discodosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 										
@@ -853,8 +1077,16 @@
 													<div class="col-sm-3">
 														<label class="control-label">OTHERS</label>
 													</div>
-													<div class="col-sm-9">
+													<div class="col-sm-7">
 														<input type="text" id="oth1" name="oth1" class="form-control">
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="oth1odosou" id="oth1odosou">
+															<option value=""></option>
+															<option value="OD">OD</option>
+															<option value="OS">OS</option>
+															<option value="OU">OU</option>
+														</select>
 													</div>
 												</div>
 											
