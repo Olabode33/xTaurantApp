@@ -130,6 +130,18 @@
 			$customersRestHandler = new Customers_RestHandler();
 			$customersRestHandler->getAppointment(-2);
 			break;
+			
+		case "get_custom_appointments":
+			//to handle REST Url /customer/new/
+			$customersRestHandler = new Customers_RestHandler();
+			$customersRestHandler->getAppointment(-3, isset($_GET['fdate'])?$_GET['fdate']:'', isset($_GET['tdate'])?$_GET['tdate']:'');
+			break;
+			
+		case "get_customer_appointments":
+			//to handle REST Url /customer/new/
+			$customersRestHandler = new Customers_RestHandler();
+			$customersRestHandler->getAppointment(-4, $_GET['id']);
+			break;
 		//case "":
 			//404 -not found
 			//break;
