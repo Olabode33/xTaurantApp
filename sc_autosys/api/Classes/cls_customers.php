@@ -411,7 +411,7 @@
 			return array_filter($msg);
 		}
 		
-		function get_appointment($id = 0) {
+		function get_appointment($id = 0, $fdate = '', $tdate = '') {
 			$customers = array("status" => 0, "msg" => "No Customers found");
 			
 			$sql = "SELECT a.appointment_id, a.customer_cardno, a.appointment_date, a.appointment_notes, a.appointment_status, a.appointment_branch, a.date_created, 
@@ -469,6 +469,34 @@
 													  when a.appointment_status = 'Closed' then 3
 													  else 4
 											   end asc, a.appointment_date desc";
+											   
+			if($id == -3)
+				$sql = "SELECT a.appointment_id, a.customer_cardno, a.appointment_date, a.appointment_notes, a.appointment_status, a.appointment_branch, a.date_created, 
+						concat(c.title, ' ', c.surname, ' ', c.firstname) as 'fullname', c.cid,
+						concat(d.fname, ' ', d.lname) as 'dep', ifnull(d.dep_id, 0) as 'dep_id'
+							FROM sc_autosys_2.sc_appointments a
+								LEFT JOIN sc_autosys_2.sc_customers c ON a.customer_cardno = c.cardno
+								LEFT JOIN sc_autosys_2.sc_dependents d ON a.dep_id = d.dep_id
+							WHERE appointment_branch = ? AND a.appointment_date > ? AND a.appointment_date < ?
+							ORDER BY case when a.appointment_status = 'New' then 1
+													  when a.appointment_status = 'Open' then 2
+													  when a.appointment_status = 'Closed' then 3
+													  else 4
+											   end asc, a.appointment_date desc";
+											   
+			if($id == -4)
+				$sql = "SELECT a.appointment_id, a.customer_cardno, a.appointment_date, a.appointment_notes, a.appointment_status, a.appointment_branch, a.date_created, 
+						concat(c.title, ' ', c.surname, ' ', c.firstname) as 'fullname', c.cid,
+						concat(d.fname, ' ', d.lname) as 'dep', ifnull(d.dep_id, 0) as 'dep_id'
+							FROM sc_autosys_2.sc_appointments a
+								LEFT JOIN sc_autosys_2.sc_customers c ON a.customer_cardno = c.cardno
+								LEFT JOIN sc_autosys_2.sc_dependents d ON a.dep_id = d.dep_id
+							WHERE c.cid = ?
+							ORDER BY case when a.appointment_status = 'New' then 1
+													  when a.appointment_status = 'Open' then 2
+													  when a.appointment_status = 'Closed' then 3
+													  else 4
+											   end asc, a.appointment_date desc";
 			
 			try {
 				$conn = $this->db_obj->db_connect();
@@ -477,6 +505,10 @@
 				if($id > 0){
 					$stmt->bind_param('sd',  $_SESSION['sc_branch'], $id);
 				}
+				elseif($id == -3)
+					$stmt->bind_param('sss',  $_SESSION['sc_branch'], $fdate, $tdate);
+				elseif($id == -4)
+					$stmt->bind_param('s',  $fdate);
 				else
 					$stmt->bind_param('s',  $_SESSION['sc_branch']);
 				
@@ -543,35 +575,46 @@
 						 `va_unaided_r_far`, `va_unaided_r_near`, `va_unaided_l_far`, `va_unaided_l_near`, 
 						 `va_aided_r_far`, `va_aided_r_near`, `va_aided_l_far`, `va_aided_l_near`, 
 						 `va_pinhole_r_far`, `va_pinhole_r_near`, `va_pinhole_l_far`, `va_pinhole_l_near`,
+						 `va_unaided_r_far2`, `va_unaided_l_far2`, 
+						 `va_aided_r_far2`, `va_aided_l_far2`, 
+						 `va_pinhole_r_far2`, `va_pinhole_l_far2`,
 						 `va_far_nlp_r`, `va_far_nlp_l`, `va_far_lp_r`, `va_far_lp_l`,
 						`old_spec_r`, `old_spec_l`, `iop_r`, `iop_l`, `near`, `ospadd_r`, `ospadd_l`,
 						`ar_sph_cyl_x_axis_r`, `ar_sph_cyl_x_axis_l`, `sub_sph_cyl_x_axis_r`, `sub_sph_cyl_x_axis_l`, `sub_add_r`, `sub_add_l`, `sub_va_r`, `sub_va_l`,
 						`fb_sph_cyl_x_axis_r`, `fb_sph_cyl_x_axix_l`, `fb_add_r`, `fb_add_l`, `fb_va_r`, `fb_va_l`, `fb_near`,
 						`lids`, `conjuctiva`, `cornea`, `anterior_chamber`, `iris`, `pupil`, `lens`, `colour_vision`, `ee_others`,
+						`lids_odosou`, `conjuctiva_odosou`, `cornea_odosou`, `anterior_chamber_odosou`, `iris_odosou`, `pupil_odosou`, `lens_odosou`, `colour_vision_odosou`, `ee_others_odosou`,
 						`vitreous`, `choroid`, `retina`, `macular`, `disc`, `osle_others`,
+						`vitreous_odosou`, `choroid_odosou`, `retina_odosou`, `macular_odosou`, `disc_odosou`, `osle_others_odosou`,
 						`diagonis`, `plan`, `prescription`, `comments`, `customer_id`, `customer_cardno`, `dep_id`, `date_created`)
 						VALUES
-						(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
-						 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now());
+						(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+						 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now());
 				
 			";
 			
 			try{
 				$conn = $this->db_obj->db_connect();
 				$stmt = $conn->prepare($sql);
-				$stmt->bind_param('sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdsd', 
+				$stmt->bind_param('ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdsd', 
 												$_POST['chiefcomplain'], $_POST['pxohx'], $_POST['pxmhx'], $_POST['pxfohx'], $_POST['pxfmhx'], $_POST['lee'],
 												$_POST['va_far_unaided_r'], $_POST['va_near_unaided_r'], $_POST['va_far_unaided_l'], $ignore_param,
 												$_POST['va_far_aided_r'], $_POST['va_near_aided_r'], $_POST['va_far_aided_l'], $ignore_param,
 												$_POST['va_far_pinhole_r'], $_POST['va_near_pinhole_r'], $_POST['va_far_pinhole_l'], $ignore_param,
+												$_POST['va_far2_unaided_r'], $_POST['va_far2_unaided_l'],
+												$_POST['va_far2_aided_r'], $_POST['va_far2_aided_l'],
+												$_POST['va_far2_pinhole_r'], $_POST['va_far2_pinhole_r'],
 												$ignore_param, $ignore_param, $ignore_param, $ignore_param,
-												$_POST['ospr'], $_POST['ospl'], $_POST['iopr'], $_POST['iopl'], $_POST['ospn'], $_POST['ospaddr'], $_POST['ospaddl'],
+												$_POST['ospr'], $_POST['ospl'], $_POST['iopr'], $_POST['iopl'], $_POST['ospn'], $_POST['ospaddr'], $ignore_param,
 												$_POST['sph_cyl_x_axis_r'], $_POST['sph_cyl_x_axis_l'], $_POST['sub_sph_cyl_x_axis_r'], $_POST['sub_sph_cyl_x_axis_l'], 
-												$_POST['sub_add_r'], $_POST['sub_add_l'], 
+												$ignore_param, $ignore_param, 
 												$_POST['sub_va_r'], $_POST['sub_va_l'],
-												$_POST['fb_sph_cyl_x_axis_r'], $_POST['fb_sph_cyl_x_axis_l'], $_POST['fb_add_r'], $_POST['fb_add_l'], $_POST['fb_va_r'], $_POST['fb_va_l'], $_POST['fb_near_new'],
-												$_POST['libs'], $_POST['con'], $_POST['cornea'], $_POST['antc'], $_POST['iris'], $_POST['pupl'], $_POST['lens'], $_POST['colv'], $_POST['oth'],
+												$_POST['fb_sph_cyl_x_axis_r'], $_POST['fb_sph_cyl_x_axis_l'], $ignore_param, $_POST['fb_add_l'], $ignore_param, $_POST['fb_va_l'], $_POST['fb_near_new'],
+												$_POST['lids'], $_POST['con'], $_POST['cornea'], $_POST['antc'], $_POST['iris'], $_POST['pupl'], $_POST['lens'], $_POST['colv'], $_POST['oth'],
+												$_POST['lidsodosou'], $_POST['conodosou'], $_POST['corneaodosou'], $_POST['antcodosou'], $_POST['irisodosou'], $_POST['puplodosou'], 
+												$_POST['lensodosou'], $_POST['colvodosou'], $_POST['othodosou'],
 												$_POST['vitr'], $_POST['chor'], $_POST['ret'], $_POST['mac'], $_POST['disc'], $_POST['oth1'], 
+												$_POST['vitrodosou'], $_POST['chorodosou'], $_POST['retodosou'], $_POST['macodosou'], $_POST['discodosou'], $_POST['oth1odosou'], 
 												$_POST['diag'], $_POST['plan'], $_POST['presc'], $_POST['comments'], 
 												$_POST['cid'], $_POST['c_cardno'], $_POST['dep_id']);
 				if($stmt->execute() ){
@@ -728,12 +771,17 @@
 							 `va_unaided_r_far`, `va_unaided_r_near`, `va_unaided_l_far`, `va_unaided_l_near`, 
 							 `va_aided_r_far`, `va_aided_r_near`, `va_aided_l_far`, `va_aided_l_near`, 
 							 `va_pinhole_r_far`, `va_pinhole_r_near`, `va_pinhole_l_far`, `va_pinhole_l_near`,
+							 `va_unaided_r_far2`, `va_unaided_l_far2`, 
+							 `va_aided_r_far2`, `va_aided_l_far2`, 
+							 `va_pinhole_r_far2`, `va_pinhole_l_far2`,
 							 `va_far_nlp_r`, `va_far_nlp_r`, `va_far_lp_l`, `va_far_lp_r`,
 							`old_spec_r`, `old_spec_l`, `iop_r`, `iop_l`, `near`, `ospadd_r`, `ospadd_l`,
 							`ar_sph_cyl_x_axis_r`, `ar_sph_cyl_x_axis_l`, `sub_sph_cyl_x_axis_r`, `sub_sph_cyl_x_axis_l`, `sub_add_r`, `sub_add_l`, `sub_va_r`, `sub_va_l`,
 							`fb_sph_cyl_x_axis_r`, `fb_sph_cyl_x_axix_l`, `fb_add_r`, `fb_add_l`, `fb_va_r`, `fb_va_l`, `fb_near`,
 							`lids`, `conjuctiva`, `cornea`, `anterior_chamber`, `iris`, `pupil`, `lens`, `colour_vision`, `ee_others`,
+							`lids_odosou`, `conjuctiva_odosou`, `cornea_odosou`, `anterior_chamber_odosou`, `iris_odosou`, `pupil_odosou`, `lens_odosou`, `colour_vision_odosou`, `ee_others_odosou`,
 							`vitreous`, `choroid`, `retina`, `macular`, `disc`, `osle_others`,
+							`vitreous_odosou`, `choroid_odosou`, `retina_odosou`, `macular_odosou`, `disc_odosou`, `osle_others_odosou`,
 							`diagonis`, `plan`, `prescription`, `comments`, `customer_id`, `customer_cardno`, `dep_id`, `date_created`
 					FROM `sc_diagnosis`
 					WHERE client_history_id = ?";
@@ -747,12 +795,17 @@
 								   $va_unaided_r_far, $va_unaided_r_near, $va_unaided_l_far, $va_unaided_l_near, 
 								   $va_aided_r_far, $va_aided_r_near, $va_aided_l_far, $va_aided_l_near, 
 								   $va_pinhole_r_far, $va_pinhole_r_near, $va_pinhole_l_far, $va_pinhole_l_near,
+								   $va_far2_unaided_r, $va_far2_unaided_l,
+								   $va_far2_aided_r, $va_far2_aided_l,
+								   $va_far2_pinhole_r, $va_far2_pinhole_r,
 								   $va_far_nlp_r, $va_far_nlp_l, $va_far_lp_r, $va_far_lp_l,
 								   $old_spec_r, $old_spec_l, $iop_r, $iop_l, $near, $ospaddr, $ospaddl,
 								   $ar_sph_cyl_x_axis_r, $ar_sph_cyl_x_axis_l, $sub_sph_cyl_x_axis_r, $sub_sph_cyl_x_axis_l, $sub_add_r, $sub_add_l, $sub_va_r, $sub_va_l,
 								   $fb_sph_cyl_x_axis_r, $fb_sph_cyl_x_axix_l, $fb_add_r, $fb_add_l, $fb_va_r, $fb_va_l, $fa_near,
 								   $lids, $conjuctiva, $cornea, $anterior_chamber, $iris, $pupil, $lens, $colour_vision, $ee_others,
+								   $lidsodosou, $conodosou, $corneaodosou, $antcodosou, $irisodosou, $puplodosou, $lensodosou, $colvodosou, $othodosou,
 								   $vitreous, $choroid, $retina, $macular, $disc, $osle_others,
+								   $vitrodosou, $chorodosou, $retodosou, $macodosou, $discodosou, $oth1odosou,
 								   $diagonis, $plan, $prescription, $comments, $customer_id, $customer_cardno, $dep_id, $date_created);
 				
 				while($stmt->fetch()){
@@ -760,13 +813,19 @@
 									  'va_unaided_r_far' => $va_unaided_r_far, 'va_unaided_r_near' => $va_unaided_r_near, 'va_unaided_l_far' => $va_unaided_l_far, 'va_unaided_l_near' => $va_unaided_l_near, 
 									  'va_aided_r_far' => $va_aided_r_far, 'va_aided_r_near' => $va_aided_r_near, 'va_aided_l_far' => $va_aided_l_far, 'va_aided_l_near' => $va_aided_l_near, 
 									  'va_pinhole_r_far' => $va_pinhole_r_far, 'va_pinhole_r_near' => $va_pinhole_r_near, 'va_pinhole_l_far' => $va_pinhole_l_far, 'va_pinhole_l_near' => $va_pinhole_l_near,
+									  'va_far2_unaided_r' => $va_far2_unaided_r, 'va_far2_unaided_l' => $va_far2_unaided_l,
+									  'va_far2_aided_r' => $va_far2_aided_r, 'va_far2_aided_l' => $va_far2_aided_l,
+									  'va_far2_pinhole_r' => $va_far2_pinhole_r, 'va_far2_pinhole_r' => $va_far2_pinhole_r,
 									  'va_far_nlp_r' => $va_far_nlp_r, 'va_far_nlp_l' => $va_far_nlp_l, 'va_far_lp_l' => $va_far_lp_l, 'va_far_lp_r' => $va_far_lp_r,
 									  'old_spec_r' => $old_spec_r, 'old_spec_l' => $old_spec_l, 'iop_r' => $iop_r, 'iop_l' => $iop_l, 'near' => $near, 'ospadd_r' => $ospaddr, 'ospadd_l' => $ospaddl,
 									  'ar_sph_cyl_x_axis_r' => $ar_sph_cyl_x_axis_r, 'ar_sph_cyl_x_axis_l' => $ar_sph_cyl_x_axis_l, 'sub_sph_cyl_x_axis_r' => $sub_sph_cyl_x_axis_r, 
 									  'sub_sph_cyl_x_axis_l' => $sub_sph_cyl_x_axis_l, 'sub_add_r' => $sub_add_r, 'sub_add_l' => $sub_add_l, 'sub_va_r' => $sub_va_r, 'sub_va_l' => $sub_va_l,
 									  'fb_sph_cyl_x_axis_r' => $fb_sph_cyl_x_axis_r, 'fb_sph_cyl_x_axix_l' => $fb_sph_cyl_x_axix_l, 'fb_add_r' => $fb_add_r, 'fb_add_l' => $fb_add_l, 'fb_va_r' => $fb_va_r, 'fb_va_l' => $fb_va_l, 'fa_near' => $fa_near,
 									  'lids' => $lids, 'conjuctiva' => $conjuctiva, 'cornea' => $cornea, 'anterior_chamber' => $anterior_chamber, 'iris' => $iris, 'pupil' => $pupil, 'lens' => $lens, 'colour_vision' => $colour_vision, 'ee_others' => $ee_others,
+									  'lidsodosou' => $lidsodosou, 'conodosou' => $conodosou, 'corneaodosou' => $corneaodosou, 'antcodosou' => $antcodosou, 'irisodosou' => $irisodosou, 
+									  'puplodosou' => $puplodosou, 'lensodosou' => $lensodosou, 'colvodosou' => $colvodosou, 'othodosou' => $othodosou,
 									  'vitreous' => $vitreous, 'choroid' => $choroid, 'retina' => $retina, 'macular' => $macular, 'disc' => $disc, 'osle_others' => $osle_others,
+									  'vitrodosou' => $vitrodosou, 'chorodosou' => $chorodosou, 'retodosou' => $retodosou, 'macodosou' => $macodosou, 'discodosou' => $discodosou, 'oth1odosou' => $oth1odosou,
 									  'diagonis' => $diagonis, 'plan' => $plan, 'prescription' => $prescription, 'comments' => $comments, 'customer_id' => $customer_id, 'customer_cardno' => $customer_cardno, 'dependant_id' => $dep_id,
 									  'date_created' => $date_created);
 				}
