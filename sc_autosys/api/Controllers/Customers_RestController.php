@@ -142,6 +142,12 @@
 			$customersRestHandler = new Customers_RestHandler();
 			$customersRestHandler->getAppointment(-4, $_GET['id']);
 			break;
+			
+		case "generate_cardno":
+			//to handle REST Url /customer/new/
+			$customersRestHandler = new Customers_RestHandler();
+			$customersRestHandler->generateCardno();
+			break;
 		//case "":
 			//404 -not found
 			//break;
