@@ -242,5 +242,19 @@
 			$this->getResponse($rawData, $statusCode);
 		}
 		
+		public function generateCardno() {
+			$customer_obj = new Customers();
+			$rawData = $customer_obj->generate_cardno();
+			
+			if(empty($rawData)) {
+				$statusCode = 404;
+				$rawData = array('Error' => 'An error retrieving treatment history detail!');
+			} else {
+				$statusCode = 200;
+			}
+			
+			$this->getResponse($rawData, $statusCode);
+		}	
 	}
+	
 ?>
