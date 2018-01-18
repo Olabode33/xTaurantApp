@@ -57,7 +57,7 @@
 												"dob" => $dob,
 												"dob_day" => $dob_day,
 												"dob_month" => $dob_month,
- 												"age" => $age,
+ 												"age" => ((isset($dob) && $dob != '')?$this->get_age($dob):$age),
 												"address" => $address,
 												"address_area" => $area,
 												"address_state" => $state,
@@ -166,7 +166,7 @@
 			$email2 = strtolower($_POST["email2"]);
 			$rship_type = $_POST["rship_type"];
 			$rship_account = $_POST["rship_account"];
-			//$dob = $_POST["dob"];
+			$dob_year = $this->get_year_of_birth_from_age($_POST["age"]);
 			$dob_day = $_POST["dob_day"];
 			$dob_month = $_POST["dob_month"];
 			$age = $_POST["age"];
@@ -181,14 +181,17 @@
 			$nok_relationship = strtoupper($_POST["nok_rel"]);
 			
 			$sql = "INSERT INTO sc_customers (title, surname, middlename, firstname, gender, cardno, enroleeid, 
-												phoneno1, phoneno2, email1, email2, rship_type, rship_account, dob_day, dob_month, age, address, address_area, address_state, occupation, 
+												phoneno1, phoneno2, email1, email2, 
+												rship_type, rship_account, 
+												dob_day, dob_month, dob, age, 
+												address, address_area, address_state, occupation, 
 												nok_fname, nok_lname, nok_phone, nok_email, nok_relationship)
-						VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+						VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			
 			try{
 				$conn = $this->db_obj->db_connect();
 				$stmt = $conn->prepare($sql);
-				$stmt->bind_param('sssssssssssssssssssssssss', $title, 
+				$stmt->bind_param('ssssssssssssssssssssssssss', $title, 
 																			  $lname, 
 																			  $mname,
 																			  $fname, 
@@ -203,6 +206,7 @@
 																			  $rship_account, 
 																			  $dob_day,
 																			  $dob_month,
+																			  $dob_year,
 																			  $age,
 																			  $address,
 																			  $area,
@@ -245,7 +249,7 @@
 			$email2 = $_POST["email2"];
 			$rship_type = $_POST["rship_type"];
 			$rship_account = $_POST["rship_account"];
-			//$dob = $_POST["dob"];
+			$dob_year = $this->get_year_of_birth_from_age($_POST["age"]);
 			$dob_day = $_POST["dob_day"];
 			$dob_month = $_POST["dob_month"];
 			$age = $_POST["age"];
@@ -275,6 +279,7 @@
 							   rship_account = ?, 
 							   dob_day = ?,
 							   dob_month = ?,
+							   dob = ?,
 							   age = ?, 
 							   address = ?, 
 							   address_area = ?, 
@@ -291,7 +296,7 @@
 			try{
 				$conn = $this->db_obj->db_connect();
 				$stmt = $conn->prepare($sql);
-				$stmt->bind_param('sssssssssssssssssssssssssd', $title, 
+				$stmt->bind_param('ssssssssssssssssssssssssssd', $title, 
 																			  $lname, 
 																			  $mname,
 																			  $fname, 
@@ -306,6 +311,7 @@
 																			  $rship_account, 
 																			  $dob_day,
 																			  $dob_month,
+																			  $dob,
 																			  $age,
 																			  $address,
 																			  $area,
@@ -338,18 +344,21 @@
 			
 			$age = $_POST["age"];
 			$occupation = $_POST["occupation"];
+			$dob_year = $this->get_year_of_birth_from_age($_POST["age"]);
 			
 			$sql = "UPDATE sc_customers 
 						SET age = ?, 
-							   occupation = ?
+							occupation = ?,
+							dob
 						WHERE cid = ?;";
 			
 			try{
 				$conn = $this->db_obj->db_connect();
 				$stmt = $conn->prepare($sql);
-				$stmt->bind_param('ssd', $age,
-														$occupation,
-														$id);
+				$stmt->bind_param('sssd', $age,
+										  $occupation,
+										  $dob_year,
+										  $id);
 				if($stmt->execute() ){
 					$msg = array("status" => 1, "msg" => "Your record udpated successfully");
 				}
@@ -797,7 +806,7 @@
 								   $va_pinhole_r_far, $va_pinhole_r_near, $va_pinhole_l_far, $va_pinhole_l_near,
 								   $va_far2_unaided_r, $va_far2_unaided_l,
 								   $va_far2_aided_r, $va_far2_aided_l,
-								   $va_far2_pinhole_r, $va_far2_pinhole_r,
+								   $va_far2_pinhole_r, $va_far2_pinhole_l,
 								   $va_far_nlp_r, $va_far_nlp_l, $va_far_lp_r, $va_far_lp_l,
 								   $old_spec_r, $old_spec_l, $iop_r, $iop_l, $near, $ospaddr, $ospaddl,
 								   $ar_sph_cyl_x_axis_r, $ar_sph_cyl_x_axis_l, $sub_sph_cyl_x_axis_r, $sub_sph_cyl_x_axis_l, $sub_add_r, $sub_add_l, $sub_va_r, $sub_va_l,
@@ -815,7 +824,7 @@
 									  'va_pinhole_r_far' => $va_pinhole_r_far, 'va_pinhole_r_near' => $va_pinhole_r_near, 'va_pinhole_l_far' => $va_pinhole_l_far, 'va_pinhole_l_near' => $va_pinhole_l_near,
 									  'va_far2_unaided_r' => $va_far2_unaided_r, 'va_far2_unaided_l' => $va_far2_unaided_l,
 									  'va_far2_aided_r' => $va_far2_aided_r, 'va_far2_aided_l' => $va_far2_aided_l,
-									  'va_far2_pinhole_r' => $va_far2_pinhole_r, 'va_far2_pinhole_r' => $va_far2_pinhole_r,
+									  'va_far2_pinhole_r' => $va_far2_pinhole_r, 'va_far2_pinhole_l' => $va_far2_pinhole_l,
 									  'va_far_nlp_r' => $va_far_nlp_r, 'va_far_nlp_l' => $va_far_nlp_l, 'va_far_lp_l' => $va_far_lp_l, 'va_far_lp_r' => $va_far_lp_r,
 									  'old_spec_r' => $old_spec_r, 'old_spec_l' => $old_spec_l, 'iop_r' => $iop_r, 'iop_l' => $iop_l, 'near' => $near, 'ospadd_r' => $ospaddr, 'ospadd_l' => $ospaddl,
 									  'ar_sph_cyl_x_axis_r' => $ar_sph_cyl_x_axis_r, 'ar_sph_cyl_x_axis_l' => $ar_sph_cyl_x_axis_l, 'sub_sph_cyl_x_axis_r' => $sub_sph_cyl_x_axis_r, 
@@ -842,5 +851,82 @@
 			return $customers;
 		}		
 		
+		function generate_cardno(){
+			$cardno = array("status" => 0, "msg" => "No Dependents found");
+			
+			$sn = 000;
+			$branch = $_SESSION['sc_branch_code'];
+			$year = date('Y');
+			
+			$sn_array = array();
+			
+			//Get serial number
+			$sql_sn = "Select cardno from sc_customers where cardno like '%".$year."%'; ";
+			try {
+				$conn = $this->db_obj->db_connect();
+				$stmt = $conn->prepare($sql_sn);
+				$stmt->execute();
+				$stmt->bind_result($card_no);
+				
+				while($stmt->fetch()){
+					//echo $card_no ."\n";
+					$card_no_array = explode("/", $card_no);
+					//echo $card_no_array[0] ."\n";
+					if($card_no_array[1] == $branch)
+						array_push($sn_array, $card_no_array[0]);
+				}
+				
+				mysqli_close($conn);
+			}
+			catch(Exception $e){
+				
+			}
+			
+			//print_r($sn_array);
+			
+			if(count($sn_array) > 0)
+				$sn = max($sn_array);
+			else
+				$sn = 0;
+			
+			$sn = (int)$sn + 1;
+			
+			if(strlen($sn) == 1)
+				$sn = '00'.$sn;
+			elseif(strlen($sn) == 2)
+				$sn = '0'.$sn;
+			
+			$card_no = $sn . '/' . $branch . '/' . $year;
+			
+			return $card_no;
+		}
+	
+		private function get_year_of_birth_from_age($age){
+			$birth_year = 0;
+			$cur_year = date('Y');			
+			
+			if(isset($age)){
+				$birth_year = $cur_year - $age;
+			}
+			else{
+				$birth_year = null;
+			}
+			
+			return $birth_year;
+		}
+		
+		private function get_age($birth_year){
+			$age = 0;
+			$cur_year = date('Y');
+			$birth_year = (int)$birth_year;
+			
+			if(isset($birth_year) || $birth_year != ''){
+				$age = $cur_year - $birth_year;
+			}
+			else
+				$age = NULL;
+			
+			return $age;
+		}
 	}
 ?>

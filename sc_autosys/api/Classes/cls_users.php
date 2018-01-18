@@ -177,7 +177,25 @@
 			$uname = $_POST['username'];
 			$pass = $this->encrypt_pass($_POST['password']);//
 			//$pass = $_POST['password'];
-			$branch = $_POST['branch'];
+			$branch_code = $_POST['branch'];
+			
+			//Get Branch Code
+			$sql_bc = "Select branch from sc_branch where branch_code = '".$branch_code."'; ";
+			try {
+				$conn = $this->db_obj->db_connect();
+				$stmt = $conn->prepare($sql_bc);
+				$stmt->execute();
+				$stmt->bind_result($branch_cd);
+				
+				while($stmt->fetch()){
+					$branch = $branch_cd;
+				}
+				
+				mysqli_close($conn);
+			}
+			catch(Exception $e){
+				
+			}
 			
 			$users = $this->get_user();
 			//$msg = array("user" => $uname, "pass" => $pass);
@@ -195,6 +213,7 @@
 					$_SESSION['sc_role'] = $user['role'];
 					$_SESSION['sc_uname'] = $user['uname'];
 					$_SESSION['sc_branch'] = $branch;
+					$_SESSION['sc_branch_code'] = $branch_code;
 					$_SESSION['sc_status'] = $user['status'];
 					
 					$msg = array("status" => 1, "msg" => "Logged in successfully");
