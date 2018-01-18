@@ -4,7 +4,7 @@
 	
 	<div class="row">
 		<h4 class="col-sm-12" style="margin-top: 15px;">
-			<i class="fa fa-user-md"></i> Doctor's View
+			<i class="fa fa-user-md"></i> Treatment Details
 			<hr style="margin-top: 10px; margin-bottom: 10px;">
 		</h4>
 		<div class="col-xs-12">
@@ -13,7 +13,6 @@
 					<span id="examine_msg"></span>
 				</div>
 				<div class="row">
-					<!-- Background And History -->
 					<div class="col-sm-4">
 						<div class="panel panel-primary" >
 							<div class="panel-heading ">
@@ -72,8 +71,8 @@
 										</div>
 										
 										<div class="form-group">	
-											<div class="col-sm-6">
-												<button type="button" class="btn btn-block btn-primary" id="btn_edit_cust" onclick="edit_customer();"><i class="fa fa-pencil" id="btn_edit_cust_icon"></i> <span id="btn_edit_cust_text">Edit</span></button> 
+											<div class="col-sm-12">
+												<a href="customers.php" class="btn btn-block btn-primary" id="btn_go_back" ><i class="fa fa-reply"></i> Go Back</a> 
 											</div>
 											<!--div class="col-sm-6">
 												<button type="submit" class="btn btn-block btn-info sctheme" id="btn_save_cust"><i class="fa fa-save" id="btn_save_cust_icon"></i> Save</button> 
@@ -89,29 +88,7 @@
 								
 						 </div>
 						</div>
-					
-						<div class="panel panel-primary" >
-							<div class="panel-heading ">
-								<h3 class="panel-title">Treatment History</h3>
-							</div>
-							<div class="panel-body">
-								<div class="table-responsive">
-									<table class="table table-hover" id="tbl_treatory2" >
-										<thead class="thead-inverse">							
-											<th class="col-xs-4">Date</th>
-											<th class="col-xs-6">Diagnosis</th>		
-										</thead>
-												
-										<tbody>
-												
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					
 					</div>
-					<!-- Diagnosis -->
 					<div class="col-sm-8">
 						<!--Doctors form-->
 						<div class="" id="doctor_form">
@@ -216,40 +193,10 @@
 														<div class="col-sm-3">
 															<div class="row">
 																<div class="col-sm-6" style="padding-right: 0px;" >
-																	<select class="form-control" name="va_far_unaided_r" id="va_far_unaided_r">
-																		<option value=""></option>
-																		<option value="NLP">NLP</option>
-																		<option value="LP">LP</option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>
+																	<input type="text" class="form-control" name="va_far_unaided_r" id="va_far_unaided_r">
 																</div>
 																<div class="col-sm-6" style="padding-left: 0px;">
-																	<select class="form-control" name="va_far_unaided_l" id="va_far_unaided_l">
-																		<option value=""></option>
-																		<option value="NLP">NLP</option>
-																		<option value="LP">LP</option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>									
+																	<input type="text" class="form-control" name="va_far_unaided_l" id="va_far_unaided_l">									
 																</div>
 																
 															</div>
@@ -259,40 +206,10 @@
 														<div class="col-sm-3">
 															<div class="row">
 																<div class="col-sm-6" style="padding-right: 0px;" >
-																	<select class="form-control" name="va_far_aided_r" id="va_far_aided_r">
-																		<option value=""></option>
-																		<option value="NLP">NLP</option>
-																		<option value="LP">LP</option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>
+																	<input type="text" class="form-control" name="va_far_aided_r" id="va_far_aided_r">
 																</div>
 																<div class="col-sm-6" style="padding-left: 0px;">
-																	<select class="form-control" name="va_far_aided_l" id="va_far_aided_l">
-																		<option value=""></option>
-																		<option value="NLP">NLP</option>
-																		<option value="LP">LP</option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>									
+																	<input type="text" class="form-control" name="va_far_aided_l" id="va_far_aided_l">								
 																</div>
 															</div>
 														</div>
@@ -301,7 +218,7 @@
 														<div class="col-sm-3">
 															<div class="row">
 																<div class="col-sm-6" style="padding-right: 0px;" >
-																	<select class="form-control" name="va_far_pinhole_r" id="va_far_pinhole_r">
+																	<input type="text" class="form-control" name="va_far_pinhole_r" id="va_far_pinhole_r">
 																		<option value=""></option>
 																		<option value="NLP">NLP</option>
 																		<option value="LP">LP</option>
@@ -1085,7 +1002,7 @@
 									<!-- Diag, Plan & Pres -->
 									<div class="panel panel-default panel-primary">
 										<div class="panel-heading">
-											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#dpp">Prescription, Plan & Diagnosis</a></h3>
+											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#dpp">Diagnosis, Plan & Prescription</a></h3>
 										</div>
 										<div id="dpp" class="panel-collapse collapse">
 											<div class="panel-body">
@@ -1119,79 +1036,9 @@
 								  
 											</div>
 										</div>
-									</div>
-									<!--Actions-->
-									<div class="form-group" style="margin-top: 10px;">
-										<div class=" col-sm-12">
-											<button type="submit" class="btn btn-primary" id="btn_save"><i class="fa fa-save" id="save_icon"></i> Save</button> 
-											<a type="button" class="btn btn-default pull-right" href="waiting.php"><i class="fa fa-reply"></i> Go Back to waiting list</a>
-											<button type="button" class="btn btn-info sctheme pull-right" id="btn_bk_appt" style="margin-right: 10px;"><i class="fa fa-calendar-plus-o" id="book_icon"></i> Book Appointment</button>
-										</div>
-									</div>
+									</div>									
 								</div>
 							</form>
-						</div>
-						<!--Book Appointment form-->
-						<div class="hidden" id="book_appointment">
-							<div class="panel panel-primary">
-								<div class="panel-heading" role="tab">
-									<h4 class="panel-title">Book an Appointment</h4>
-								</div>
-								<div class="panel-body">
-									<form action="#" class="form-horizontal" id="frm_book_appoitment">
-										<div class="alert alert-info hidden" role="alert" id="book_appt_alert">
-											<i class="fa fa-info-circle"></i> 
-											<span id="book_appt_msg"></span>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-2 control-label" for="cname">Full Name</label>
-											<div class=" col-sm-4">
-												<div class="input-group">
-													<div class="input-group-addon">
-														<i class="fa fa-user-circle"></i>
-													</div>
-													<input type="text" placeholder="" name="cname" id="cname" class="form-control" disabled>
-													<input type="hidden" placeholder="" name="c_ba_id" id="c_ba_id" class="form-control">
-												</div>
-											</div>
-											<label class="col-sm-2 control-label" for="ccard">Card No.</label>
-											<div class="col-sm-4">
-												<div class="input-group">
-													<div class="input-group-addon">
-														<i class="fa fa-address-card-o"></i>
-													</div>
-													<input type="text" placeholder="" name="ccard" id="ccard" class="form-control" disabled>
-												</div>
-											</div>
-										</div>	
-										
-										<div class="form-group">
-											<label class="col-sm-2 control-label" for="cdate">Date</label>
-											<div class=" col-sm-4">
-												<div class="input-group">
-													<input type="date" placeholder="" name="cdate" id="cdate" class="form-control" value="2017-10-16">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-												</div>
-											</div>
-										</div>	
-										<div class="form-group">
-											<label class="col-sm-2 control-label" for="cname">Notes</label>
-											<div class=" col-sm-10">
-												<textarea type="text" placeholder="" name="cnotes" id="cnotes" class="form-control"></textarea>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-2 control-label" for="submit"></label>
-											<div class=" col-sm-10">
-												<button type="submit" class="btn btn-primary"><i class="fa fa-calendar-plus-o" id="btn_book_icon"></i> Book Appointment</button> 
-												<button type="button" class="btn btn-default" id="btn_back2view"><i class="fa fa-reply"></i> Go Back</button> 
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
 						</div>
 						
 					</div>
@@ -1202,14 +1049,22 @@
 
 	<script>
 		$(document).ready( function() {
+			$(".form-control").attr("disabled", "true");
 			var c_cid = location.search;
 			c_cid = c_cid.split("=");
-			c_depid = c_cid[3];
-			th_id = c_cid[2].split("&");
-			th_id = th_id[0];
+			c_depid = c_cid[4];
+			a_id = c_cid[3];
+			th_id = c_cid[2];
 			c_cid = c_cid[1].split("&");
 			c_cid = c_cid[0];
-			//console.log(th_id);
+			th_id = th_id.split("&");
+			th_id = th_id[0];
+			a_id = 	a_id.split("&");
+			a_id = 	a_id[0];
+			//console.log(a_id);
+			
+			if(a_id > 0)
+				$("#btn_go_back").attr("href", "dr_view.php?id="+c_cid+"a="+a_id+"&dep="+c_depid);
 			
 			if(c_cid != undefined){			
 				//$("#frm_title").html("Edit User")
@@ -1265,213 +1120,39 @@
 						});
 					}
 				});
-				
-				var uri = 'api/Controllers/Customers_RestController.php?view=treatory_summary&id='+c_cid;
-				
-				if(c_depid > 0)
-					uri = 'api/Controllers/Customers_RestController.php?view=dep_treatory_summary&id='+c_depid
-				
-				$.get(uri, function(datat) {
-					datat = $.parseJSON(datat);
-					//console.log(datat);
-					var tt = $("#tbl_treatory2");
-					$("#tbl_treatory2 tbody").empty();
-						
-					if(datat.status != 0) {					
-						$.each(datat, function(i, itemt) {		
-							var app_date = itemt.date_created.split(" "); 
-							//app_date = app_date[0]
-							
-							row = $('<tr></tr>');
-							
-							viewButton = $('<a></a>').addClass("doctor-only").text(app_date[0]);
-							//viewButton.attr('href', '#');
-							viewButton.attr('data-toggle', 'tooltip');
-							viewButton.attr('title', 'View Details');
-							viewButton.attr('href', 'history.php?id='+itemt.customer_id+'&h='+itemt.treatory_id+'&a='+th_id+'&dep='+c_depid);
-							rowData = $('<td></td>').append(viewButton);
-								
-							row.append(rowData);
-							
-							rowData = $('<td></td>').text(itemt.diagonis);
-							row.append(rowData);
-								
-							tt.append(row);
+			}
+		
+		
+			if(th_id != undefined){
+				$.get('api/Controllers/Customers_RestController.php?view=treatory_detail&id='+th_id, function(data) {
+					data = $.parseJSON(data);
+					if(data.status === undefined){
+						$.each(data, function(i, item) {
+							$('#chiefcomplain').val(item.complain); $('#pxohx').val(item.pxohx); $('#pxmhx').val(item.pxmhx); 
+							$('#pxfohx').val(item.pxfohx); $('#pxfmhx').val(item.pxfmhx); $('#lee').val(item.lee);
+							//
+							$('#va_far_unaided_r').val(item.va_unaided_r_far), $('#va_far_unaided_l').val(item.va_unaided_l_far) 
+							//
+								   // $va_aided_r_far, $va_aided_r_near, $va_aided_l_far, $va_aided_l_near, 
+								   // $va_pinhole_r_far, $va_pinhole_r_near, $va_pinhole_l_far, $va_pinhole_l_near,
+								   // $va_far2_unaided_r, $va_far2_unaided_l,
+								   // $va_far2_aided_r, $va_far2_aided_l,
+								   // $va_far2_pinhole_r, $va_far2_pinhole_r,
+								   // $va_far_nlp_r, $va_far_nlp_l, $va_far_lp_r, $va_far_lp_l,
+								   // $old_spec_r, $old_spec_l, $iop_r, $iop_l, $near, $ospaddr, $ospaddl,
+								   // $ar_sph_cyl_x_axis_r, $ar_sph_cyl_x_axis_l, $sub_sph_cyl_x_axis_r, $sub_sph_cyl_x_axis_l, $sub_add_r, $sub_add_l, $sub_va_r, $sub_va_l,
+								   // $fb_sph_cyl_x_axis_r, $fb_sph_cyl_x_axix_l, $fb_add_r, $fb_add_l, $fb_va_r, $fb_va_l, $fa_near,
+								   // $lids, $conjuctiva, $cornea, $anterior_chamber, $iris, $pupil, $lens, $colour_vision, $ee_others,
+								   // $lidsodosou, $conodosou, $corneaodosou, $antcodosou, $irisodosou, $puplodosou, $lensodosou, $colvodosou, $othodosou,
+								   // $vitreous, $choroid, $retina, $macular, $disc, $osle_others,
+								   // $vitrodosou, $chorodosou, $retodosou, $macodosou, $discodosou, $oth1odosou,
+								   // $diagonis, $plan, $prescription, $comments, $customer_id, $customer_cardno, $dep_id, $date_created
 						});
-					}
-					else {
-						$("#tbl_treatory2 tbody").html(datat.msg);
 					}
 				});
 			}
-		
-			$('#frm_doctors_input').on('keyup keypress', function(e) {
-			  var keyCode = e.keyCode || e.which;
-			  if (keyCode === 13) { 
-				e.preventDefault();
-				return false;
-			  }
-			});
 		});
 		
-		function edit_customer(){
-			$(".edit-cust").attr("disabled", false);
-			$("#btn_edit_cust_text").html("Save");
-			$("#btn_edit_cust_icon").removeClass("fa-pencil");
-			$("#btn_edit_cust_icon").addClass("fa-save");
-			$("#btn_edit_cust").attr("onclick", "save_customer();");
-		}
-		
-		function save_customer(){
-			var c_cid = location.search;
-			c_cid = c_cid.split("=");
-			c_cid = c_cid[1];
-			
-			var cust_data = $("#frm_cust_bio").serializeArray();
-			cust_data.push({name: "cid", value: c_cid})
-			
-			$.ajax({
-				url: ' api/Controllers/Customers_RestController.php?view=dupdated&id=' + c_cid,
-				type: 'post',
-				data: cust_data,
-				success: function(data) {
-					//console.log(data);
-					
-					$(".edit-cust").attr("disabled", true)
-					$("#btn_edit_cust_text").html("Edit")
-					$("#btn_edit_cust_icon").remove("fa-save")
-					$("#btn_edit_cust_icon").addClass("fa-pencil")
-					$("#btn_edit_cust").attr("onclick", "edit_customer();")
-				},
-				error: function() {
-					alert("error");
-				}
-			});
-			
-		}
-		
-		$('#frm_doctors_input').submit(function(e) {
-			e.preventDefault();
-			$("#save_icon").removeClass("fa-save");
-			$("#save_icon").addClass("fa-spinner fa-pulse");
-			
-			var c_cid = location.search;
-			c_cid = c_cid.split("=");
-			c_depid = c_cid[3];
-			app_id = c_cid[2].split("&");
-			app_id = app_id[0];
-			c_cid = c_cid[1].split("&");
-			c_cid = c_cid[0];
-			//alert(app_id);
-			
-			var datas = $("#frm_doctors_input").serializeArray();
-			datas.push({name: "cid", value: c_cid})
-			datas.push({name: "c_cardno", value: $("#cardno").val()})
-			datas.push({name: "dep_id", value: c_depid})
-			//console.log(datas);
-			
-			
-			$.ajax({
-				url: 'api/Controllers/Customers_RestController.php?view=examine',
-				type: 'post',
-				data: datas,
-				success: function(data) {
-					data = $.parseJSON(data);
-				   if(data.status == 1){
-						$("#save_icon").removeClass("fa-spinner fa-pulse");
-						$("#save_icon").addClass("fa-calendar-plus-o");	
-						$("#examine_alert").removeClass("alert-info");
-						$("#examine_alert").removeClass("alert-danger");
-						$("#examine_alert").addClass("alert-success");
-						$("#examine_msg").html(data.msg);
-						$("#examine_alert").removeClass("hidden");
-						$.get('api/Controllers/Customers_RestController.php?view=close_appointment&id='+app_id, function(data) {
-							data = $.parseJSON(data);
-							location.href = "waiting.php?msg=closed";
-						});
-						
-						//$(".form-control").attr("disabled", true);
-				   }
-				   else {
-						$("#save_icon").removeClass("fa-spinner fa-pulse");
-						$("#save_icon").addClass("fa-save");
-						$("#examine_alert").removeClass("alert-info");
-						$("#examine_alert").removeClass("alert-success");
-						$("#examine_alert").addClass("alert-danger");
-						$("#examine_msg").html(data.msg);
-						$("#examine_alert").removeClass("hidden");
-				   }
-				},
-				error: function() {
-					alert("error");
-				}
-			});
-		});
-		
-		function book_c_appt(id) {
-			$("#frm_book_appoitment").trigger("reset");
-			$.get('api/Controllers/Customers_RestController.php?view=single&id='+id, function(data) {
-				data = $.parseJSON(data);
-				//console.log(data);
-				
-				$.each(data, function(i, item) {
-					$("#c_ba_id").val(id);
-					$("#ccard").val(item.cardno);
-					$("#cname").val(item.title + " " + item.fname + ' ' + item.lname);
-					$('#cdate').val(new Date().toISOString().split('T')[0]);
-					$("#btn_back2view").attr("onclick", "gogo_back()");
-				});
-				
-			});
-			
-			$("#doctor_form").addClass("hidden");
-			$("#book_appointment").removeClass("hidden");
-		}
-		
-		function gogo_back(){
-			$("#book_appointment").addClass("hidden");
-			$("#doctor_form").removeClass("hidden");
-		}
-		
-		$("#frm_book_appoitment").submit(function(e) { 
-			//console.log("A Submission is comming...")
-			$("#btn_book_icon").removeClass("fa-calendar-plus-o");
-			$("#btn_book_icon").addClass("fa-spinner fa-pulse");
-				
-			e.preventDefault();
-			
-			$.ajax({
-				url: 'api/Controllers/Customers_RestController.php?view=book_appointment',
-				type: 'post',
-				data : {
-					'ccard' : $("#ccard").val(),
-					'cdate' : $("#cdate").val(),
-					'cnotes': $("#cnotes").val()
-				},
-				success: function(data) {
-				   //alert (data);
-				   data = $.parseJSON(data);
-				   if(data.status == 1){
-						$("#btn_book_icon").removeClass("fa-spinner fa-pulse");
-						$("#btn_book_icon").addClass("fa-calendar-plus-o");
-						$("#book_appt_alert").removeClass("alert-info");
-						$("#book_appt_alert").removeClass("alert-warning");
-						$("#book_appt_alert").addClass("alert-success");
-						$("#book_appt_msg").html(data.msg);
-						$("#book_appt_alert").removeClass("hidden");
-				   }
-				   else {
-						$("#btn_book_icon").removeClass("fa-spinner fa-pulse");
-						$("#btn_book_icon").addClass("fa-save");
-						$("#book_appt_alert").removeClass("alert-info");
-						$("#book_appt_alert").removeClass("alert-warning");
-						$("#book_appt_alert").addClass("alert-danger");
-						$("#book_appt_msg").html(data.msg);
-						$("#book_appt_alert").removeClass("hidden");
-				   }
-				}
-			});
-		});
 	</script>	
 	<?php
 		include "includes/footer_pages.php";

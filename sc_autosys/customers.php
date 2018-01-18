@@ -792,6 +792,7 @@
 			$.get('api/Controllers/Customers_RestController.php?view=single&id='+id, function(data) {
 				data = $.parseJSON(data);
 				//console.log(data);
+				//alert(data);
 				
 				$.each(data, function(i, item) {
 					$("#cardno").html(item.cardno);
@@ -927,7 +928,7 @@
 			//Load Treatory
 			$.get('api/Controllers/Customers_RestController.php?view=treatory_summary&id='+id, function(datat) {
 				datat = $.parseJSON(datat);
-				console.log(datat);
+				//console.log(datat);
 				var tt = $("#tbl_treatory2");
 				$("#tbl_treatory2 tbody").empty();
 					
@@ -967,7 +968,7 @@
 			//Load Appointment History
 			$.get('api/Controllers/Customers_RestController.php?view=get_customer_appointments&id='+id, function(datat) {
 				datat = $.parseJSON(datat);
-				console.log(datat);
+				//console.log(datat);
 				var tt = $("#tbl_appistory");
 				$("#tbl_appistory tbody").empty();
 					
@@ -980,8 +981,15 @@
 						row.append(rowData);
 						var app_status = itemt.status;
 						var t_date = new Date();
-						if(itemt.status == 'New' || itemt.status == 'Open' && itemt.date < t_date)
-							app_status = 'Missed'
+						t_date.setHours(0,0,0,0);
+						var idate = new Date(itemt.date) ;
+						idate.setHours(0,0,0,0);
+						//console.log(t_date + " :: " + idate);
+						//alert(idate - t_date);
+						if(itemt.status == 'New' && idate < t_date)
+							app_status = 'Missed';
+						if(itemt.status == 'Open' && idate < t_date)
+							app_status = 'Missed';
 						
 						rowData = $('<td></td>').html('<div class="badge" '+(app_status == 'New'? ' style="background-color: green"': app_status == 'Closed'? ' style="background-color: #337ab7"': '')+'>' + app_status + "</div>");
 						row.append(rowData);
@@ -1158,11 +1166,11 @@
 			var th_id = button.data('tid') // Extract info from data-* attributes
 			var name = button.data('dep') // Extract info from data-* attributes
 			
-			console.log(th_id);
+			//console.log(th_id);
 		  
 			$.get('api/Controllers/Customers_RestController.php?view=treatory_detail&id='+th_id, function(data) {
 				data = $.parseJSON(data);
-				console.log(data);
+				//console.log(data);
 				if(data.status === undefined){
 					$.each(data, function(i, item) {
 						$('#h_chiefcomplain').html(item.complain); $('#h_pxohx').html(item.pxohx); $('#h_pxmhx').html(item.pxmhx); 

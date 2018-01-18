@@ -91,374 +91,201 @@
 					</div>
 					<div class="col-sm-8">
 						<!--Doctors form-->
-						<div class="" id="doctor_form">
-							<form action="#" class="form-horizontal" id="frm_doctors_input" >
-								<div class="panel-group" id="drspage">
+						<div class="" id="">
+							<form action="#" class="form-horizontal" id="" >
+								<div class="panel-group" id="">
 									<!--Client History -->
-									<div class="panel panel-primary">
-										<div class="panel-heading">
-											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#ch">Client History</a></h3>
+									<div class="">
+										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
+											<h3 class="panel-title"><a data-toggle="collapse" href="#ch">Client History</a></h3>
 										</div>
-										<div id="ch" class="panel-collapse collapse">
-											<div class="panel-body">
+										<div class="panel-body">
+											<div class="form-group">
+												<h5 class="col-sm-2" style="font-weight:bold">Chief Complain:</h5> 
+												<div class="col-sm-10">
+													<p id="chiefcomplain" class="control-label" style="text-align:left"></p>
+												</div>
+											</div>	
+												
+											<div id="ch" class="panel-collapse collapse">
 												<div class="form-group">
-													<h5 class="col-sm-3" style="font-weight:bold">Chief Complain:</h5> 
-													<div class="col-sm-9">
-														<textarea id="chiefcomplain" name="chiefcomplain" class="form-control"></textarea>
-													</div>
-												</div>	
-											
-												<div class="form-group">
-													<h5 class="col-sm-3" style="font-weight:bold">PxOHx:</h5> 
-													<div class="col-sm-9">
-														<input type="text" id="pxohx" name="pxohx" class="form-control">
+													<h5 class="col-sm-2" style="font-weight:bold">PxOHx:</h5> 
+													<div class="col-sm-10">
+														<p id="pxohx" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>	
 												
 												<div class="form-group">
-													<h5 class="col-sm-3" style="font-weight:bold">PxMHx:</h5> 
-													<div class="col-sm-9">
-														<input type="text" id="pxmhx" name="pxmhx" class="form-control">
+													<h5 class="col-sm-2" style="font-weight:bold">PxMHx:</h5> 
+													<div class="col-sm-10">
+														<p id="pxmhx" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>	
 												
 												<div class="form-group">
-													<h5 class="col-sm-3" style="font-weight:bold">PxFOHx:</h5> 
-													<div class="col-sm-9">
-														<input type="text" id="pxfohx" name="pxfohx" class="form-control">
+													<h5 class="col-sm-2" style="font-weight:bold">PxFOHx:</h5> 
+													<div class="col-sm-10">
+														<p id="pxfohx" class="control-label" style="text-align:left"></p>
 													</div>	
 												</div>
 												
 												<div class="form-group">
-													<h5 class="col-sm-3" style="font-weight:bold">PxFMHx:</h5> 
-													<div class="col-sm-9">
-														<input type="text" id="pxfmhx" name="pxfmhx" class="form-control">
+													<h5 class="col-sm-2" style="font-weight:bold">PxFMHx:</h5> 
+													<div class="col-sm-10">
+														<p id="pxfmhx" class="control-label" style="text-align:left"></p>
 													</div>	
 												</div>
 												
 												<div class="form-group">
-													<h5 class="col-sm-3" style="font-weight:bold">LEE:</h5> 
-
-													<div class="col-sm-9">
-														<input type="text" id="lee" name="lee" class="form-control">
+													<h5 class="col-sm-2" style="font-weight:bold">LEE:</h5> 
+													<div class="col-sm-10">
+														<p id="lee" class="control-label" style="text-align:left"></p>
 													</div>	
 												</div>
 											</div>
+											
+											<a data-toggle="collapse" href="#ch" class="btn btn-primary pull-right moreinfo">View more</a>
 										</div>
 										
 									</div>
 									<!--Examination -->
-									<div class="panel panel-primary">
-										<div class="panel-heading">
+									<div class="">
+										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
 											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#exam">Examination</a></h3>
 										</div>
-										<div id="exam" class="panel-collapse collapse">
-											<div class="panel-body">
-												<!--Header 1-->
-												<div class="row">
-													<div class="col-sm-3"> </div>
-													<div class="col-sm-3" style="font-weight:bold; text-align:center"> Unaided </div>
-													<div class="col-sm-3" style="font-weight:bold; text-align:center"> Aided </div>
-													<div class="col-sm-3" style="font-weight:bold; text-align:center"> Pinhole </div>
-												</div>
-												<!--Header 2-->
-												<div class="row">		
-													<div class="col-sm-3" style="font-weight:bold; text-align: right"> Visual Acuity</div>
-													<div class="col-sm-3">
-														<div class="row">
-															<div class="col-sm-6" style="font-weight:bold; text-align:center"> R </div>
-															<div class="col-sm-6" style="font-weight:bold; text-align:center"> L </div>
-														</div>
-													</div>
-													
-													<div class="col-sm-3"> 
-														<div class="row">
-															<div class="col-sm-6" style="font-weight:bold; text-align:center"> R </div>
-															<div class="col-sm-6" style="font-weight:bold; text-align:center"> L </div>
-														</div>				
-													</div>
-													
-													<div class="col-sm-3">
-														<div class="row">
-															<div class="col-sm-6" style="font-weight:bold; text-align:center"> R </div>
-															<div class="col-sm-6" style="font-weight:bold; text-align:center"> L </div>
-														</div>
-													</div>					
-												</div>
-												<!-- Far  -->
-												<div class="row">
-													<div class="form-group">
-														<label for="va" class="col-sm-3 control-label">Far</label>
-														<!--Unaided-->
-														<div class="col-sm-3">
-															<div class="row">
-																<div class="col-sm-6" style="padding-right: 0px;" >
-																	<select class="form-control" name="va_far_unaided_r" id="va_far_unaided_r">
-																		<option value=""></option>
-																		<option value="NLP">NLP</option>
-																		<option value="LP">LP</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>
-																</div>
-																<div class="col-sm-6" style="padding-left: 0px;">
-																	<select class="form-control" name="va_far_unaided_l" id="va_far_unaided_l">
-																		<option value=""></option>
-																		<option value="NLP">NLP</option>
-																		<option value="LP">LP</option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>									
-																</div>
-																
-															</div>
-														</div>
-														
-														<!--Aided-->
-														<div class="col-sm-3">
-															<div class="row">
-																<div class="col-sm-6" style="padding-right: 0px;" >
-																	<select class="form-control" name="va_far_aided_r" id="va_far_aided_r">
-																		<option value=""></option>
-																		<option value="NLP">NLP</option>
-																		<option value="LP">LP</option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>
-																</div>
-																<div class="col-sm-6" style="padding-left: 0px;">
-																	<select class="form-control" name="va_far_aided_l" id="va_far_aided_l">
-																		<option value=""></option>
-																		<option value="NLP">NLP</option>
-																		<option value="LP">LP</option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>									
-																</div>
-															</div>
-														</div>
-														
-														<!--Pinhole-->
-														<div class="col-sm-3">
-															<div class="row">
-																<div class="col-sm-6" style="padding-right: 0px;" >
-																	<select class="form-control" name="va_far_pinhole_r" id="va_far_pinhole_r">
-																		<option value=""></option>
-																		<option value="NLP">NLP</option>
-																		<option value="LP">LP</option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>
-																</div>
-																<div class="col-sm-6" style="padding-left: 0px; padding-right:20px">
-																	<select class="form-control" name="va_far_pinhole_l" id="va_far_pinhole_l">
-																		<option value=""></option>
-																		<option value="NLP">NLP</option>
-																		<option value="LP">LP</option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>									
-																</div>
-															</div>
-														</div>
-														
-													</div>
-												</div>
-												<!--Near -->
-												<div class="row">
-													<div class="form-group">
-														<label for="va" class="col-sm-3 control-label">Near</label>
-														<!--Unaided-->
-														<div class="col-sm-3">
-															<div class="row">
-																<div class="col-sm-12" style="padding-right: 0px;" >
-																	<select class="form-control" name="va_near_unaided_r" id="va_near_unaided_r">
-																		<option value=""></option>
-																		<option value="N.5">N.5</option>
-																		<option value="N.6">N.6</option>
-																		<option value="N.8">N.8</option>
-																		<option value="N.10">N.10</option>
-																		<option value="N.12">N.12</option>
-																		<option value="N.14">N.14</option>
-																		<option value="N.18">N.18</option>
-																		<option value="N.24">N.24</option>
-																		<option value="N.36">N.36</option>
-																		<option value="N.48">N.48</option>
-																	</select>
-																</div>
-																<!--div class="col-sm-6" style="padding-left: 0px;">
-																	<select class="form-control" name="va_near_unaided_l" id="va_near_unaided_l">
-																		<option value=""></option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>									
-																</div-->
-																
-															</div>
-														</div>
-														
-														<!--Aided-->
-														<div class="col-sm-3">
-															<div class="row">
-																<div class="col-sm-12" style="padding-right: 0px;" >
-																	<select class="form-control" name="va_near_aided_r" id="va_near_aided_r">
-																		<option value=""></option>
-																		<option value="N.5">N.5</option>
-																		<option value="N.6">N.6</option>
-																		<option value="N.8">N.8</option>
-																		<option value="N.10">N.10</option>
-																		<option value="N.12">N.12</option>
-																		<option value="N.14">N.14</option>
-																		<option value="N.18">N.18</option>
-																		<option value="N.24">N.24</option>
-																		<option value="N.36">N.36</option>
-																		<option value="N.48">N.48</option>
-																	</select>
-																</div>
-																<!--div class="col-sm-6" style="padding-left: 0px;">
-																	<select class="form-control" name="va_near_aided_l" id="va_near_aided_l">
-																		<option value=""></option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>									
-																</div-->
-															</div>
-														</div>
-														
-														<!--Pinhole-->
-														<div class="col-sm-3">
-															<div class="row">
-																<div class="col-sm-12" style="padding-right: 20px;" >
-																	<select class="form-control" name="va_near_pinhole_r" id="va_near_pinhole_r">
-																		<option value=""></option>
-																		<option value="N.5">N.5</option>
-																		<option value="N.6">N.6</option>
-																		<option value="N.8">N.8</option>
-																		<option value="N.10">N.10</option>
-																		<option value="N.12">N.12</option>
-																		<option value="N.14">N.14</option>
-																		<option value="N.18">N.18</option>
-																		<option value="N.24">N.24</option>
-																		<option value="N.36">N.36</option>
-																		<option value="N.48">N.48</option>
-																	</select>
-																</div>
-																<!--div class="col-sm-6" style="padding-left: 0px; padding-right:20px">
-																	<select class="form-control" name="va_near_pinhole_l" id="va_near_pinhole_l">
-																		<option value=""></option>
-																		<option value="HM@6m">HM@6m</option>
-																		<option value="CF@6m">CF@6m</option>
-																		<option value="6/60">6/60</option>
-																		<option value="6/36">6/36</option>
-																		<option value="6/24">6/24</option>
-																		<option value="6/18">6/18</option>
-																		<option value="6/12">6/12</option>
-																		<option value="6/9">6/9</option>
-																		<option value="6/6">6/6</option>
-																		<option value="6/5">6/5</option>
-																		<option value="6/4">6/4</option>
-																	</select>									
-																</div-->
-															</div>
-														</div>
-														
+										<div class="panel-body">
+											<!--Header 1-->
+											<div class="row">
+												<div class="col-sm-2"> </div>
+												<div class="col-sm-3" style="font-weight:bold;"> Unaided </div>
+												<div class="col-sm-4" style="font-weight:bold;"> Aided </div>
+												<div class="col-sm-3" style="font-weight:bold;"> Pinhole </div>
+											</div>
+											<!--Header 2-->
+											<div class="row">		
+												<div class="col-sm-2" style="font-weight:bold;"><u>Visual Acuity</u></div>
+												<div class="col-sm-3">
+													<div class="row">
+														<div class="col-sm-6" style="font-weight:bold;"> R </div>
+														<div class="col-sm-6" style="font-weight:bold;"> L </div>
 													</div>
 												</div>
 												
+												<div class="col-sm-4"> 
+													<div class="row">
+														<div class="col-sm-6" style="font-weight:bold;"> R </div>
+														<div class="col-sm-6" style="font-weight:bold;"> L </div>
+													</div>				
+												</div>
+												
+												<div class="col-sm-3">
+													<div class="row">
+														<div class="col-sm-6" style="font-weight:bold;"> R </div>
+														<div class="col-sm-6" style="font-weight:bold;"> L </div>
+													</div>
+												</div>					
+											</div>
+											<!-- Far  -->
+											<div class="row">
+												<div class="">
+													<label for="va" class="col-sm-2 control-label" style="text-align:left">Far</label>
+													<!--Unaided-->
+													<div class="col-sm-3">
+														<div class="row">
+															<div class="col-sm-6">
+																<p id="va_far_unaided_r" class="control-label" style="text-align:left"></p>
+															</div>
+															<div class="col-sm-6">
+																<p id="va_far_unaided_l" class="control-label" style="text-align:left"></p>									
+															</div>
+															
+														</div>
+													</div>
+													
+													<!--Aided-->
+													<div class="col-sm-4">
+														<div class="row">
+															<div class="col-sm-6" >
+																<p id="va_far_aided_r" class="control-label" style="text-align:left"></p>
+															</div>
+															<div class="col-sm-6" >
+																<p id="va_far_aided_l" class="control-label" style="text-align:left"></p>							
+															</div>
+														</div>
+													</div>
+													
+													<!--Pinhole-->
+													<div class="col-sm-3">
+														<div class="row">
+															<div class="col-sm-6" >
+																<p id="va_far_pinhole_r" class="control-label" style="text-align:left"></p>
+															</div>
+															<div class="col-sm-6">
+																<p id="va_far_pinhole_l" class="control-label" style="text-align:left"></p>						
+															</div>
+														</div>
+													</div>
+													
+												</div>
+											</div>
+											
+											<!--Near -->
+											<div class="row">
+												<div class="">
+													<label for="va" class="col-sm-2 control-label" style="text-align:left">Near</label>
+													<!--Unaided-->
+													<div class="col-sm-3">
+														<div class="row">
+															<div class="col-sm-12" style="padding-right: 0px;" >
+																<p id="va_near_unaided_r" class="control-label" style="text-align:left"></p>
+															</div>
+														</div>
+													</div>
+													
+													<!--Aided-->
+													<div class="col-sm-4">
+														<div class="row">
+															<div class="col-sm-12" style="padding-right: 0px;" >
+																<p id="va_near_aided_r" class="control-label" style="text-align:left"></p>
+															</div>
+														</div>
+													</div>
+													
+													<!--Pinhole-->
+													<div class="col-sm-3">
+														<div class="row">
+															<div class="col-sm-12" style="padding-right: 20px;" >
+																<p id="va_near_pinhole_r" class="control-label" style="text-align:left"></p>
+															</div>
+														</div>
+													</div>
+													
+												</div>
+											</div>
+											<div id="exam" class="panel-collapse collapse">
 												<!-- OSP -->
 												<div class="row">
-													<div class="form-group">
-														<label for="va" class="col-sm-3 control-label">Old Spec Pres:</label>
+													<div class="">
+														<label for="va" class="col-sm-2 control-label" style="text-align:left">Old Spec Pres:</label>
 														<div class="col-sm-3">
 															<div class="row">
-																<div class="col-sm-6"  style="padding-right: 0px;" >
-																	<input type="text" id="ospr" name="ospr" class="form-control">
+																<div class="col-sm-6">
+																	<p id="ospr" class="control-label" style="text-align:left"></p>
 																</div>
-																<div class="col-sm-6"  style="padding-left: 0px;" >
-																	<input type="text" id="opsl" name="ospl" class="form-control">								
+																<div class="col-sm-6">
+																	<p id="ospl" class="control-label" style="text-align:left"></p>							
 																</div>
 															</div>
 														</div>
 														
-														<div class="col-sm-3">
+														<div class="col-sm-4">
 														</div>
 														
 														<div class="col-sm-3">
 															<div class="row">
 																<label for="va" class="col-sm-3 control-label">Near</label>
 																<div class="col-sm-9" style="padding-right:20px">
-																	<input type="text" id="ospn" name="ospn" class="form-control">
+																	<p id="ospn" class="control-label" style="text-align:left"></p>
 																</div>
 															</div>
 														</div>	
@@ -466,15 +293,12 @@
 												</div>
 												<!-- OSP ADD-->
 												<div class="row">
-													<div class="form-group">
-														<label for="va" class="col-sm-3 control-label">ADD</label>
+													<div class="">
+														<label for="va" class="col-sm-2 control-label" style="text-align:left">ADD</label>
 														<div class="col-sm-3">
 															<div class="row">
-																<div class="col-sm-6"  style="padding-right: 0px;" >
-																	<input type="text" id="ospaddr" name="ospaddr" class="form-control">
-																</div>
-																<div class="col-sm-6"  style="padding-left: 0px;" >
-																	<input type="text" id="opsaddl" name="ospaddl" class="form-control">								
+																<div class="col-sm-12">
+																	<p id="ospaddr" class="control-label" style="text-align:left"></p>
 																</div>
 															</div>
 														</div>
@@ -482,398 +306,431 @@
 												</div>
 												<!-- IOP -->
 												<div class="row">
-													<div class="form-group">
-														<label for="va" class="col-sm-3 control-label">IOP:</label>													
+													<div class="">
+														<label for="va" class="col-sm-2 control-label" style="text-align:left">IOP:</label>													
 														<div class="col-sm-3">
 															<div class="row">
-																<div class="col-sm-6" style="padding-right: 0px;">
-																	<input type="text" id="iop" name="iopr" class="form-control">
+																<div class="col-sm-6">
+																	<p id="iopr" class="control-label" style="text-align:left"></p>
 																</div>												
-																<div class="col-sm-6" style="padding-left: 0px;">
-																	<input type="text" id="iop" name="iopl" class="form-control">
+																<div class="col-sm-6">
+																	<p id="iopl" class="control-label" style="text-align:left"></p>
 																</div>
 															</div>
 														</div>
 														
-														<label for="iop" class="col-sm-3 control-label"></label>
+														<label for="iop" class="col-sm-3 control-label" style="text-align: left; margin-left: -20px;">mmHg</label>
 														
-														<div class="col-sm-3" style="padding-right:20px"> 
-															<input type="time" class="form-control" id="tim"> 
+														<div class="col-sm-3"> 
+															<p id="tim" class="control-label" style="text-align:left"></p>
 														</div>
 													</div>
 												</div>
 											</div>
+										
+											<a data-toggle="collapse" href="#exam" class="btn btn-primary pull-right moreinfo">View more</a>
 										</div>
-									</div>
-									
+									</div>						
 									<!-- REFRACTION -->
-									<div class="panel panel-default panel-primary">
-										<div class="panel-heading">
+									<div class="">
+										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
 											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#rr">Refraction</a></h3>
 										</div>
-										<div id="rr" class="panel-collapse collapse">
-											<div class="panel-body">
+										<div class="panel-body">
+											<div id="rr" class="panel-collapse collapse">
 												<div class="row">
-													<h5 class="col-sm-4" style="font-weight:bold">AutoRef:</h5> 
-													<h6 class="col-sm-4" style="font-weight:bold; text-align:center">R</h6>
-													<h6 class="col-sm-4" style="font-weight:bold; text-align:center">L</h6> 
+													<h5 class="col-sm-2" style="font-weight:bold"><u>AutoRef:</u></h5> 
+													<h6 class="col-sm-5" style="font-weight:bold;">R</h6>
+													<h6 class="col-sm-5" style="font-weight:bold;">L</h6> 
 												</div>
 												<div class="row">
-													<div class="col-sm-4">
+													<div class="col-sm-2">
 														<div class="row">
 															<h6 class="col-sm-12" style="font-weight:bold">Sph Cyl x Axis</h6> 
 														</div>
 													</div>
 													
-													<div class="col-sm-4">
-														<div class="form-group">
-															<input type="text" id="sph_cyl_x_axis_r" name="sph_cyl_x_axis_r" class="form-control">
+													<div class="col-sm-5">
+														<div class="">
+															<p id="sph_cyl_x_axis_r" class="control-label" style="text-align:left"></p>
 														</div>
 													</div>
 										
-													<div class="col-sm-4" style="padding-right:20px">
-														<div class="form-group">
-															<input type="text" id="sph_cyl_x_axis_l" name="sph_cyl_x_axis_l" class="form-control">
+													<div class="col-sm-5">
+														<div class="">
+															<p id="sph_cyl_x_axis_l" class="control-label" style="text-align:left"></p>
 														</div>
 													</div>	
 												</div>	
 
 												<div class="row">
-													<h5 class="col-sm-4" style="font-weight:bold">Subjective:</h5> 
+													<h5 class="col-sm-2" style="font-weight:bold"><u>Subjective:</u></h5> 
 												</div>	
 										
 												<div class="row">
-													<div class="col-sm-4">
+													<div class="col-sm-2">
 														<div class="row">
 															<h6 class="col-sm-12" style="font-weight:bold">Sph Cyl x Axis</h6> 
 														</div>
 													</div>
 												
-													<div class="col-sm-4">
-														<div class="form-group">
-															<input type="text" id="sub_sph_cyl_x_axis_r" name="sub_sph_cyl_x_axis_r" class="form-control">
+													<div class="col-sm-5">
+														<div class="">
+															<p id="sub_sph_cyl_x_axis_r" class="control-label" style="text-align:left"></p>
 														</div>
 													</div>
 													
-													<div class="col-sm-4" style="padding-right:20px">
-														<div class="form-group">
-															<input type="text" id="sub_sph_cyl_x_axis_l" name="sub_sph_cyl_x_axis_l" class="form-control">
+													<div class="col-sm-5">
+														<div class="">
+															<p id="sub_sph_cyl_x_axis_l" class="control-label" style="text-align:left"></p>
 														</div>
 													</div>
 												</div>
-
-												<div class="row">
-													<div class="col-sm-4">
-														<div class="row">
-															<h6 class="col-sm-12" style="font-weight:bold">Add</h6> 
-														</div>
-													</div>
-												
-													<div class="col-sm-4">
-														<div class="form-group">
-															<input type="text" id="sub_add_r" name="sub_add_r" class="form-control">
-														</div>
-													</div>
-										
-													<div class="col-sm-4" style="padding-right:20px">
-														<div class="form-group">
-															<input type="text" id="sub_add_l" name="sub_add_l" class="form-control">
-														</div>													
-													</div>					
-												</div>
 										
 												<div class="row">
-													<div class="col-sm-4">
+													<div class="col-sm-2">
 														<div class="row">
 															<h6 class="col-sm-12" style="font-weight:bold">VA</h6> 
 														</div>
 													</div>
 													
-													<div class="col-sm-4">
-														<div class="form-group">
-															<input type="text" id="sub_va_r" name="sub_va_r" class="form-control">
+													<div class="col-sm-5">
+														<div class="">
+															<p id="sub_va_r" class="control-label" style="text-align:left"></p>
 														</div>
 													</div>
 																									
-													<div class="col-sm-4" style="padding-right:20px">
-														<div class="form-group">
-															<input type="text" id="sub_va_l" name="sub_va_l" class="form-control">
+													<div class="col-sm-5">
+														<div class="">
+															<p id="sub_va_l" class="control-label" style="text-align:left"></p>
 														</div>
 													</div>								
 												</div>
+											</div>
 
-												<div class="row">
-													<h5 class="col-sm-4" style="font-weight:bold">Final Balancing:</h5> 
-												</div>	
-										
-												<div class="row">
-													<div class="col-sm-4">
-														<div class="row">
-															<h6 class="col-sm-12" style="font-weight:bold">Sph Cyl x Axis</h6> 
-														</div>
+											<div class="row">
+												<h5 class="col-sm-2" style="font-weight:bold"><u>Final Balancing:</u></h5> 
+											</div>	
+									
+											<div class="row">
+												<div class="col-sm-2">
+													<div class="row">
+														<h6 class="col-sm-12" style="font-weight:bold">Sph Cyl x Axis</h6> 
 													</div>
-												
-													<div class="col-sm-4">
-														<div class="form-group">
-															<input type="text" id="fb_sph_cyl_x_axis_r" name="fb_sph_cyl_x_axis_r" class="form-control">
-														</div>
-													</div>
-												
-													<div class="col-sm-4" style="padding-right:20px">
-														<div class="form-group">
-															<input type="text" id="fb_sph_cyl_x_axis_l" name="fb_sph_cyl_x_axis_l" class="form-control">
-														</div>
-													</div>			
-												</div>
-										
-												<div class="row">
-													<div class="col-sm-4">
-														<div class="row">
-															<h6 class="col-sm-12" style="font-weight:bold">Add</h6> 
-														</div>
-													</div>
-													
-													<div class="col-sm-4">
-														<div class="form-group">
-															<input type="text" id="fb_add_r" name="fb_add_r" class="form-control">
-														</div>
-													</div>
-													
-													<div class="col-sm-4" style="padding-right:20px">
-														<div class="form-group">
-															<input type="text" id="fb_add_l" name="fb_add_l" class="form-control">
-														</div>
-													</div>		
-												</div>
-										
-												<div class="row">
-													<div class="col-sm-4">
-														<div class="row">
-															<h6 class="col-sm-12" style="font-weight:bold">VA</h6> 
-														</div>
-													</div>
-												
-													<div class="col-sm-4">
-														<div class="form-group">
-															<input type="text" id="fb_va_r" name="fb_va_r" class="form-control">
-														</div>
-													</div>
-												
-													<div class="col-sm-4" style="padding-right:20px">
-														<div class="form-group">
-															<input type="text" id="fb_va_l" name="fb_va_l" class="form-control">
-														</div>	
-													</div>					
-												</div>
-												
-												<div class="row">
-													<div class="col-sm-4">
-														<div class="row">
-															<h6 class="col-sm-12" style="font-weight:bold">Near</h6> 
-														</div>
-													</div>
-												
-													<div class="col-sm-8">
-														<div class="form-group">
-															<input type="text" id="fb_near_new" name="fb_near_new" class="form-control">
-														</div>
-													</div>				
 												</div>
 											
+												<div class="col-sm-5">
+													<div class="">
+														<p id="fb_sph_cyl_x_axis_r" class="control-label" style="text-align:left"></p>
+													</div>
+												</div>
+											
+												<div class="col-sm-5">
+													<div class="">
+														<p id="fb_sph_cyl_x_axis_l" class="control-label" style="text-align:left"></p>
+													</div>
+												</div>			
 											</div>
+									
+											<div class="row">
+												<div class="col-sm-2">
+													<div class="row">
+														<h6 class="col-sm-12" style="font-weight:bold">Add</h6> 
+													</div>
+												</div>
+												
+												<div class="col-sm-10">
+													<div class="">
+														<p id="fb_add_l" class="control-label" style="text-align:left"></p>
+													</div>
+												</div>		
+											</div>
+									
+											<div class="row">
+												<div class="col-sm-2">
+													<div class="row">
+														<h6 class="col-sm-12" style="font-weight:bold">VA</h6> 
+													</div>
+												</div>
+											
+												<div class="col-sm-10">
+													<div class="">
+														<p id="fb_va_l" class="control-label" style="text-align:left"></p>
+													</div>	
+												</div>					
+											</div>
+											
+											<div class="row">
+												<div class="col-sm-2">
+													<div class="row">
+														<h6 class="col-sm-12" style="font-weight:bold">Near</h6> 
+													</div>
+												</div>
+											
+												<div class="col-sm-10">
+													<div class="">
+														<p id="fb_near_new" class="control-label" style="text-align:left"></p>
+													</div>
+												</div>				
+											</div>
+											
+										
+											<a data-toggle="collapse" href="#rr" class="btn btn-primary pull-right moreinfo">View more</a>
 										</div>
 									</div> 
 									<!-- External Examination -->
-									<div class="panel panel-primary">
-										<div class="panel-heading">
-											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#ee">External Examination</a></h3>
+									<div class="">
+										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
+											<h3 class="panel-title">
+												<a data-toggle="collapse" data-parent="#drspage" href="#ee">External Examination</a>
+											</h3>
 										</div>
-										<div id="ee" class="panel-collapse collapse">
-											<div class="panel-body">
-									
+										<div class="panel-body">
+											<div id="ee" class="panel-collapse collapse">
+												<div class="row">
+													<h5 class="col-sm-2" style="font-weight:bold"></h5> 
+													<h6 class="col-sm-5" style="font-weight:bold;">OD</h6>
+													<h6 class="col-sm-5" style="font-weight:bold;">OS</h6> 
+												</div>
 												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">LIDS</label>
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">LIDS</label>
 													</div>
-													<div class="col-sm-9">
-														<input type="text" id="lids" name="lids" class="form-control">
+													<div class="col-sm-5">
+														<p id="lids" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="lidsodosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 																	
 												<div class="form-group">
-													<div class="col-sm-3">
-													  <label class="control-label">CONJUNCTIVA</label>
+													<div class="col-sm-2">
+													  <label class="control-label" style="text-align:left">CONJUNCTIVA</label>
 													</div>
-													<div class="col-sm-9">
-														<input type="text" id="con" name="con" class="form-control">
+													<div class="col-sm-5">
+														<p id="con" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="conodosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 										
 												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">CORNEA</label>
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">CORNEA</label>
 													</div>
-													<div class="col-sm-9">
-														<input type="text" id="cornea" name="cornea" class="form-control">
+													<div class="col-sm-5">
+														<p id="cornea" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="corneaodosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>									
 										
 												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">ANTERIOR CHAMBER</label>
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">ANTERIOR CHAMBER</label>
 													</div>
-													<div class="col-sm-9">
-														<input type="text" id="antc" name="antc" class="form-control">
+													<div class="col-sm-5">
+														<p id="antc" class="control-label" style="text-align:left"></p>
 													</div>
-												</div>
-										
-												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">IRIS</label>
-													</div>
-													<div class="col-sm-9">
-														<input type="text" id="iris" name="iris" class="form-control">
+													<div class="col-sm-5">
+														<p id="antcodosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 										
 												<div class="form-group">
-													<div class="col-sm-3">
-													  <label class="control-label">PUPIL</label>
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">IRIS</label>
+													</div>
+													<div class="col-sm-5">
+														<p id="iris" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="irisodosou" class="control-label" style="text-align:left"></p>
+													</div>
+												</div>
+										
+												<div class="form-group">
+													<div class="col-sm-2">
+													  <label class="control-label" style="text-align:left">PUPIL</label>
 													 </div>
-													<div class="col-sm-9">
-													  <input type="text" id="pupl" name="pupl" class="form-control">
+													<div class="col-sm-5">
+														<p id="pupl" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="puplodosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 												
 												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">LENS</label>
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">LENS</label>
 													 </div>
-													<div class="col-sm-9">
-														<input type="text" id="lens" name="lens" class="form-control">
+													<div class="col-sm-5">
+														<p id="lens" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="lensodosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 										
 												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">COLOUR VISION</label>
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">COLOUR VISION</label>
 													</div>
-													<div class="col-sm-9">
-														<input type="text" id="colv" name="colv" class="form-control">
+													<div class="col-sm-5">
+														<p id="colv" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="colvodosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 												
 												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">OTHERS</label>
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">OTHERS</label>
 													</div>
-													<div class="col-sm-9">
-														<input type="text" id="oth" name="oth" class="form-control">
+													<div class="col-sm-5">
+														<p id="oth" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="othodosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 											</div>
+											<a data-toggle="collapse" href="#ee" class="btn btn-primary pull-right moreinfo">View more</a>
 										</div>
 									</div>	
 									<!-- Om/SLE -->
-									<div class="panel panel-default panel-primary">
-										<div class="panel-heading">
+									<div class="">
+										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
 											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#omsle">Ophthalmoscopy / Slit Lamp Examination</a></h3>
 										</div>
-										<div id="omsle" class="panel-collapse collapse">
-											<div class="panel-body">
+										
+										<div class="panel-body">
+											<div id="omsle" class="panel-collapse collapse">
+												<div class="row">
+													<h5 class="col-sm-2" style="font-weight:bold"></h5> 
+													<h6 class="col-sm-5" style="font-weight:bold;">OD</h6>
+													<h6 class="col-sm-5" style="font-weight:bold;">OS</h6> 
+												</div>
 												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">VITREOUS</label>
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">VITREOUS</label>
 													</div>
-													<div class="col-sm-9">
-														<input type="text" id="vitr" name="vitr" class="form-control">
+													<div class="col-sm-5">
+														<p id="vitr" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="vitrodosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 										
 												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">CHOROID</label>
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">CHOROID</label>
 													</div>
-													<div class="col-sm-9">
-														<input type="text" id="chor" name="chor" class="form-control">
+													<div class="col-sm-5">
+														<p id="chor" class="control-label" style="text-align:left"></p>
 													</div>
-												</div>
-										
-												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">RETINA</label>
-													</div>
-													<div class="col-sm-9">
-														<input type="text" id="ret" name="ret" class="form-control">
+													<div class="col-sm-5">
+														<p id="chorodosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 										
 												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">MACULAR</label>
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">RETINA</label>
 													</div>
-													<div class="col-sm-9">
-														<input type="text" id="mac" name="mac" class="form-control">
+													<div class="col-sm-5">
+														<p id="ret" class="control-label" style="text-align:left"></p>
 													</div>
-												</div>
-										
-												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">DISC</label>
-													</div>
-													<div class="col-sm-9">
-														<input type="text" id="disc" name="disc" class="form-control">
+													<div class="col-sm-5">
+														<p id="retodosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 										
 												<div class="form-group">
-													<div class="col-sm-3">
-														<label class="control-label">OTHERS</label>
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">MACULAR</label>
 													</div>
-													<div class="col-sm-9">
-														<input type="text" id="oth1" name="oth1" class="form-control">
+													<div class="col-sm-5">
+														<p id="mac" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="macodosou" class="control-label" style="text-align:left"></p>
+													</div>
+												</div>
+										
+												<div class="form-group">
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">DISC</label>
+													</div>
+													<div class="col-sm-5">
+														<p id="disc" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="discodosou" class="control-label" style="text-align:left"></p>
+													</div>
+												</div>
+										
+												<div class="form-group">
+													<div class="col-sm-2">
+														<label class="control-label" style="text-align:left">OTHERS</label>
+													</div>
+													<div class="col-sm-5">
+														<p id="oth1" class="control-label" style="text-align:left"></p>
+													</div>
+													<div class="col-sm-5">
+														<p id="oth1odosou" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 											
 											</div>
+											
+											<a data-toggle="collapse" href="#omsle" class="btn btn-primary pull-right moreinfo">View more</a>
 										</div>
 									</div>
 									<!-- Diag, Plan & Pres -->
-									<div class="panel panel-default panel-primary">
-										<div class="panel-heading">
+									<div class="">
+										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
 											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#dpp">Diagnosis, Plan & Prescription</a></h3>
 										</div>
-										<div id="dpp" class="panel-collapse collapse">
-											<div class="panel-body">
+										<div class="panel-body">
+											<div id="dpp" class="panel-collapse collapse in">
 												<div class="form-group">
 													<label class="col-sm-12">Prescription:</label> 
 													<div class="col-sm-12">
-														<textarea id="presc" name="presc" class="form-control"></textarea>
+														<p id="presc" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 
 												<div class="form-group">
 													<label class="col-sm-12 ">Plan:</label> 
 													<div class="col-sm-12">
-														<textarea id="plan" name="plan" class="form-control"></textarea>
+														<p id="plan" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>		
 
 												<div class="form-group">
 													<label class="col-sm-12">Diagnosis:</label> 
 													<div class="col-sm-12">
-														<textarea type="text" id="diag" name="diag" class="form-control"></textarea>
+														<p id="diag" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>
 												
 												<div class="form-group">
 													<label class="col-sm-12 ">Comments/Notes:</label> 
 													<div class="col-sm-12">
-														<textarea id="comments" name="comments" class="form-control"></textarea>
+														<p id="comments" class="control-label" style="text-align:left"></p>
 													</div>
 												</div>	
 								  
 											</div>
+										
+											<a data-toggle="collapse" href="#dpp" class="btn btn-primary pull-right moreinfo">View less</a>
 										</div>
 									</div>									
 								</div>
@@ -901,6 +758,15 @@
 			a_id = 	a_id.split("&");
 			a_id = 	a_id[0];
 			//console.log(a_id);
+			
+			$('.moreinfo').click(function(e){
+				if($(this).text() == 'View more'){
+					$(this).text('View less');
+				}
+				else {
+					$(this).text('View more');
+				}
+			});
 			
 			if(a_id > 0)
 				$("#btn_go_back").attr("href", "dr_view.php?id="+c_cid+"a="+a_id+"&dep="+c_depid);
@@ -967,7 +833,42 @@
 					data = $.parseJSON(data);
 					if(data.status === undefined){
 						$.each(data, function(i, item) {
-							$('#chiefcomplain').val(item.complain); $('#pxohx').val(item.pxohx); $('#pxmhx').val(item.pxmhx); $('#pxfohx').val(item.pxfohx); $('#pxfmhx').val(item.pxfmhx); $('#lee').val(item.lee);
+							$('#chiefcomplain').text(item.complain); $('#pxohx').text(item.pxohx); $('#pxmhx').text(item.pxmhx); 
+							$('#pxfohx').text(item.pxfohx); $('#pxfmhx').text(item.pxfmhx); $('#lee').text(item.lee);
+							//
+							$('#va_far_unaided_r').text(item.va_unaided_r_far + '  ' + item.va_far2_unaided_r); $('#va_far_unaided_l').text(item.va_unaided_l_far + '  ' +item.va_far2_unaided_l);
+							$('#va_far_aided_r').text(item.va_aided_r_far + '  ' + item.va_far2_aided_r); $('#va_far_aided_l').text(item.va_aided_l_far + '  ' + item.va_far2_aided_l); 
+							$('#va_far_pinhole_r').text(item.va_pinhole_r_far + '  ' + item.va_far2_pinhole_r); $('#va_far_pinhole_l').text(item.va_pinhole_l_far + '  ' + item.va_far2_pinhole_l);
+							//
+							$('#va_near_unaided_r').text(item.va_unaided_r_near); $('#va_near_aided_r').text(item.va_aided_r_near); $('#va_near_pinhole_r').text(item.va_pinhole_r_near);
+							//
+							$('#ospr').text(item.old_spec_r); $('#ospl').text(item.old_spec_l); $('#ospn').text(item.near); $('#ospaddr').text(item.ospadd_r); 
+							$('#iopr').text(item.iop_r); $('#iopl').text(item.iop_l); //$('#tim').text(item.va_pinhole_r_near);
+							//
+							$('#sph_cyl_x_axis_r').text(item.ar_sph_cyl_x_axis_r); $('#sph_cyl_x_axis_l').text(item.ar_sph_cyl_x_axis_l);
+							$('#sub_sph_cyl_x_axis_r').text(item.sub_sph_cyl_x_axis_r); $('#sub_sph_cyl_x_axis_l').text(item.sub_sph_cyl_x_axis_l);
+							$('#sub_va_r').text(item.sub_va_r); $('#sub_va_l').text(item.sub_va_l);
+							$('#fb_sph_cyl_x_axis_r').text(item.fb_sph_cyl_x_axis_r); $('#fb_sph_cyl_x_axis_l').text(item.fb_sph_cyl_x_axix_l);
+							$('#fb_add_l').text(item.fb_add_l); $('#fb_va_l').text(item.fb_va_l); $('#fb_near_new').text(item.fa_near);
+							//
+							$('#lids').text(item.lids); $('#lidsodosou').text(item.lidsodosou);
+							$('#con').text(item.conjuctiva); $('#conodosou').text(item.conodosou);
+							$('#cornea').text(item.cornea); $('#corneaodosou').text(item.corneaodosou);
+							$('#antc').text(item.anterior_chamber); $('#antcodosou').text(item.antcodosou);
+							$('#iris').text(item.iris); $('#irisodosou').text(item.irisodosou);
+							$('#pupl').text(item.pupil); $('#puplodosou').text(item.puplodosou);
+							$('#lens').text(item.lens); $('#lensodosou').text(item.lensodosou);
+							$('#colv').text(item.colour_vision); $('#colvodosou').text(item.colvodosou);
+							$('#oth').text(item.ee_others); $('#othodosou').text(item.othodosou);
+							//
+							$('#vitr').text(item.vitreous); $('#vitrodosou').text(item.vitrodosou);
+							$('#chor').text(item.choroid); $('#chorodosou').text(item.chorodosou);
+							$('#ret').text(item.retina); $('#retodosou').text(item.retodosou);
+							$('#mac').text(item.macular); $('#macodosou').text(item.macodosou);
+							$('#disc').text(item.disc); $('#discodosou').text(item.discodosou);
+							$('#oth1').text(item.osle_others); $('#oth1odosou').text(item.oth1odosou);
+							//
+							$('#presc').text(item.prescription); $('#plan').text(item.plan); $('#comments').text(item.comments); $('#diag').text(item.diagonis);
 						});
 					}
 				});

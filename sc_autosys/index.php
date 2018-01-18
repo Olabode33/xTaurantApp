@@ -46,8 +46,8 @@
 								</div>
 								<select class="form-control" Required id="branch" name="branch">
 									<option value="">Select a Branch</option>
-									<option value="VI">VI Branch</option>
-									<option value="Ikeja">Ikeja Branch</option>
+									<option value="V">VI Branch</option>
+									<option value="IKJ">Ikeja Branch</option>
 								</select>
 							</div>
 						</div>
@@ -63,8 +63,8 @@
 				</form>
 				<div class="col-sm-offset-3 col-sm-6">
 					<hr>
-					Copyright 2017 
-					<strong class="pull-right">v0.2b</strong>
+					Copyright &copy; 2017-<span id="copy_yr"></span> SightCity. All rights reserved.
+					<strong class="pull-right">v1.0.0</strong>
 				</div>
 			</div>
 		</div>
@@ -81,7 +81,7 @@
 			var login_msg = location.search;
 			login_msg = login_msg.split("=");
 			login_msg = login_msg[1];
-			console.log(login_msg);
+			//console.log(login_msg);
 			
 			if(login_msg != undefined){
 				$("#login_alert").removeClass("hidden");
@@ -95,6 +95,10 @@
 				if(login_msg == "locked")
 					$("#login_msg").html("This user account has been deactivated. Please contact your system administrator");
 			}
+			
+			var cur_year = new Date();
+			
+			$("#copy_yr").text(cur_year.getFullYear());
 		});
 	
 		$("#loginform").submit(function(e) { 

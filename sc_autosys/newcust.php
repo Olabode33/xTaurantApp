@@ -4,7 +4,7 @@
 		
 	<div class="row">
 		<h4 class="col-sm-12" style="margin-top: 15px;">
-			<i class="fa fa-user-plus"></i> Add New Customer
+			<i class="fa fa-user-plus"></i> <span id="form_title_text">Add New</span> Customer
 			<hr style="margin-top: 10px; margin-bottom: 10px;">
 		</h4>
 		<div class="col-xs-12 " id="insert_cus">
@@ -28,7 +28,7 @@
 							<div class="form-group">
 								<label for="cardno" class="col-sm-2 control-label"><span class="text-danger">*</span>Card No.</label>
 								<div class="col-sm-4">
-									<input type="text" id="cardno" name="cardno" class="form-control" placeholder="xxxx/xxx/yyyy" Required>
+									<input type="text" id="cardno" name="cardno" class="form-control" placeholder="xxxx/xxx/yyyy" disabled>
 								</div>
 											
 								<label for="enroleeno" class="col-sm-2 control-label">Enrolee ID</label>
@@ -291,6 +291,7 @@
 			id = id[1];
 			if(id != undefined){			
 				$.get('api/Controllers/Customers_RestController.php?view=single&id='+id, function(data) {
+					$("#form_title_text").text("Edit");
 					data = $.parseJSON(data);
 					//console.log(data);
 					if(data.status === undefined){
@@ -351,6 +352,14 @@
 					}
 				});
 			}
+			else{
+				$.get('api/Controllers/Customers_RestController.php?view=generate_cardno', function(data) {
+					$data = $.parseJSON(data);
+					//Auto Generate Card no
+					//$("#cardno").val($data);
+					$("form_title_text").text("Add New");
+				});
+			}
 		
 			$('#newcus_form').on('keyup keypress', function(e) {
 			  var keyCode = e.keyCode || e.which;
@@ -398,6 +407,7 @@
 					},
 					success: function(data) {
 					   data = $.parseJSON(data);
+					   
 					   if(data.status == 1){
 							$("#save_icon").removeClass("fa-spinner fa-pulse");
 							$("#save_icon").addClass("fa-save");
