@@ -30,7 +30,7 @@
 					if(data.status != 0){
 						$("#lbl_role").html(data.role);
 						$("#lbl_fullname").html(data.fname + ' ' + data.lname);
-						$("#branch").html(data.branch + " Branch");
+						$("#branch").html(data.branch);
 						var cpage = document.location.href.match(/[^\/]+$/)[0];
 						cpage = cpage.split("?");
 						if(data.status == "Locked" && cpage[0] != "change-pass.php"){
