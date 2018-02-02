@@ -512,14 +512,14 @@
 				$stmt = $conn->prepare($sql);
 				
 				if($id > 0){
-					$stmt->bind_param('sd',  $_SESSION['sc_branch'], $id);
+					$stmt->bind_param('sd',  $_SESSION['sc_branch_code'], $id);
 				}
 				elseif($id == -3)
-					$stmt->bind_param('sss',  $_SESSION['sc_branch'], $fdate, $tdate);
+					$stmt->bind_param('sss',  $_SESSION['sc_branch_code'], $fdate, $tdate);
 				elseif($id == -4)
 					$stmt->bind_param('s',  $fdate);
 				else
-					$stmt->bind_param('s',  $_SESSION['sc_branch']);
+					$stmt->bind_param('s',  $_SESSION['sc_branch_code']);
 				
 				$stmt->execute();
 				$stmt->bind_result($id, $cardno, $date, $notes, $status, $branch, $date_created, $name, $cid, $dep, $dep_id);
