@@ -307,8 +307,8 @@
 										</div>
 										<select class="form-control" Required id="cbranch" name="cbranch">
 											<option value="">-- Select a Branch --</option>
-											<option value="Ikeja">Ikeja</option>
-											<option value="VI">Victoria Island</option>
+											<option value="IKJ">Ikeja</option>
+											<option value="V">Victoria Island</option>
 										</select>
 									</div>
 								</div>
