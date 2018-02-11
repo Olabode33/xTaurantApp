@@ -52,9 +52,11 @@
 							$(".frontdesk-only").removeClass("hidden");
 							$("#nav_treatory_anchor").attr("href", "#");
 							$("#nav_treatory_anchor").attr("disabled", "true");
-							$("#nav_admin_anchor").attr("href", "#");
+							$("#nav_admin_anchor").attr("href", "notifications.php");
 							$("#nav_admin_anchor").attr("disabled", "true");
-							$("#nav_admin").addClass("disabled");
+							$("#nav_admin_anchor").attr("data-toggle", "");
+							$("#nav_admin_anchor").html("<i class='fa fa-bell'></i> Annoucements");
+							//$("#nav_admin").addClass("disabled");
 						}
 						else {
 							$(".frontdesk-only").addClass("hidden");
@@ -216,9 +218,7 @@
 			<div class="container">
 				<div class="navbar-header">
 					<img src="img/sc_brand.jpg" class="img-responsive thumbnail" alt="SightCity" style="margin-top: 5px; margin-bottom: 5px; margin-left: 0px;">
-				</div>
-				
-				<span style="width: 50%; font-size: 30px; margin-left: 10%; background-color: darkred; padding: 14px; border-radius: 50px;" class="code">::: Test Environment \></span>
+				</div>	
 				
 				<ul class="nav navbar-nav navbar-right" style="font-size: 14px;">
 					<li><p class="navbar-text" style="color: #fff;">Welcome Back!</p></li>
@@ -266,7 +266,7 @@
 				</li>
 				<!--li role="presentation" id="nav_billing"><a href="#">Doctor</a></li-->
 				<li role="presentation"  id="nav_treatory"><a href="waiting.php" id="nav_treatory_anchor"><i class="fa fa-user-md"></i> Doctor's View</a></li>
-				<li role="presentation"  id="nav_report"><a href="#">Report</a></li>
+				<!--li role="presentation"  id="nav_report"><a href="#">Report</a></li-->
 				<li role="presentation"  id="nav_admin" class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="nav_admin_anchor"><i class="fa fa-gears"></i> Administration <span class="caret"></span></a>
 					<ul class="dropdown-menu">
