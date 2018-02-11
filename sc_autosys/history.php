@@ -95,7 +95,7 @@
 							<form action="#" class="form-horizontal" id="" >
 								<div class="panel-group" id="">
 									<!--Client History -->
-									<div class="">
+									<div class="panel panel-primary">
 										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
 											<h3 class="panel-title"><a data-toggle="collapse" href="#ch">Client History</a></h3>
 										</div>
@@ -149,7 +149,7 @@
 										
 									</div>
 									<!--Examination -->
-									<div class="">
+									<div class="panel panel-primary">
 										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
 											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#exam">Examination</a></h3>
 										</div>
@@ -332,7 +332,7 @@
 										</div>
 									</div>						
 									<!-- REFRACTION -->
-									<div class="">
+									<div class="panel panel-primary">
 										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
 											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#rr">Refraction</a></h3>
 										</div>
@@ -479,7 +479,7 @@
 										</div>
 									</div> 
 									<!-- External Examination -->
-									<div class="">
+									<div class="panel panel-primary">
 										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
 											<h3 class="panel-title">
 												<a data-toggle="collapse" data-parent="#drspage" href="#ee">External Examination</a>
@@ -604,7 +604,7 @@
 										</div>
 									</div>	
 									<!-- Om/SLE -->
-									<div class="">
+									<div class="panel panel-primary">
 										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
 											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#omsle">Ophthalmoscopy / Slit Lamp Examination</a></h3>
 										</div>
@@ -694,7 +694,7 @@
 										</div>
 									</div>
 									<!-- Diag, Plan & Pres -->
-									<div class="">
+									<div class="panel panel-primary">
 										<div class="panel-heading" style="border-bottom: 1px solid #e3e3e3;">
 											<h3 class="panel-title"><a data-toggle="collapse" data-parent="#drspage" href="#dpp">Diagnosis, Plan & Prescription</a></h3>
 										</div>

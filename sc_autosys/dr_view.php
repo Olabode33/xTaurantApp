@@ -1152,6 +1152,7 @@
 													</div>
 													<input type="text" placeholder="" name="cname" id="cname" class="form-control" disabled>
 													<input type="hidden" placeholder="" name="c_ba_id" id="c_ba_id" class="form-control">
+													<input type="hidden" placeholder="" name="c_dep_id" id="c_dep_id" class="form-control">
 												</div>
 											</div>
 											<label class="col-sm-2 control-label" for="ccard">Card No.</label>
@@ -1175,6 +1176,19 @@
 													</div>
 												</div>
 											</div>
+											<label class="col-sm-2 control-label" for="cdate">Branch</label>
+											<div class=" col-sm-4">
+												<div class="input-group">
+													<div class="input-group-addon">
+														<i class="fa fa-map-marker"></i>
+													</div>
+													<select class="form-control" Required id="cbranch" name="cbranch">
+														<option value="">-- Select a Branch --</option>
+														<option value="IKJ">Ikeja</option>
+														<option value="V">Victoria Island</option>
+													</select>
+												</div>
+											</div>
 										</div>	
 										<div class="form-group">
 											<label class="col-sm-2 control-label" for="cname">Notes</label>
@@ -1184,8 +1198,8 @@
 										</div>
 										<div class="form-group">
 											<label class="col-sm-2 control-label" for="submit"></label>
-											<div class=" col-sm-10">
-												<button type="submit" class="btn btn-primary"><i class="fa fa-calendar-plus-o" id="btn_book_icon"></i> Book Appointment</button> 
+											<div class=" col-sm-4">
+												<button type="submit" class="btn btn-primary" id="btn_bk_appt"><i class="fa fa-calendar-plus-o" id="book_icon"></i> Book Appointment</button> 
 												<button type="button" class="btn btn-default" id="btn_back2view"><i class="fa fa-reply"></i> Go Back</button> 
 											</div>
 										</div>
@@ -1193,7 +1207,7 @@
 								</div>
 							</div>
 						</div>
-						
+			
 					</div>
 				</div>
 				
@@ -1414,11 +1428,26 @@
 				data = $.parseJSON(data);
 				//console.log(data);
 				
+				var c_cid = location.search;
+				c_cid = c_cid.split("=");
+				c_depid = c_cid[3];
+				
 				$.each(data, function(i, item) {
 					$("#c_ba_id").val(id);
 					$("#ccard").val(item.cardno);
 					$("#cname").val(item.title + " " + item.fname + ' ' + item.lname);
 					$('#cdate').val(new Date().toISOString().split('T')[0]);
+					$('#cbranch').val(item.branch);
+					$('#c_dep_id').val(c_depid);
+					if(c_depid > 0){
+						$.get('api/Controllers/Customers_RestController.php?view=get_dependents&id='+c_depid, function(data) {
+							data = $.parseJSON(data);
+							data = data[0];
+							
+							$("#cname").val(data.fname + " " + data.lname);
+						});
+						$('#cnotes').val('For a dependent')
+					}
 					$("#btn_back2view").attr("onclick", "gogo_back()");
 				});
 				
@@ -1446,7 +1475,9 @@
 				data : {
 					'ccard' : $("#ccard").val(),
 					'cdate' : $("#cdate").val(),
-					'cnotes': $("#cnotes").val()
+					'cnotes': $("#cnotes").val(),
+					'cbranch': $("#cbranch").val(),
+					'cdep_id': $("#c_dep_id").val()
 				},
 				success: function(data) {
 				   //alert (data);

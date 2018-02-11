@@ -28,7 +28,7 @@
 							<div class="form-group">
 								<label for="cardno" class="col-sm-2 control-label"><span class="text-danger">*</span>Card No.</label>
 								<div class="col-sm-4">
-									<input type="text" id="cardno" name="cardno" class="form-control" placeholder="xxxx/xxx/yyyy" disabled>
+									<input type="text" id="cardno" name="cardno" class="form-control" placeholder="xxxx/xxx/yyyy">
 								</div>
 											
 								<label for="enroleeno" class="col-sm-2 control-label">Enrolee ID</label>
@@ -68,7 +68,7 @@
 										<input type="radio" name="gender" id="gender" value="Male"> Male
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="gender" id="gender" value="Female"> Female
+										<input type="radio" name="gender" id="gender2" value="Female"> Female
 									</label>
 								</div>
 							</div>
@@ -383,7 +383,7 @@
 						'lname' : $("#sname").val(),
 						'mname' : $("#mname").val(),
 						'fname' :  $("#fname").val(),
-						'gender' : $("#gender").val(),
+						'gender' : $('input[name=gender]:checked').val(),
 						'cardno' : $("#cardno").val(),
 						'enroleeid' : $("#enroleeno").val(),
 						'phone1' : $("#mobile").val(),
@@ -406,6 +406,7 @@
 						'nok_rel' : $("#nok_rel").val()
 					},
 					success: function(data) {
+						console.log(data);
 					   data = $.parseJSON(data);
 					   
 					   if(data.status == 1){
@@ -419,6 +420,7 @@
 							window.location.href = "customers.php?msg="+data.msg;
 					   }
 					   else {
+						   //alert(data.msg);
 							$("#save_icon").removeClass("fa-spinner fa-pulse");
 							$("#save_icon").addClass("fa-save");
 							$("#insert_alert").removeClass("alert-info");

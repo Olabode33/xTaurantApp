@@ -255,6 +255,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="hidden" id="book_appointment">
 				<div class="panel panel-primary">
 					<div class="panel-heading" role="tab">
