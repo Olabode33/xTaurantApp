@@ -166,7 +166,7 @@
 			$email2 = strtolower($_POST["email2"]);
 			$rship_type = $_POST["rship_type"];
 			$rship_account = $_POST["rship_account"];
-			$dob_year = $this->get_year_of_birth_from_age($_POST["age"]);
+			$dob_year = ((isset($_POST["age"]) && $_POST["age"] != '' && $_POST["age"] != ' ')?$this->get_year_of_birth_from_age($_POST["age"]):null);
 			$dob_day = $_POST["dob_day"];
 			$dob_month = $_POST["dob_month"];
 			$age = $_POST["age"];
@@ -905,7 +905,7 @@
 			$birth_year = 0;
 			$cur_year = date('Y');			
 			
-			if(isset($age)){
+			if(isset($age) & is_int($age)){
 				$birth_year = $cur_year - $age;
 			}
 			else{
